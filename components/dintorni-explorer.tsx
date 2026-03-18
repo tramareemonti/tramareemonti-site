@@ -29,7 +29,6 @@ const seasonStyles: Record<string, string> = {
   'inverno': 'border-sky-300/60 bg-sky-50 text-sky-700',
   'primavera': 'border-emerald-300/60 bg-emerald-50 text-emerald-700',
   'autunno': 'border-orange-300/60 bg-orange-50 text-orange-700',
-  "tutto-l'anno": 'border-stone-300/60 bg-stone-50 text-stone-600',
 };
 
 function tagClassName(tag: string) {
@@ -52,6 +51,7 @@ export function DintorniExplorer() {
   const [activeRange, setActiveRange] = useState<number | null>(null);
   const [query, setQuery] = useState('');
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   const allItems = useMemo(() => [...allPlaces, ...allRoutes], []);
 
@@ -202,15 +202,20 @@ export function DintorniExplorer() {
         <div className="flex flex-wrap gap-2">
           {filteredItems.map((item) => {
             const selected = selectedItem?.id === item.id;
+            const hovered = !selected && hoveredId === item.id;
             return (
               <button
                 key={item.id}
                 type="button"
                 onClick={() => handleSelect(item.id)}
+                onMouseEnter={() => setHoveredId(item.id)}
+                onMouseLeave={() => setHoveredId(null)}
                 className={`rounded-[1.25rem] border px-4 py-3 text-left transition ${
                   selected
                     ? 'border-olive bg-canvas'
-                    : 'border-transparent bg-[#f4eadc] hover:border-line hover:bg-canvas'
+                    : hovered
+                      ? 'border-clay/50 bg-canvas'
+                      : 'border-transparent bg-[#f4eadc] hover:border-line hover:bg-canvas'
                 }`}
               >
                 <p className="text-xs uppercase tracking-[0.22em] text-muted">
@@ -231,7 +236,7 @@ export function DintorniExplorer() {
 
       <div className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
         <div className="rounded-[1.5rem] border border-line/70 bg-card p-3 shadow-soft">
-          <TerritoryMap items={filteredItems} selectedId={selectedItem?.id ?? null} onSelect={handleSelect} />
+          <TerritoryMap items={filteredItems} selectedId={selectedItem?.id ?? null} hoveredId={hoveredId} onSelect={handleSelect} onHover={setHoveredId} />
         </div>
 
         {selectedItem ? (
@@ -259,16 +264,6 @@ export function DintorniExplorer() {
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                  {selectedItem.mapyUrl ? (
-                    <a
-                      href={selectedItem.mapyUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center rounded-full bg-olive px-4 py-2 text-sm font-medium text-white transition hover:bg-ink"
-                    >
-                      Vedi traccia su Mapy.com &rarr;
-                    </a>
-                  ) : null}
                   <GpxLink route={selectedItem} />
                   <a
                     href={mapsUrl(selectedItem.lat, selectedItem.lng)}
@@ -278,6 +273,16 @@ export function DintorniExplorer() {
                   >
                     Google Maps &rarr;
                   </a>
+                  {selectedItem.mapyUrl ? (
+                    <a
+                      href={selectedItem.mapyUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex text-sm font-medium text-clay transition hover:text-ink"
+                    >
+                      Traccia su Mapy.com &rarr;
+                    </a>
+                  ) : null}
                 </div>
               </div>
             ) : (

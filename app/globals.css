@@ -34,6 +34,45 @@ body {
   filter: sepia(0.08) saturate(0.92) contrast(0.98);
 }
 
+.map-legend {
+  background: rgba(247, 243, 236, 0.92);
+  backdrop-filter: blur(4px);
+  border-radius: 0.625rem;
+  padding: 6px 10px;
+  font-size: 11px;
+  color: #4a453e;
+  line-height: 1.2;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 1.5px 0;
+}
+
+.map-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.map-legend-line {
+  width: 16px;
+  height: 3px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.map-legend-sep {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 3px 0;
+}
+
 .prose-link {
   @apply text-clay underline decoration-line/60 underline-offset-4 transition hover:text-ink;
 }

@@ -16,20 +16,20 @@ export const featuredNearby = [
     title: 'Niente foto, niente spoiler',
     description:
       'Vi diciamo dove andare e perché, ma il bello lo scoprite voi.',
-    href: '/i-dintorni?cat=borghi-luoghi',
+    href: '/dintorni?cat=borghi-luoghi',
   },
   {
     category: 'Mangiare',
     title: 'La cucina marchigiana',
     description:
       'Una tradizione che unisce mare e monti, trovate i nostri posti preferiti nella mappa.',
-    href: '/i-dintorni?cat=ristoranti',
+    href: '/dintorni?cat=ristoranti',
   },
   {
     category: 'Percorsi & outdoor',
     title: 'Passeggiate rilassanti o salite impegnative?',
     description:
       'Il lungo mare, il monte Conero, i Sibillini, le riserve naturali, a piedi o in bici, per tutte le età e gusti.',
-    href: '/i-dintorni?cat=itinerari',
+    href: '/dintorni?cat=itinerari',
   },
 ];

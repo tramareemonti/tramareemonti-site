@@ -6,7 +6,7 @@ import { siteConfig } from '@/lib/site-config';
 
 const navItems = [
   { href: '/', label: 'Il Casolare' },
-  { href: '/i-dintorni', label: 'I Dintorni' },
+  { href: '/dintorni', label: 'I Dintorni' },
 ];
 
 export function SiteHeader() {

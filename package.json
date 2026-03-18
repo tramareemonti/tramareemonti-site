@@ -6,14 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gpx": "npx tsx scripts/gpx-to-polylines.ts"
   },
   "dependencies": {
     "leaflet": "^1.9.4",
     "next": "15.2.4",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "react-leaflet": "^5.0.0"
+    "react-leaflet": "^5.0.0",
+    "react-leaflet-cluster": "^4.0.0"
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.16",

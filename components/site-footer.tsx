@@ -25,7 +25,7 @@ export function SiteFooter() {
             <Link href="/" className="font-medium text-muted transition hover:text-ink">
               Il Casolare
             </Link>
-            <Link href="/i-dintorni" className="font-medium text-muted transition hover:text-ink">
+            <Link href="/dintorni" className="font-medium text-muted transition hover:text-ink">
               I Dintorni
             </Link>
             <a
