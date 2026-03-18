@@ -1,0 +1,18 @@
+<svg width="1600" height="980" viewBox="0 0 1600 980" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="980" fill="#F3EDE2"/>
+  <path d="M0 671C167 597 302 567 409 579C548 596 662 689 845 700C1005 709 1156 650 1348 611C1441 592 1525 590 1600 605V980H0V671Z" fill="#D8D1C2"/>
+  <path d="M0 732C176 640 319 609 442 629C594 654 691 754 878 759C1061 764 1210 667 1374 650C1465 641 1541 648 1600 667V980H0V732Z" fill="#BFC2B0"/>
+  <path d="M0 800C182 725 356 690 502 703C664 718 777 813 961 825C1130 836 1284 767 1426 748C1494 739 1552 742 1600 753V980H0V800Z" fill="#7C8A74"/>
+  <rect x="523" y="443" width="525" height="256" rx="12" fill="#F8F4EC" stroke="#75655A" stroke-width="6"/>
+  <path d="M479 461L785 282L1090 461" stroke="#75655A" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M533 460L786 309L1038 460" fill="#B9704F" stroke="#75655A" stroke-width="6" stroke-linejoin="round"/>
+  <rect x="589" y="514" width="108" height="101" rx="8" fill="#E5D8C5" stroke="#75655A" stroke-width="6"/>
+  <rect x="746" y="514" width="108" height="101" rx="8" fill="#E5D8C5" stroke="#75655A" stroke-width="6"/>
+  <rect x="685" y="574" width="184" height="125" rx="8" fill="#EEE4D5" stroke="#75655A" stroke-width="6"/>
+  <path d="M1105 598C1144 558 1204 559 1236 599" stroke="#75655A" stroke-width="6"/>
+  <path d="M1190 599C1217 566 1264 567 1289 599" stroke="#75655A" stroke-width="6"/>
+  <path d="M270 601C302 574 350 576 377 605" stroke="#75655A" stroke-width="6"/>
+  <path d="M346 598C375 567 423 566 449 597" stroke="#75655A" stroke-width="6"/>
+  <circle cx="1293" cy="210" r="47" fill="#EBCF8E"/>
+  <text x="800" y="862" text-anchor="middle" fill="#75655A" font-family="Georgia, serif" font-size="38">Il Casolare tra Mare e Monti</text>
+</svg>
