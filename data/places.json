@@ -288,5 +288,67 @@
     "summary": "Numana alta e Numana bassa: borgo arroccato e spiaggia di sassi con vista sul Conero. Meno affollata di Sirolo.",
     "whyGo": "Alternativa a Sirolo con più parcheggio e meno caos. Spiaggiola di Numana e la Spiaggiola dei Frati sono le più caratteristiche.",
     "driveMinutes": 70
+  },
+  {
+    "id": "sferisterio-macerata",
+    "title": "Sferisterio di Macerata",
+    "category": "borghi-luoghi",
+    "sublabel": "Cultura",
+    "tags": [
+      "teatro",
+      "opera",
+      "concerti",
+      "estate",
+      "macerata"
+    ],
+    "town": "Macerata",
+    "lat": 43.29649,
+    "lng": 13.44833,
+    "summary": "Arena all'aperto monumentale nel centro di Macerata, tra i luoghi culturali più iconici delle Marche.",
+    "whyGo": "Da vedere anche senza spettacolo, ma il meglio è viverlo la sera. In stagione estiva controllate calendario eventi e concerti, in particolare il Macerata Opera Festival.",
+    "website": "https://www.sferisterio.it/",
+    "driveMinutes": 25,
+    "featured": true
+  },
+  {
+    "id": "recanati-leopardi-colloredo",
+    "title": "Recanati (Casa Leopardi, Colle dell'Infinito, Villa Colloredo Mels)",
+    "category": "borghi-luoghi",
+    "sublabel": "Cultura",
+    "tags": [
+      "recanati",
+      "leopardi",
+      "museo",
+      "borgo",
+      "arte"
+    ],
+    "town": "Recanati",
+    "lat": 43.40446,
+    "lng": 13.55375,
+    "summary": "Città di Giacomo Leopardi, con un centro storico ordinato e visite culturali molto concentrate.",
+    "whyGo": "Funziona bene per una giornata culturale: Casa Leopardi, Colle dell'Infinito e Villa Colloredo Mels sono vicini e facili da combinare nello stesso itinerario.",
+    "driveMinutes": 45,
+    "featured": true
+  },
+  {
+    "id": "urbs-salvia-urbisaglia",
+    "title": "Parco Archeologico di Urbs Salvia",
+    "category": "borghi-luoghi",
+    "sublabel": "Archeologia",
+    "tags": [
+      "urbisaglia",
+      "romano",
+      "anfiteatro",
+      "teatro",
+      "storia"
+    ],
+    "town": "Urbisaglia",
+    "lat": 43.19839,
+    "lng": 13.37758,
+    "summary": "Il più grande parco archeologico delle Marche, con anfiteatro, teatro romano e resti monumentali.",
+    "whyGo": "È una tappa forte per chi vuole alternare natura e storia: i resti sono ampi e leggibili, ideale anche con ragazzi o per una mezza giornata culturale.",
+    "website": "https://www.urbisaglia.com/parco-archeologico/",
+    "driveMinutes": 15,
+    "featured": true
   }
 ]

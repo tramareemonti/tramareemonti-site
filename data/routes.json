@@ -114,7 +114,7 @@
   },
   {
     "id": "vettore-forca-di-presta",
-    "title": "Monte Vettore da Forca di Presta",
+    "title": "Cima del Monte Vettore",
     "category": "itinerari",
     "routeType": "trekking",
     "tags": [
@@ -597,7 +597,7 @@
   },
   {
     "id": "vettore-foce-laghi-pilato",
-    "title": "Laghi di Pilato da Foce di Montemonaco",
+    "title": "Laghi di Pilato",
     "category": "itinerari",
     "routeType": "trekking",
     "tags": [
@@ -1167,7 +1167,7 @@
   },
   {
     "id": "monte-sibilla-rifugio",
-    "title": "Monte Sibilla dal Rifugio Sibilla",
+    "title": "Monte Sibilla",
     "category": "itinerari",
     "routeType": "trekking",
     "tags": [
@@ -1177,7 +1177,7 @@
       "estate",
       "autunno"
     ],
-    "startTown": "Rifugio Sibilla",
+    "startTown": "Montemonaco",
     "lat": 42.903802,
     "lng": 13.313527,
     "distanceKm": 24,
@@ -2082,7 +2082,7 @@
   },
   {
     "id": "monte-priora-bolognola-fargno",
-    "title": "Monte Priora dal Rifugio del Fargno",
+    "title": "Monte Priora",
     "category": "itinerari",
     "routeType": "trekking",
     "tags": [
@@ -2454,7 +2454,7 @@
     "tags": [
       "eremo",
       "sibillini",
-      "facile",
+      "media",
       "primavera",
       "estate",
       "autunno"
@@ -2464,7 +2464,7 @@
     "lng": 13.311083,
     "distanceKm": 11,
     "elevationM": 400,
-    "difficulty": "facile",
+    "difficulty": "media",
     "duration": "4h",
     "summary": "Camminata tranquilla verso un eremo isolato nei Sibillini. Percorso nel bosco con dislivello contenuto, adatto a chi vuole una giornata in natura senza salite impegnative.",
     "highlights": [
@@ -2924,7 +2924,7 @@
   },
   {
     "id": "passo-del-lupo-sirolo",
-    "title": "Passo del Lupo – Sirolo",
+    "title": "Passo del Lupo",
     "category": "itinerari",
     "routeType": "trekking",
     "tags": [
@@ -3134,7 +3134,7 @@
   },
   {
     "id": "lame-rosse-trekking",
-    "title": "Trekking alle Lame Rosse dal Lago di Fiastra",
+    "title": "Lame Rosse",
     "category": "itinerari",
     "routeType": "trekking",
     "tags": [
@@ -3145,7 +3145,7 @@
       "estate",
       "autunno"
     ],
-    "startTown": "San Lorenzo al Lago",
+    "startTown": "Lago di Fiastra",
     "lat": 43.06048,
     "lng": 13.185436,
     "distanceKm": 6,
@@ -3447,6 +3447,251 @@
     ],
     "gpxFile": "/tracce/lame_rosse.gpx",
     "mapyUrl": "https://mapy.com/s/fenefuzonu",
+    "featured": true
+  },
+  {
+    "id": "piani-ragnolo-anello",
+    "title": "Piani di Ragnolo (anello panoramico)",
+    "category": "itinerari",
+    "routeType": "trekking",
+    "tags": [
+      "ragnolo",
+      "sibillini",
+      "panorama",
+      "media",
+      "estate",
+      "autunno"
+    ],
+    "startTown": "Bolognola",
+    "lat": 43.010249,
+    "lng": 13.226893,
+    "distanceKm": 10,
+    "elevationM": 260,
+    "difficulty": "media",
+    "duration": "3h",
+    "summary": "Anello panoramico sui Piani di Ragnolo, percorso scorrevole tra altopiano e crinali con viste aperte sui Sibillini.",
+    "highlights": [
+      "Piani di Ragnolo",
+      "panorami sui Sibillini",
+      "anello panoramico"
+    ],
+    "driveMinutes": 65,
+    "polyline": [
+      [
+        43.010249,
+        13.226893
+      ],
+      [
+        43.010203,
+        13.226443
+      ],
+      [
+        43.010676,
+        13.225734
+      ],
+      [
+        43.010709,
+        13.225177
+      ],
+      [
+        43.013376,
+        13.229453
+      ],
+      [
+        43.014775,
+        13.232139
+      ],
+      [
+        43.015314,
+        13.234798
+      ],
+      [
+        43.015753,
+        13.235822
+      ],
+      [
+        43.017323,
+        13.238301
+      ],
+      [
+        43.017337,
+        13.238527
+      ],
+      [
+        43.017921,
+        13.238877
+      ],
+      [
+        43.017337,
+        13.238527
+      ],
+      [
+        43.01553,
+        13.235355
+      ],
+      [
+        43.014775,
+        13.232139
+      ],
+      [
+        43.015734,
+        13.231502
+      ],
+      [
+        43.016575,
+        13.23125
+      ],
+      [
+        43.01752,
+        13.230612
+      ],
+      [
+        43.020233,
+        13.229265
+      ],
+      [
+        43.021658,
+        13.228267
+      ],
+      [
+        43.023037,
+        13.22895
+      ],
+      [
+        43.023681,
+        13.22948
+      ],
+      [
+        43.024699,
+        13.230818
+      ],
+      [
+        43.025671,
+        13.232615
+      ],
+      [
+        43.025802,
+        13.232759
+      ],
+      [
+        43.026005,
+        13.232544
+      ],
+      [
+        43.025053,
+        13.229013
+      ],
+      [
+        43.024278,
+        13.227971
+      ],
+      [
+        43.023287,
+        13.227072
+      ],
+      [
+        43.025204,
+        13.225627
+      ],
+      [
+        43.025993,
+        13.224359
+      ],
+      [
+        43.026741,
+        13.224055
+      ],
+      [
+        43.026649,
+        13.222501
+      ],
+      [
+        43.026932,
+        13.220973
+      ],
+      [
+        43.027089,
+        13.21844
+      ],
+      [
+        43.027451,
+        13.216661
+      ],
+      [
+        43.026498,
+        13.217757
+      ],
+      [
+        43.024896,
+        13.223237
+      ],
+      [
+        43.0246,
+        13.22391
+      ],
+      [
+        43.024357,
+        13.223919
+      ],
+      [
+        43.023549,
+        13.221854
+      ],
+      [
+        43.015675,
+        13.215036
+      ],
+      [
+        43.015386,
+        13.214856
+      ],
+      [
+        43.015116,
+        13.214918
+      ],
+      [
+        43.01467,
+        13.215889
+      ],
+      [
+        43.014446,
+        13.215943
+      ],
+      [
+        43.010755,
+        13.212853
+      ],
+      [
+        43.009868,
+        13.215969
+      ],
+      [
+        43.009651,
+        13.219078
+      ],
+      [
+        43.009849,
+        13.221979
+      ],
+      [
+        43.010709,
+        13.225177
+      ],
+      [
+        43.010676,
+        13.225734
+      ],
+      [
+        43.010203,
+        13.226443
+      ],
+      [
+        43.010249,
+        13.226893
+      ]
+    ],
+    "gpxFile": "/tracce/ragnolo.gpx",
+    "mapyUrl": "https://mapy.com/s/gotuhahehe",
     "featured": true
   }
 ]

@@ -11,7 +11,7 @@ export const categories: { key: Category | 'all'; label: string }[] = [
   { key: 'produttori', label: 'Produttori' },
   { key: 'borghi-luoghi', label: 'Luoghi' },
   { key: 'attivita-outdoor', label: 'Attività' },
-  { key: 'itinerari', label: 'Percorsi' },
+  { key: 'itinerari', label: 'Trekking' },
   { key: 'mare', label: 'Mare' },
 ];
 
@@ -20,7 +20,7 @@ export const categoryLabels: Record<Category, string> = {
   produttori: 'Produttori',
   'borghi-luoghi': 'Luoghi',
   'attivita-outdoor': 'Attività',
-  itinerari: 'Percorsi',
+  itinerari: 'Trekking',
   mare: 'Mare',
 };
 

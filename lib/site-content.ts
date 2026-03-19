@@ -26,7 +26,7 @@ export const featuredNearby = [
     href: '/dintorni?cat=ristoranti',
   },
   {
-    category: 'Percorsi & outdoor',
+    category: 'Trekking & outdoor',
     title: 'Passeggiate rilassanti o salite impegnative?',
     description:
       'Il lungo mare, il monte Conero, i Sibillini, le riserve naturali, a piedi o in bici, per tutte le età e gusti.',

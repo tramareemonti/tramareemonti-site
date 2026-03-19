@@ -31,13 +31,41 @@ const seasonStyles: Record<string, string> = {
   'autunno': 'border-orange-300/60 bg-orange-50 text-orange-700',
 };
 
+const difficultyStyles: Record<RouteItem['difficulty'], string> = {
+  facile: 'border-emerald-300/70 bg-emerald-50 text-emerald-700',
+  media: 'border-amber-300/70 bg-amber-50 text-amber-700',
+  impegnativa: 'border-rose-300/70 bg-rose-50 text-rose-700',
+};
+
 function tagClassName(tag: string) {
   return seasonStyles[tag] ?? 'border-line bg-canvas text-muted';
 }
 
 function itemLabel(item: ExplorerItem) {
-  if (isRoute(item)) return `${categoryLabels[item.category]} · ${item.routeType}`;
+  if (isRoute(item)) return categoryLabels[item.category];
   return item.sublabel ?? categoryLabels[item.category];
+}
+
+function difficultyOrder(difficulty: RouteItem['difficulty']) {
+  switch (difficulty) {
+    case 'facile':
+      return 0;
+    case 'media':
+      return 1;
+    case 'impegnativa':
+      return 2;
+  }
+}
+
+function difficultyLabel(difficulty: RouteItem['difficulty']) {
+  switch (difficulty) {
+    case 'facile':
+      return 'Facile';
+    case 'media':
+      return 'Media';
+    case 'impegnativa':
+      return 'Impegnativa';
+  }
 }
 
 function mapsUrl(lat: number, lng: number) {
@@ -52,6 +80,7 @@ export function DintorniExplorer() {
   const [query, setQuery] = useState('');
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [activeDifficulty, setActiveDifficulty] = useState<RouteItem['difficulty'] | null>(null);
 
   const allItems = useMemo(() => [...allPlaces, ...allRoutes], []);
 
@@ -88,8 +117,18 @@ export function DintorniExplorer() {
       });
     }
 
-    return items.sort((a, b) => a.driveMinutes - b.driveMinutes);
-  }, [activeCategory, activeRange, allItems, query]);
+    if (activeCategory === 'itinerari' && activeDifficulty !== null) {
+      items = items.filter((item) => isRoute(item) && item.difficulty === activeDifficulty);
+    }
+
+    return items.sort((a, b) => {
+      if (activeCategory === 'itinerari' && isRoute(a) && isRoute(b)) {
+        const diff = difficultyOrder(a.difficulty) - difficultyOrder(b.difficulty);
+        if (diff !== 0) return diff;
+      }
+      return a.driveMinutes - b.driveMinutes;
+    });
+  }, [activeCategory, activeRange, allItems, query, activeDifficulty]);
 
   const selectedItem = useMemo(() => {
     if (!selectedId) return filteredItems[0] ?? null;
@@ -149,6 +188,7 @@ export function DintorniExplorer() {
                   setActiveCategory(category.key);
                   setSelectedId(null);
                   setActiveRange(null);
+                  setActiveDifficulty(null);
                 }}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition ${
                   active
@@ -198,6 +238,35 @@ export function DintorniExplorer() {
         )}
       </div>
 
+      {activeCategory === 'itinerari' && (
+        <div className="mb-6 flex flex-wrap items-center gap-2">
+          <span className="mr-1 text-xs text-muted">Difficoltà:</span>
+          {(['facile', 'media', 'impegnativa'] as const).map((difficulty) => (
+            <button
+              key={difficulty}
+              type="button"
+              onClick={() => setActiveDifficulty(activeDifficulty === difficulty ? null : difficulty)}
+              className={`rounded-full border px-3 py-1.5 text-xs font-medium transition ${
+                activeDifficulty === difficulty
+                  ? difficultyStyles[difficulty]
+                  : 'border-line/70 text-muted hover:border-clay hover:text-ink'
+              }`}
+            >
+              {difficultyLabel(difficulty)}
+            </button>
+          ))}
+          {activeDifficulty !== null && (
+            <button
+              type="button"
+              onClick={() => setActiveDifficulty(null)}
+              className="text-xs text-muted transition hover:text-ink"
+            >
+              &times; Tutte
+            </button>
+          )}
+        </div>
+      )}
+
       <div className="mb-6 max-h-[260px] overflow-auto rounded-[1.5rem] border border-line/70 bg-card p-3 shadow-soft md:max-h-[280px]">
         <div className="flex flex-wrap gap-2">
           {filteredItems.map((item) => {
@@ -218,12 +287,27 @@ export function DintorniExplorer() {
                       : 'border-transparent bg-[#f4eadc] hover:border-line hover:bg-canvas'
                 }`}
               >
-                <p className="text-xs uppercase tracking-[0.22em] text-muted">
-                  {itemLabel(item)}
+                <p className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-muted">
+                  <span>{itemLabel(item)}</span>
+                  {isRoute(item) ? (
+                    <span
+                      className={`rounded-full border px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.08em] ${difficultyStyles[item.difficulty]}`}
+                    >
+                      {difficultyLabel(item.difficulty)}
+                    </span>
+                  ) : null}
                 </p>
                 <p className="mt-1 font-medium text-ink">{item.title}</p>
                 <p className="mt-0.5 text-xs text-muted">
-                  {isRoute(item) ? item.startTown : item.town} &middot; {item.driveMinutes} min
+                  {isRoute(item) ? (
+                    <>
+                      {item.startTown} &middot; {item.driveMinutes} min
+                    </>
+                  ) : (
+                    <>
+                      {item.town} &middot; {item.driveMinutes} min
+                    </>
+                  )}
                 </p>
               </button>
             );
@@ -255,7 +339,7 @@ export function DintorniExplorer() {
             {isRoute(selectedItem) ? (
               <div className="mt-6 space-y-5">
                 <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  <DetailStat label="Tipo" value={selectedItem.routeType} />
+                  <DetailStat label="Attività" value="trekking" />
                   <DetailStat label="Difficoltà" value={selectedItem.difficulty} />
                   <DetailStat label="Distanza" value={`${selectedItem.distanceKm} km`} />
                   <DetailStat label="Dislivello" value={`${selectedItem.elevationM} m`} />

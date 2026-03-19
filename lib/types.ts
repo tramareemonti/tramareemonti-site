@@ -6,7 +6,7 @@ export type Category =
   | 'itinerari'
   | 'mare';
 
-export type RouteType = 'bike' | 'trekking' | 'running' | 'panoramica';
+export type RouteType = 'trekking';
 
 export interface Place {
   id: string;
