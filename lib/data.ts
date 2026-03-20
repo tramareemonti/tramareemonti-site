@@ -6,7 +6,7 @@ export const allPlaces = places as Place[];
 export const allRoutes = routes as RouteItem[];
 
 export const categories: { key: Category | 'all'; label: string }[] = [
-  { key: 'all', label: 'I preferiti' },
+  { key: 'all', label: 'Preferiti' },
   { key: 'ristoranti', label: 'Mangiare' },
   { key: 'produttori', label: 'Produttori' },
   { key: 'borghi-luoghi', label: 'Luoghi' },

@@ -5,8 +5,8 @@ import { usePathname } from 'next/navigation';
 import { siteConfig } from '@/lib/site-config';
 
 const navItems = [
-  { href: '/', label: 'Il Casolare' },
-  { href: '/dintorni', label: 'I Dintorni' },
+  { href: '/', label: 'Casolare' },
+  { href: '/dintorni', label: 'Dintorni' },
 ];
 
 export function SiteHeader() {
