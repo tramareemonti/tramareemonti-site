@@ -11,7 +11,9 @@ const config: Config = {
       colors: {
         canvas: '#f6ede2',
         ink: '#28211c',
+        inkSoft: '#49352a',
         muted: '#77685b',
+        mutedWarm: '#6f5848',
         line: '#dccbb8',
         olive: '#566748',
         clay: '#c87745',
@@ -20,6 +22,7 @@ const config: Config = {
         sea: '#6a96a7'
       },
       fontFamily: {
+        display: ['var(--font-display)', 'Georgia', 'ui-serif', 'serif'],
         serif: ['Georgia', 'ui-serif', 'serif'],
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
       },

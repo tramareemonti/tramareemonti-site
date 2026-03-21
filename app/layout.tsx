@@ -1,8 +1,16 @@
 import type { Metadata } from 'next';
+import { Spectral } from 'next/font/google';
 import './globals.css';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { siteConfig } from '@/lib/site-config';
+
+const displaySerif = Spectral({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-display',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: siteConfig.name,
@@ -16,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="it">
+    <html lang="it" className={displaySerif.variable}>
       <body>
         <div className="min-h-screen">
           <SiteHeader />
