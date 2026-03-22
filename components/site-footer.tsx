@@ -28,9 +28,6 @@ export function SiteFooter() {
             <Link href="/dintorni" className="font-medium text-muted transition hover:text-ink">
               I Dintorni
             </Link>
-            <Link href="/#come-arrivare" className="font-medium text-muted transition hover:text-ink">
-              Come arrivare
-            </Link>
             <a
               href={`mailto:${siteConfig.email}`}
               className="font-medium text-muted transition hover:text-ink"
