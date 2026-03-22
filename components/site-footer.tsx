@@ -28,6 +28,9 @@ export function SiteFooter() {
             <Link href="/dintorni" className="font-medium text-muted transition hover:text-ink">
               I Dintorni
             </Link>
+            <Link href="/#come-arrivare" className="font-medium text-muted transition hover:text-ink">
+              Come arrivare
+            </Link>
             <a
               href={`mailto:${siteConfig.email}`}
               className="font-medium text-muted transition hover:text-ink"
@@ -36,14 +39,12 @@ export function SiteFooter() {
             </a>
           </nav>
 
-          <a
-            href={siteConfig.mapsUrl}
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            href="/dintorni"
             className="text-sm font-medium text-clay transition hover:text-ink"
           >
-            Apri mappa &rarr;
-          </a>
+            Mappa dintorni &rarr;
+          </Link>
         </div>
       </div>
     </footer>

@@ -19,6 +19,33 @@ export const homeLaCasa = {
 export const homeDintorniIntro =
   'Una buona base per esplorare un territorio meno conosciuto di altri, con tanto da offrire: borghi, natura, mare e montagne, tavole.';
 
+export const homeComeArrivare = {
+  eyebrow: 'Come arrivare',
+  title: 'In campagna, con l’auto sotto mano',
+  intro:
+    'Il casolare è in aperta campagna: per arrivare e per spostamenti quotidiani l’auto è di solito la scelta più comoda.',
+  cards: [
+    {
+      emoji: '🚗',
+      title: 'In auto',
+      body:
+        'È il modo più pratico. Dalla strada si raggiunge la casa senza impegno. Ampio parcheggio disponibile sotto casa.',
+    },
+    {
+      emoji: '✈️',
+      title: 'In aereo',
+      body:
+        'L’aeroporto più comodo è Ancona Falconara (AOI). In auto, il casolare è a circa 1 ora di distanza. Se arrivate in aereo, consigliamo quindi di noleggiare un’auto.',
+    },
+    {
+      emoji: '🚆',
+      title: 'In treno',
+      body:
+        'Ancona e Civitanova Marche sono le stazioni più comode: molti collegamenti, anche in alta velocità. Macerata e Urbisaglia-Sforzacosta sono più vicine al casolare ma meno servite. Da qualsiasi stazione serve comunque proseguire in auto fino alla casa.',
+    },
+  ],
+} as const;
+
 export const homeStats = [
   { label: 'Posti letto', value: '6' },
   { label: 'Camere', value: '3' },

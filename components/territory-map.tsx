@@ -1,12 +1,13 @@
 'use client';
 
 import 'leaflet/dist/leaflet.css';
-import { MapContainer, Marker, Polyline, TileLayer, Tooltip, useMap } from 'react-leaflet';
+import { MapContainer, Marker, Polyline, Popup, TileLayer, Tooltip, useMap } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import { useEffect, useMemo } from 'react';
 import L, { DivIcon } from 'leaflet';
 import type { ExplorerItem, Place, RouteItem } from '@/lib/types';
 import { isRoute, categoryLabels } from '@/lib/data';
+import { siteConfig } from '@/lib/site-config';
 
 export interface TerritoryMapProps {
   items: ExplorerItem[];
@@ -69,6 +70,15 @@ function createClusterIcon(cluster: { getChildCount: () => number }) {
   });
 }
 
+const casolareMarkerIcon = new DivIcon({
+  className: 'leaflet-casolare-marker',
+  html: `<div style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;pointer-events:auto;">
+    <span style="display:flex;width:36px;height:36px;align-items:center;justify-content:center;border-radius:50%;background:#f7f3ec;border:2px solid #4f5a49;box-shadow:0 2px 8px rgba(0,0,0,.2);font-size:20px;line-height:1;" role="img" aria-label="Casolare">🏠</span>
+  </div>`,
+  iconSize: [40, 40],
+  iconAnchor: [20, 20],
+});
+
 // ── main ────────────────────────────────────────────────────────────
 
 export default function TerritoryMap({
@@ -93,6 +103,26 @@ export default function TerritoryMap({
         className="map-tile"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       />
+
+      <Marker
+        position={[siteConfig.casolareMap.lat, siteConfig.casolareMap.lng]}
+        icon={casolareMarkerIcon}
+        zIndexOffset={800}
+        interactive
+      >
+        <Tooltip direction="top" offset={[0, -12]} opacity={1} permanent={false}>
+          {siteConfig.casolareMap.label}
+        </Tooltip>
+        <Popup>
+          <div className="text-sm text-ink">
+            <p className="font-medium">{siteConfig.name}</p>
+            <p className="mt-1 text-muted">{siteConfig.address}</p>
+            <p className="mt-2 text-xs leading-snug text-muted">
+              Punto sulla mappa indicativo, non l’ingresso esatto.
+            </p>
+          </div>
+        </Popup>
+      </Marker>
 
       {routes.map((item) => (
         <RouteLayer
@@ -273,13 +303,15 @@ function MapLegend({ items }: { items: ExplorerItem[] }) {
   }, [items]);
 
   useEffect(() => {
-    if (placeCategories.size === 0 && difficulties.size === 0) return;
-
     const legend = new L.Control({ position: 'bottomleft' });
 
     legend.onAdd = () => {
       const div = L.DomUtil.create('div', 'map-legend');
-      let html = '';
+      let html = `<div class="map-legend-item"><span class="map-legend-casolare" aria-hidden="true">🏠</span>${siteConfig.casolareMap.label}</div>`;
+
+      if (placeCategories.size > 0 || difficulties.size > 0) {
+        html += '<div class="map-legend-sep"></div>';
+      }
 
       for (const cat of placeCategories) {
         html += `<div class="map-legend-item"><span class="map-legend-dot" style="background:${placeColors[cat]}"></span>${categoryLabels[cat]}</div>`;

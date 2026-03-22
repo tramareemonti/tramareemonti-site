@@ -7,6 +7,7 @@ import { siteConfig } from '@/lib/site-config';
 const navItems = [
   { href: '/', label: 'Casolare' },
   { href: '/dintorni', label: 'Dintorni' },
+  { href: '/#come-arrivare', label: 'Come arrivare' },
 ];
 
 export function SiteHeader() {

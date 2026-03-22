@@ -5,6 +5,7 @@ import {
   homeHeroImageCaption,
   homeLaCasa,
   homeDintorniIntro,
+  homeComeArrivare,
   homeStats,
   homeFeatures,
   featuredNearby,
@@ -43,8 +44,8 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2 md:grid-rows-[1fr_auto]">
-            <figure className="space-y-2 md:col-span-2">
+          <div className="grid gap-4">
+            <figure className="space-y-2">
               <div className="relative min-h-[280px] overflow-hidden rounded-[1.5rem] border border-line/70">
                 <Image
                   src="/images/photos/main_photo.jpg"
@@ -56,19 +57,6 @@ export default function HomePage() {
               </div>
               <figcaption className="text-xs leading-snug text-muted">{homeHeroImageCaption}</figcaption>
             </figure>
-            <div className="rounded-[1.5rem] border border-line/70 bg-canvas p-5">
-              <p className="text-sm uppercase tracking-[0.22em] text-muted">Dove</p>
-              <p className="mt-2 font-serif text-xl text-ink">Urbisaglia (MC)</p>
-              <p className="mt-1 text-sm leading-6 text-muted">{siteConfig.address}</p>
-              <a
-                href={siteConfig.mapsUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-3 inline-flex text-sm font-medium text-clay transition hover:text-ink"
-              >
-                Apri su Google Maps &rarr;
-              </a>
-            </div>
             <div className="relative min-h-[160px] overflow-hidden rounded-[1.5rem] border border-line/70">
               <Image
                 src="/images/photos/sala_comune.jpeg"
@@ -143,6 +131,35 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section
+        id="come-arrivare"
+        className="mx-auto max-w-7xl px-6 py-12 md:px-10 md:py-16"
+      >
+        <div className="space-y-6">
+          <div>
+            <p className="text-sm uppercase tracking-[0.25em] text-muted">{homeComeArrivare.eyebrow}</p>
+            <h2 className="mt-2 font-serif text-3xl md:text-4xl">{homeComeArrivare.title}</h2>
+            <p className="mt-4 max-w-3xl text-base leading-7 text-muted">{homeComeArrivare.intro}</p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {homeComeArrivare.cards.map((card) => (
+              <div
+                key={card.title}
+                className="rounded-[1.5rem] border border-line/70 bg-card p-6 shadow-soft"
+              >
+                <p className="flex items-center gap-2 font-serif text-xl text-ink">
+                  <span className="select-none text-[1.35rem] leading-none" aria-hidden="true">
+                    {card.emoji}
+                  </span>
+                  {card.title}
+                </p>
+                <p className="mt-3 text-sm leading-7 text-muted">{card.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="contatti" className="mx-auto max-w-7xl px-6 pb-20 pt-12 md:px-10">
         <div className="grid gap-6 rounded-[2rem] border border-line/70 bg-card p-6 shadow-soft md:grid-cols-[0.92fr_1.08fr] md:p-8">
           <div>
@@ -161,16 +178,16 @@ export default function HomePage() {
               <p className="mt-3 text-lg font-medium text-ink">{siteConfig.email}</p>
               <p className="mt-2 text-sm text-clay">Chiedi informazioni &rarr;</p>
             </a>
-            <a
-              href={siteConfig.mapsUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-[1.5rem] border border-line/70 bg-canvas p-5 transition hover:border-clay"
-            >
+            <div className="rounded-[1.5rem] border border-line/70 bg-canvas p-5">
               <p className="text-sm uppercase tracking-[0.22em] text-muted">Dove siamo</p>
               <p className="mt-3 text-lg font-medium text-ink">{siteConfig.address}</p>
-              <p className="mt-2 text-sm text-clay">Apri mappa &rarr;</p>
-            </a>
+              <p className="mt-2 text-sm leading-6 text-muted">
+                L’indirizzo preciso lo condividiamo con gli ospiti in fase di prenotazione.
+              </p>
+              <Link href="/dintorni" className="mt-3 inline-block text-sm font-medium text-clay transition hover:text-ink">
+                Mappa dei dintorni &rarr;
+              </Link>
+            </div>
           </div>
         </div>
       </section>

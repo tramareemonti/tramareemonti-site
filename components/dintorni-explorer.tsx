@@ -68,8 +68,15 @@ function difficultyLabel(difficulty: RouteItem['difficulty']) {
   }
 }
 
-function mapsUrl(lat: number, lng: number) {
+function mapsUrlFromCoords(lat: number, lng: number) {
   return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+}
+
+function openInGoogleMapsHref(item: ExplorerItem) {
+  if ('googleMapsUrl' in item && item.googleMapsUrl) {
+    return item.googleMapsUrl;
+  }
+  return mapsUrlFromCoords(item.lat, item.lng);
 }
 
 export function DintorniExplorer() {
@@ -556,7 +563,7 @@ export function DintorniExplorer() {
                 </p>
               </div>
               <a
-                href={mapsUrl(selectedItem.lat, selectedItem.lng)}
+                href={openInGoogleMapsHref(selectedItem)}
                 target="_blank"
                 rel="noreferrer"
                 className="shrink-0 rounded-full border border-line bg-canvas px-3 py-2 text-xs font-medium text-clay transition hover:border-clay"
@@ -722,7 +729,7 @@ export function DintorniExplorer() {
                 <div className="flex flex-wrap gap-3">
                   <GpxLink route={selectedItem} />
                   <a
-                    href={mapsUrl(selectedItem.lat, selectedItem.lng)}
+                    href={openInGoogleMapsHref(selectedItem)}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex text-sm font-medium text-clay transition hover:text-ink"
@@ -749,7 +756,7 @@ export function DintorniExplorer() {
                 </div>
                 <div className="flex flex-wrap gap-3">
                   <a
-                    href={mapsUrl(selectedItem.lat, selectedItem.lng)}
+                    href={openInGoogleMapsHref(selectedItem)}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex text-sm font-medium text-clay transition hover:text-ink"

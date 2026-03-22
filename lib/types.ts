@@ -18,6 +18,8 @@ export interface Place {
   lng: number;
   summary: string;
   whyGo: string;
+  /** Link condiviso da Google Maps (scheda luogo); se presente usato per «Apri in Google Maps». */
+  googleMapsUrl?: string;
   website?: string;
   driveMinutes: number;
   featured?: boolean;
@@ -43,6 +45,7 @@ export interface RouteItem {
   polyline: [number, number][];
   gpxFile?: string;
   mapyUrl?: string;
+  googleMapsUrl?: string;
   featured?: boolean;
 }
 

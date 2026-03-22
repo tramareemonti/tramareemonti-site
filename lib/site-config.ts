@@ -2,7 +2,16 @@ export const siteConfig = {
   name: 'Il Casolare tra Mare e Monti',
   domain: 'tramareemonti.it',
   email: 'info@tramareemonti.it',
-  address: 'Contrada Valleresco 19, 62010 Urbisaglia (MC)',
-  mapsUrl: 'https://share.google/kxPRTMJbMWq0C6SKt',
+  /** Indirizzo pubblico volutamente approssimativo (privacy). */
+  address: 'Campagna marchigiana, Urbisaglia (MC)',
+  /**
+   * Punto sulla mappa Dintorni: coordinate leggermente spostate rispetto all’ingresso
+   * reale, senza link Google Maps al casolare.
+   */
+  casolareMap: {
+    lat: 43.192374,
+    lng: 13.366559,
+    label: 'Il casolare',
+  },
   logo: '/images/logo_no_background.png',
 };

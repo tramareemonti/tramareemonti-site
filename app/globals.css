@@ -67,6 +67,14 @@ body {
   flex-shrink: 0;
 }
 
+.map-legend-casolare {
+  flex-shrink: 0;
+  font-size: 13px;
+  line-height: 1;
+  width: 1.1em;
+  text-align: center;
+}
+
 .map-legend-sep {
   height: 1px;
   background: rgba(0, 0, 0, 0.08);

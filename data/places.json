@@ -10,12 +10,12 @@
       "fatto in casa"
     ],
     "town": "Colmurano",
-    "lat": 43.165,
-    "lng": 13.3583,
+    "lat": 43.176202,
+    "lng": 13.375928,
     "summary": "Dolci fatti in casa, crostate, focacce, pizze. Per una colazione vera o un pranzo veloce o da portar via.",
-    "whyGo": "È il bar della nostra famiglia. Ci andiamo noi per primi, e lo consigliamo perché sappiamo cosa c'è dentro: ingredienti semplici, tutto preparato in con cura e dedizione. Colazione con crostate e dolci della nonna, pranzo al sacco o al tavolo con focacce e pizze. A 4 minuti dal casolare.",
-    "website": "https://share.google/b0oW6jp2RAAnq9a5P",
-    "driveMinutes": 10,
+    "whyGo": "È il bar della nostra famiglia. Ci andiamo noi per primi, e lo consigliamo perché sappiamo cosa c'è dentro: ingredienti semplici, tutto preparato in con cura e dedizione. Colazione con crostate e dolci della nonna, pranzo al sacco o al tavolo con focacce e pizze. A 5 minuti dal casolare.",
+    "googleMapsUrl": "https://maps.app.goo.gl/fUGDXpfGDYsYf1mXA",
+    "driveMinutes": 5,
     "featured": true
   },
   {
@@ -29,31 +29,12 @@
       "estate"
     ],
     "town": "Fiastra",
-    "lat": 43.037479,
-    "lng": 13.16638,
+    "lat": 43.048603,
+    "lng": 13.16794,
     "summary": "Lago artificiale balneabile in quota, con spiaggette, noleggio pedalò e contesto molto diverso dalle colline attorno a casa.",
     "whyGo": "Ha senso quando vuoi una giornata più 'montana' ma semplice, con acqua, prati e un cambio netto di paesaggio rispetto al casolare.",
-    "driveMinutes": 55,
-    "featured": true
-  },
-  {
-    "id": "lame-rosse",
-    "title": "Lame Rosse",
-    "category": "attivita-outdoor",
-    "tags": [
-      "trekking",
-      "panorama",
-      "foto",
-      "primavera",
-      "estate",
-      "autunno"
-    ],
-    "town": "Fiastra",
-    "lat": 43.0377998,
-    "lng": 13.1658316,
-    "summary": "Formazioni rocciose rosse sopra il lago, raggiungibili con un sentiero facile ma un po' ripido nel finale.",
-    "whyGo": "È una delle uscite più iconiche in zona: percorso leggibile, scenografia forte e combinabile facilmente con il lago di Fiastra.",
-    "driveMinutes": 60,
+    "googleMapsUrl": "https://maps.app.goo.gl/7sGgBDjVSNdsVMJ96",
+    "driveMinutes": 40,
     "featured": true
   },
   {
@@ -84,12 +65,13 @@
       "abbadia-di-fiastra"
     ],
     "town": "Urbisaglia",
-    "lat": 43.2218553,
-    "lng": 13.4048176,
+    "lat": 43.222086,
+    "lng": 13.404802,
     "summary": "Ristorante storico dentro il contesto dell'Abbadia di Fiastra, con cucina marchigiana e ambiente molto riconoscibile.",
     "whyGo": "È l'indirizzo di riferimento quando abbini una passeggiata all'Abbadia a un pranzo o a una cena senza dover spostare la macchina.",
+    "googleMapsUrl": "https://maps.app.goo.gl/JHvGaNDsaPuqLv5m7",
     "website": "https://www.ristorante-darosa.com/",
-    "driveMinutes": 15,
+    "driveMinutes": 10,
     "featured": true
   },
   {
@@ -103,12 +85,13 @@
       "prodotti locali"
     ],
     "town": "Macerata",
-    "lat": 43.2951,
-    "lng": 13.4465,
+    "lat": 43.26684,
+    "lng": 13.462396,
     "summary": "Confetture, sciroppi e conserve fatti a mano con varietà antiche marchigiane: visciole, brugnolette, pera angelica, fichi della signora.",
     "whyGo": "Silvano e Giuliana lavorano dal 1996 con ingredienti del territorio e metodi artigianali. Da loro trovate cose che non esistono al supermercato: sapa, sciroppo di visciole macerato al sole, confetture di frutti dimenticati. Aperto dal lunedì al venerdì.",
+    "googleMapsUrl": "https://maps.app.goo.gl/2xiH1ZbNRkzbKWbc8",
     "website": "https://www.agricolasigi.it",
-    "driveMinutes": 20,
+    "driveMinutes": 18,
     "featured": true
   },
   {
@@ -204,20 +187,23 @@
     "id": "frontignano",
     "title": "Frontignano 360",
     "category": "attivita-outdoor",
-    "sublabel": "Sci",
+    "sublabel": "Sci · Bike park",
     "tags": [
       "sci",
       "inverno",
       "sibillini",
-      "famiglia"
+      "famiglia",
+      "estate",
+      "mountain-bike"
     ],
     "town": "Ussita",
-    "lat": 42.921,
-    "lng": 13.159,
-    "summary": "Stazione sciistica nel Parco dei Sibillini, tra 1.325 e 1.900 m: 14 km di piste, snowpark e campo scuola. Atmosfera raccolta, ideale per famiglie.",
-    "whyGo": "La più vicina e caratteristica: piste nel bosco, poca folla e paesaggio da parco nazionale. Controllare le pagine Instagram e il sito per aperture e condizioni neve.",
+    "lat": 42.919125,
+    "lng": 13.159983,
+    "summary": "Stazione sciistica nel Parco dei Sibillini, tra 1.325 e 1.900 m: 14 km di piste, snowpark e campo scuola. In estate è attivo il bike park: trail enduro e downhill con risalita in seggiovia, noleggio MTB (anche e-bike e DH) e servizi in stazione.",
+    "whyGo": "Inverno: piste nel bosco, poca folla e paesaggio da parco nazionale—controllare sito e social per neve e aperture. Estate: area dedicata al mountain bike con percorsi serviti dalla seggiovia e noleggio bici; orari, pass e mappa trail su frontignano360.it.",
+    "googleMapsUrl": "https://maps.app.goo.gl/X7SuRUftvUBH635MA",
     "website": "https://www.frontignano360.it/",
-    "driveMinutes": 75
+    "driveMinutes": 70
   },
   {
     "id": "sassotetto",
@@ -231,12 +217,13 @@
       "intermedio"
     ],
     "town": "Sarnano",
-    "lat": 43.008926,
-    "lng": 13.240301,
+    "lat": 43.005964,
+    "lng": 13.242023,
     "summary": "Comprensorio sopra Sarnano con circa 11 km di piste, in prevalenza rosse. Collegato con la zona Santa Maria Maddalena.",
     "whyGo": "Piste un po’ più impegnative di Frontignano, buona alternativa quando c'è neve. Controllare pagine Instagram e sito per aperture stagionali.",
+    "googleMapsUrl": "https://maps.app.goo.gl/vW8SjkvHrjqMaADq5",
     "website": "https://www.scimarche.it/sarnano-comprensorio-sassotetto-santa-maria-maddalena/",
-    "driveMinutes": 55
+    "driveMinutes": 45
   },
   {
     "id": "civitanova-marche",
@@ -302,12 +289,13 @@
       "macerata"
     ],
     "town": "Macerata",
-    "lat": 43.29649,
-    "lng": 13.44833,
+    "lat": 43.29917,
+    "lng": 13.455914,
     "summary": "Arena all'aperto monumentale nel centro di Macerata, tra i luoghi culturali più iconici delle Marche.",
     "whyGo": "Da vedere anche senza spettacolo, ma il meglio è viverlo la sera. In stagione estiva controllate calendario eventi e concerti, in particolare il Macerata Opera Festival.",
+    "googleMapsUrl": "https://maps.app.goo.gl/XvzjtoKggfb98Hbk6",
     "website": "https://www.sferisterio.it/",
-    "driveMinutes": 25,
+    "driveMinutes": 30,
     "featured": true
   },
   {
@@ -323,10 +311,11 @@
       "arte"
     ],
     "town": "Recanati",
-    "lat": 43.40446,
-    "lng": 13.55375,
+    "lat": 43.398457,
+    "lng": 13.552047,
     "summary": "Città di Giacomo Leopardi, con un centro storico ordinato e visite culturali molto concentrate.",
     "whyGo": "Funziona bene per una giornata culturale: Casa Leopardi, Colle dell'Infinito e Villa Colloredo Mels sono vicini e facili da combinare nello stesso itinerario.",
+    "googleMapsUrl": "https://maps.app.goo.gl/sv6P7adaPCixzNRq9",
     "driveMinutes": 45,
     "featured": true
   },
@@ -343,12 +332,13 @@
       "storia"
     ],
     "town": "Urbisaglia",
-    "lat": 43.19839,
-    "lng": 13.37758,
+    "lat": 43.198879,
+    "lng": 13.380852,
     "summary": "Il più grande parco archeologico delle Marche, con anfiteatro, teatro romano e resti monumentali.",
     "whyGo": "È una tappa forte per chi vuole alternare natura e storia: i resti sono ampi e leggibili, ideale anche con ragazzi o per una mezza giornata culturale.",
+    "googleMapsUrl": "https://maps.app.goo.gl/t9YU7kN2EZqoqXw96",
     "website": "https://www.urbisaglia.com/parco-archeologico/",
-    "driveMinutes": 15,
+    "driveMinutes": 5,
     "featured": true
   }
 ]
