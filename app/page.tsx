@@ -15,6 +15,31 @@ import { siteConfig } from '@/lib/site-config';
 export default function HomePage() {
   return (
     <div>
+      <section className="mx-auto max-w-7xl px-6 pt-8 md:px-10 md:pt-10">
+        <div className="rounded-[1.4rem] border border-amber-300/80 bg-gradient-to-r from-amber-50 to-amber-100/70 p-4 text-amber-950 shadow-soft sm:p-5">
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div className="min-w-0">
+              <p className="inline-flex items-center gap-2 rounded-full border border-amber-400/60 bg-amber-200/40 px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-amber-800">
+                <span className="text-xl leading-none sm:text-2xl" aria-hidden="true">
+                  👷‍♂️👷‍♀️
+                </span>
+                Work in progress
+              </p>
+              <p className="mt-2 text-sm leading-6 text-amber-900 sm:text-[0.95rem]">
+                Il casolare è in fase di ristrutturazione. Stiamo preparando l'apertura agli ospiti: se vuoi essere tra i primi,
+                scrivici!  :)
+              </p>
+            </div>
+            <a
+              href={`mailto:${siteConfig.email}?subject=Richiesta%20apertura%20ospiti%20-%20${encodeURIComponent(siteConfig.name)}`}
+              className="inline-flex shrink-0 items-center justify-center rounded-full border border-amber-400/70 bg-white/80 px-4 py-2.5 text-sm font-medium text-amber-900 transition hover:border-amber-600 hover:text-amber-700"
+            >
+              {siteConfig.email}
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-7xl px-6 pb-12 pt-8 md:px-10 md:pb-16 md:pt-12">
         <div className="grid gap-8 rounded-[2rem] border border-line/70 bg-card p-6 shadow-soft md:grid-cols-[1.02fr_0.98fr] md:p-8 lg:p-10">
           <div className="flex flex-col justify-between gap-8">
