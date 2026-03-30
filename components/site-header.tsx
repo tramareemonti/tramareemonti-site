@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { siteConfig } from '@/lib/site-config';
@@ -37,12 +38,22 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-30 border-b border-line/70 bg-canvas/92 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 md:px-10 md:py-4">
-        <Link href="/" className="min-w-0 flex-1 pr-2" onClick={() => setMenuOpen(false)}>
-          <div className="text-[11px] uppercase tracking-[0.22em] text-clay sm:text-xs">
-            tramareemonti.it
-          </div>
-          <div className="line-clamp-2 font-serif text-[1.05rem] leading-snug text-ink sm:text-xl md:line-clamp-none md:text-2xl">
-            {siteConfig.name}
+        <Link href="/" className="min-w-0 flex flex-1 items-center gap-3 pr-2" onClick={() => setMenuOpen(false)}>
+          <Image
+            src="/images/logo_no_background.png"
+            alt={`${siteConfig.name} logo`}
+            width={44}
+            height={44}
+            className="h-10 w-10 shrink-0 object-contain sm:h-11 sm:w-11"
+            priority
+          />
+          <div className="min-w-0">
+            <div className="text-[11px] uppercase tracking-[0.22em] text-clay sm:text-xs">
+              tramareemonti.it
+            </div>
+            <div className="line-clamp-2 font-serif text-[1.05rem] leading-snug text-ink sm:text-xl md:line-clamp-none md:text-2xl">
+              {siteConfig.name}
+            </div>
           </div>
         </Link>
 
