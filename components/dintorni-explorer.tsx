@@ -578,7 +578,7 @@ export function DintorniExplorer() {
 
             {mobileDetailExpanded && (
               <div className="mt-4 space-y-4">
-                <p className="leading-7 text-muted">{selectedItem.summary}</p>
+              <p className="text-sm leading-7 text-muted">{selectedItem.summary}</p>
 
                 {isRoute(selectedItem) ? (
                   <>
@@ -713,7 +713,7 @@ export function DintorniExplorer() {
               {selectedItem.driveMinutes} min dal casolare
             </p>
 
-            <p className="mt-5 leading-8 text-muted md:text-lg md:leading-9">{selectedItem.summary}</p>
+            <p className="mt-5 text-sm leading-7 text-muted md:text-base md:leading-8">{selectedItem.summary}</p>
 
             {isRoute(selectedItem) ? (
               <div className="mt-6 space-y-5">

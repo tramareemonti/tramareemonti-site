@@ -593,7 +593,7 @@
       ]
     ],
     "gpxFile": "/tracce/vettore_da_forca_di_presta.gpx",
-    "featured": true
+    "featured": false
   },
   {
     "id": "vettore-foce-laghi-pilato",
@@ -1163,7 +1163,8 @@
       ]
     ],
     "gpxFile": "/tracce/laghi_pilato.gpx",
-    "mapyUrl": "https://mapy.com/s/jutenomemo"
+    "mapyUrl": "https://mapy.com/s/jutenomemo",
+    "featured": false
   },
   {
     "id": "monte-sibilla-rifugio",
@@ -2078,7 +2079,8 @@
       ]
     ],
     "gpxFile": "/tracce/monte_sibilla.gpx",
-    "mapyUrl": "https://mapy.com/s/kasufusemu"
+    "mapyUrl": "https://mapy.com/s/kasufusemu",
+    "featured": false
   },
   {
     "id": "monte-priora-bolognola-fargno",
@@ -2444,7 +2446,8 @@
       ]
     ],
     "gpxFile": "/tracce/monte_priora.gpx",
-    "mapyUrl": "https://mapy.com/s/gonakuhune"
+    "mapyUrl": "https://mapy.com/s/gonakuhune",
+    "featured": true
   },
   {
     "id": "eremo-san-leonardo",
@@ -2920,7 +2923,8 @@
       ]
     ],
     "gpxFile": "/tracce/san_leonardo.gpx",
-    "mapyUrl": "https://mapy.com/s/mahojovafu"
+    "mapyUrl": "https://mapy.com/s/mahojovafu",
+    "featured": false
   },
   {
     "id": "passo-del-lupo-sirolo",
@@ -3130,7 +3134,8 @@
       ]
     ],
     "gpxFile": "/tracce/passo_del_lupo.gpx",
-    "mapyUrl": "https://mapy.com/s/lupecanune"
+    "mapyUrl": "https://mapy.com/s/lupecanune",
+    "featured": false
   },
   {
     "id": "lame-rosse-trekking",
@@ -3692,6 +3697,6 @@
     ],
     "gpxFile": "/tracce/ragnolo.gpx",
     "mapyUrl": "https://mapy.com/s/gotuhahehe",
-    "featured": true
+    "featured": false
   }
 ]

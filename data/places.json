@@ -13,7 +13,7 @@
     "lat": 43.176202,
     "lng": 13.375928,
     "summary": "Dolci fatti in casa, crostate, focacce, pizze. Per una colazione vera o un pranzo veloce o da portar via.",
-    "whyGo": "È il bar della nostra famiglia. Ci andiamo noi per primi, e lo consigliamo perché sappiamo cosa c'è dentro: ingredienti semplici, tutto preparato in con cura e dedizione. Colazione con crostate e dolci della nonna, pranzo al sacco o al tavolo con focacce e pizze. A 5 minuti dal casolare.",
+    "whyGo": "È il bar della nostra famiglia. Ci andiamo noi per primi, e lo consigliamo perché sappiamo cosa c'è dentro: ingredienti semplici, tutto preparato con cura e dedizione. Colazione con crostate e dolci della nonna, pranzo al sacco o al tavolo con focacce e pizze. A 5 minuti dal casolare.",
     "googleMapsUrl": "https://maps.app.goo.gl/fUGDXpfGDYsYf1mXA",
     "driveMinutes": 5,
     "featured": true
@@ -35,7 +35,7 @@
     "whyGo": "Ha senso quando vuoi una giornata più 'montana' ma semplice, con acqua, prati e un cambio netto di paesaggio rispetto al casolare.",
     "googleMapsUrl": "https://maps.app.goo.gl/7sGgBDjVSNdsVMJ96",
     "driveMinutes": 40,
-    "featured": true
+    "featured": false
   },
   {
     "id": "spiaggia-due-sorelle",
@@ -92,7 +92,7 @@
     "googleMapsUrl": "https://maps.app.goo.gl/2xiH1ZbNRkzbKWbc8",
     "website": "https://www.agricolasigi.it",
     "driveMinutes": 18,
-    "featured": true
+    "featured": false
   },
   {
     "id": "agricola-pacioni",
@@ -104,13 +104,14 @@
       "filiera corta"
     ],
     "town": "Sant'Angelo in Pontano",
-    "lat": 43.0988,
-    "lng": 13.3962,
+    "lat": 43.115227,
+    "lng": 13.371668,
     "summary": "Salumi artigianali da filiera chiusa: allevano, macellano e lavorano tutto internamente. Guanciale, lonzino, prosciutto crudo, salami.",
     "whyGo": "Famiglia Pacioni dal 1965, oggi alla terza generazione. Cereali propri, niente mangimi industriali, lavorazione tradizionale. Vale il viaggio per portare a casa salumi veri.",
+    "googleMapsUrl": "https://maps.app.goo.gl/sQ6iLFCknosindXcA",
     "website": "https://aziendaagricolapacioni.it",
-    "driveMinutes": 25,
-    "featured": true
+    "driveMinutes": 10,
+    "featured": false
   },
   {
     "id": "distretto-calzature",
@@ -122,66 +123,12 @@
       "shopping"
     ],
     "town": "Sant'Elpidio a Mare",
-    "lat": 43.2422748,
-    "lng": 13.6941672,
+    "lat": 43.259171,
+    "lng": 13.590042,
     "summary": "Zona degli outlet delle grandi marche marchigiane, con punti vendita Tod's, Hogan, Fabi, Santoni e altri brand.",
     "whyGo": "È la gita 'pratica' per chi vuole portare a casa qualcosa di concreto dal distretto calzaturiero fermano‑maceratese.",
     "driveMinutes": 55,
-    "featured": true
-  },
-  {
-    "id": "mercato-urbisaglia",
-    "title": "Mercato di Urbisaglia",
-    "category": "borghi-luoghi",
-    "sublabel": "Mercato",
-    "tags": [
-      "mercato",
-      "martedì",
-      "alimentari",
-      "paese"
-    ],
-    "town": "Urbisaglia",
-    "lat": 43.199,
-    "lng": 13.373,
-    "summary": "Mercato settimanale del martedì mattina nel centro di Urbisaglia. Banchi di alimentari, frutta, verdura e prodotti locali.",
-    "whyGo": "Il più vicino al casolare: comodo per fare spesa a chilometro zero e respirare l'aria del paese.",
-    "driveMinutes": 10
-  },
-  {
-    "id": "mercato-sarnano",
-    "title": "Mercato di Sarnano",
-    "category": "borghi-luoghi",
-    "sublabel": "Mercato",
-    "tags": [
-      "mercato",
-      "giovedì",
-      "alimentari",
-      "borgo"
-    ],
-    "town": "Sarnano",
-    "lat": 43.035,
-    "lng": 13.3,
-    "summary": "Mercato del giovedì nel borgo di Sarnano, tra le mura e le terme. Produttori locali e banchi di generi alimentari.",
-    "whyGo": "Da combinare con una passeggiata nel borgo o un passaggio alle terme: il giovedì mattina Sarnano ha un'aria più viva.",
-    "driveMinutes": 40
-  },
-  {
-    "id": "mercato-civitanova",
-    "title": "Mercato di Civitanova Marche",
-    "category": "borghi-luoghi",
-    "sublabel": "Mercato",
-    "tags": [
-      "mercato",
-      "sabato",
-      "alimentari",
-      "mare"
-    ],
-    "town": "Civitanova Marche",
-    "lat": 43.305,
-    "lng": 13.726,
-    "summary": "Mercato del sabato in Piazza XX Settembre, dalle 8 alle 13. Alimentari, abbigliamento, prodotti del territorio.",
-    "whyGo": "Ha senso se combini la spesa con una mattinata al mare o un giro sul lungomare.",
-    "driveMinutes": 45
+    "featured": false
   },
   {
     "id": "frontignano",
@@ -203,7 +150,8 @@
     "whyGo": "Inverno: piste nel bosco, poca folla e paesaggio da parco nazionale—controllare sito e social per neve e aperture. Estate: area dedicata al mountain bike con percorsi serviti dalla seggiovia e noleggio bici; orari, pass e mappa trail su frontignano360.it.",
     "googleMapsUrl": "https://maps.app.goo.gl/X7SuRUftvUBH635MA",
     "website": "https://www.frontignano360.it/",
-    "driveMinutes": 70
+    "driveMinutes": 70,
+    "featured": false
   },
   {
     "id": "sassotetto",
@@ -223,7 +171,8 @@
     "whyGo": "Piste un po’ più impegnative di Frontignano, buona alternativa quando c'è neve. Controllare pagine Instagram e sito per aperture stagionali.",
     "googleMapsUrl": "https://maps.app.goo.gl/vW8SjkvHrjqMaADq5",
     "website": "https://www.scimarche.it/sarnano-comprensorio-sassotetto-santa-maria-maddalena/",
-    "driveMinutes": 45
+    "driveMinutes": 45,
+    "featured": false
   },
   {
     "id": "civitanova-marche",
@@ -238,9 +187,9 @@
     "lat": 43.3088,
     "lng": 13.7293,
     "summary": "La spiaggia più accessibile dal casolare: lungomare ampio, stabilimenti, centro vivace e buon pesce.",
-    "whyGo": "È il mare più vicino e comodo. Funziona per una mezza giornata, anche fuori stagione per una passeggiata sul lungomare.",
+    "whyGo": "E il mare piu vicino e comodo. Per pranzo o cena c'e molta scelta sul lungomare: una buona opzione e il Ristorante Chalet Galileo (non economico, ma valido), altrimenti altri indirizzi in zona con ottimo spaghetto alle vongole.",
     "driveMinutes": 45,
-    "featured": true
+    "featured": false
   },
   {
     "id": "sirolo",
@@ -256,8 +205,9 @@
     "lat": 43.5232,
     "lng": 13.6189,
     "summary": "Borgo sul Conero con spiagge spettacolari sotto la falesia. Acqua cristallina, poco spazio, molta bellezza.",
-    "whyGo": "Il mare più bello della costa marchigiana. San Michele Arcangelo e Urbani sono le spiagge più accessibili; le altre si raggiungono a piedi o in barca.",
-    "driveMinutes": 70
+    "whyGo": "Il mare piu bello della costa marchigiana. San Michele Arcangelo e Urbani sono le spiagge piu accessibili; le altre si raggiungono a piedi o in barca. Perfetta da combinare con Numana nella stessa giornata.",
+    "driveMinutes": 70,
+    "featured": false
   },
   {
     "id": "numana",
@@ -273,8 +223,9 @@
     "lat": 43.5112,
     "lng": 13.6217,
     "summary": "Numana alta e Numana bassa: borgo arroccato e spiaggia di sassi con vista sul Conero. Meno affollata di Sirolo.",
-    "whyGo": "Alternativa a Sirolo con più parcheggio e meno caos. Spiaggiola di Numana e la Spiaggiola dei Frati sono le più caratteristiche.",
-    "driveMinutes": 70
+    "whyGo": "Alternativa a Sirolo con piu parcheggio e meno caos. A Numana funziona bene anche un pranzo al volo da Ricci Pescato & Fritto: scegli il pesce fresco e te lo friggono al momento.",
+    "driveMinutes": 70,
+    "featured": false
   },
   {
     "id": "sferisterio-macerata",
@@ -296,7 +247,7 @@
     "googleMapsUrl": "https://maps.app.goo.gl/XvzjtoKggfb98Hbk6",
     "website": "https://www.sferisterio.it/",
     "driveMinutes": 30,
-    "featured": true
+    "featured": false
   },
   {
     "id": "recanati-leopardi-colloredo",
@@ -317,7 +268,7 @@
     "whyGo": "Funziona bene per una giornata culturale: Casa Leopardi, Colle dell'Infinito e Villa Colloredo Mels sono vicini e facili da combinare nello stesso itinerario.",
     "googleMapsUrl": "https://maps.app.goo.gl/sv6P7adaPCixzNRq9",
     "driveMinutes": 45,
-    "featured": true
+    "featured": false
   },
   {
     "id": "urbs-salvia-urbisaglia",
@@ -339,6 +290,121 @@
     "googleMapsUrl": "https://maps.app.goo.gl/t9YU7kN2EZqoqXw96",
     "website": "https://www.urbisaglia.com/parco-archeologico/",
     "driveMinutes": 5,
-    "featured": true
+    "featured": false
+  },
+  {
+    "id": "misidia-ripe-san-ginesio",
+    "title": "Ristorante Misidia",
+    "category": "ristoranti",
+    "tags": [
+      "gourmet",
+      "cucina-locale",
+      "borgo",
+      "cena"
+    ],
+    "town": "Ripe San Ginesio",
+    "lat": 43.143747,
+    "lng": 13.367437,
+    "summary": "Ristorante in un piccolo borgo in collina, con cucina di impostazione gourmet che rilegge ingredienti e piatti del territorio in chiave contemporanea.",
+    "whyGo": "Perfetto se volete una cena piu curata del solito, con qualche idea originale sulla cucina locale. Prima o dopo cena vale la pena una breve passeggiata nel borgo di Ripe San Ginesio.",
+    "googleMapsUrl": "https://maps.app.goo.gl/jJpqD4wxKTmxu4wZA",
+    "driveMinutes": 10,
+    "featured": false
+  },
+  {
+    "id": "locanda-le-logge",
+    "title": "Locanda Le Logge",
+    "category": "ristoranti",
+    "tags": [
+      "ristorante",
+      "centro-storico",
+      "urbisaglia",
+      "cena"
+    ],
+    "town": "Urbisaglia",
+    "lat": 43.197154,
+    "lng": 13.377359,
+    "summary": "Nel corso di Urbisaglia, e una scelta comoda quando volete restare in zona senza rinunciare a una cena in un contesto di borgo.",
+    "whyGo": "Indirizzo pratico e vicino al casolare, ideale per una serata tranquilla nel centro di Urbisaglia con due passi prima o dopo cena.",
+    "googleMapsUrl": "https://maps.app.goo.gl/1qf5qo9SmB1upEVi9",
+    "driveMinutes": 5,
+    "featured": false
+  },
+  {
+    "id": "la-baita",
+    "title": "La Baita",
+    "category": "ristoranti",
+    "tags": [
+      "griglia",
+      "allaperto",
+      "estate",
+      "famiglia"
+    ],
+    "town": "Abbadia di Fiastra",
+    "lat": 43.214942,
+    "lng": 13.407526,
+    "summary": "Locale semplice e apprezzato per grigliate e tavoli all'aperto, in un ambiente fresco sotto gli alberi.",
+    "whyGo": "Ottima scelta nelle giornate in cui si mangia fuori: atmosfera rilassata, ombra e cucina diretta, da griglia.",
+    "googleMapsUrl": "https://maps.app.goo.gl/GuPwqvH52gkwMn1e7",
+    "driveMinutes": 8,
+    "featured": false
+  },
+  {
+    "id": "ristorante-la-torre",
+    "title": "Ristorante La Torre",
+    "category": "ristoranti",
+    "tags": [
+      "ristorante",
+      "tradizione",
+      "santangelo-in-pontano",
+      "collina"
+    ],
+    "town": "Sant'Angelo in Pontano",
+    "lat": 43.098775,
+    "lng": 13.401209,
+    "summary": "Ristorante a Sant'Angelo in Pontano, buona opzione per una cena in collina con cucina del territorio.",
+    "whyGo": "Da considerare quando volete uscire dalla direttrice piu turistica e provare un indirizzo locale in un borgo dell'entroterra.",
+    "googleMapsUrl": "https://maps.app.goo.gl/XJMtWodVbFGgWKAo9",
+    "driveMinutes": 15,
+    "featured": false
+  },
+  {
+    "id": "grotte-di-frasassi",
+    "title": "Grotte di Frasassi",
+    "category": "attivita-outdoor",
+    "sublabel": "Pioggia",
+    "tags": [
+      "grotte",
+      "pioggia",
+      "famiglia",
+      "geologia"
+    ],
+    "town": "Genga",
+    "lat": 43.402864,
+    "lng": 12.969592,
+    "summary": "Complesso carsico tra i piu spettacolari d'Italia, perfetto quando il meteo non aiuta ma volete comunque fare una visita memorabile.",
+    "whyGo": "Piano B eccellente nei giorni di pioggia: visita organizzata, ambienti enormi e temperatura interna costante in ogni stagione.",
+    "googleMapsUrl": "https://maps.app.goo.gl/wNAJjjpYmokkkmyW8",
+    "driveMinutes": 75,
+    "featured": false
+  },
+  {
+    "id": "urbisaglia-rocca",
+    "title": "Passeggiata nel borgo di Urbisaglia e Rocca Medievale",
+    "category": "borghi-luoghi",
+    "sublabel": "Borgo",
+    "tags": [
+      "urbisaglia",
+      "borgo",
+      "rocca",
+      "storia"
+    ],
+    "town": "Urbisaglia",
+    "lat": 43.19695,
+    "lng": 13.37692,
+    "summary": "Passeggiata breve nel centro storico di Urbisaglia con salita alla Rocca Medievale e punti panoramici sulla campagna.",
+    "whyGo": "Ideale per un'uscita facile vicino casa. Conviene verificare giorni e orari di apertura della Rocca prima di partire.",
+    "driveMinutes": 5,
+    "featured": false
   }
 ]
