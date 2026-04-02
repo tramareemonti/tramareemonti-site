@@ -85,7 +85,7 @@ export default function HomePage() {
             <div className="relative min-h-[160px] overflow-hidden rounded-[1.5rem] border border-line/70">
               <Image
                 src="/images/photos/sala_comune.jpeg"
-                alt="Sala comune con camino e vista sulle colline"
+                alt="Sala comune con tavolo, divano e vista sulle colline"
                 fill
                 className="object-cover"
               />

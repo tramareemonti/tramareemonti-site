@@ -49,29 +49,29 @@ export const homeComeArrivare = {
 export const homeStats = [
   { label: 'Posti letto', value: '6' },
   { label: 'Camere', value: '3' },
-  { label: 'Bagni', value: '2' },
 ];
 
 export const homeFeatures = [
   {
     label: 'Fuori',
-    value: 'Terrazza, giardino, parcheggio comodo vicino alla casa.',
+    value: 'Terrazza, giardino, parcheggio comodo.',
   },
   {
     label: 'Soggiorno',
-    value: 'Sala con camino e vista sulle colline.',
+    value: 'Ampio tavolo e divano, vista sulle colline.',
   },
   {
     label: 'Cucina',
-    value: 'Attrezzata per pranzare e cenare in casa.',
+    value: 'Attrezzata per pranzare e cenare in casa (induzione, forno, microonde, lavastoviglie, macchina caffè con cialde disponibili).',
   },
   {
     label: 'Notte',
-    value: 'Camere tranquille, bagni comodi.',
+    value: 'Camere tranquille: sonni lontani dai rumori delle città.',
   },
   {
     label: 'Servizi',
-    value: 'Wifi, lavatrice, biancheria.',
+    value:
+      'Wifi, lavatrice, asciugamani e lenzuola.',
   },
   {
     label: 'Per chi',
