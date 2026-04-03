@@ -17,13 +17,6 @@ const TerritoryMap = dynamic(() => import('@/components/territory-map'), {
   ),
 });
 
-const distanceRanges = [
-  { label: 'Entro 15 min', max: 15 },
-  { label: '15–30 min', min: 15, max: 30 },
-  { label: '30–60 min', min: 30, max: 60 },
-  { label: 'Oltre 60 min', min: 60 },
-] as const;
-
 const seasonStyles: Record<string, string> = {
   'estate': 'border-amber-300/60 bg-amber-50 text-amber-700',
   'inverno': 'border-sky-300/60 bg-sky-50 text-sky-700',
@@ -42,7 +35,10 @@ function tagClassName(tag: string) {
 }
 
 function itemLabel(item: ExplorerItem) {
-  if (isRoute(item)) return categoryLabels[item.category];
+  if (isRoute(item)) {
+    if (item.routeType === 'bici') return 'Bici';
+    return categoryLabels[item.category];
+  }
   return item.sublabel ?? categoryLabels[item.category];
 }
 
@@ -83,7 +79,6 @@ export function DintorniExplorer() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get('cat') as Category | null;
   const [activeCategory, setActiveCategory] = useState<Category | 'all'>(initialCategory ?? 'all');
-  const [activeRange, setActiveRange] = useState<number | null>(null);
   const [query, setQuery] = useState('');
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -101,6 +96,14 @@ export function DintorniExplorer() {
     let items = allItems.filter((item) => {
       if (activeCategory === 'all') {
         if (!item.featured) return false;
+      } else if (isRoute(item)) {
+        if (activeCategory === 'itinerari') {
+          if (item.routeType !== 'trekking') return false;
+        } else if (activeCategory === 'attivita-outdoor') {
+          if (item.routeType !== 'bici') return false;
+        } else {
+          return false;
+        }
       } else {
         if (item.category !== activeCategory) return false;
       }
@@ -119,15 +122,6 @@ export function DintorniExplorer() {
       return baseText.includes(normalizedQuery);
     });
 
-    if (activeRange !== null) {
-      const range = distanceRanges[activeRange];
-      items = items.filter((item) => {
-        if ('min' in range && item.driveMinutes < range.min) return false;
-        if ('max' in range && item.driveMinutes > range.max) return false;
-        return true;
-      });
-    }
-
     if (activeCategory === 'itinerari' && activeDifficulty !== null) {
       items = items.filter((item) => isRoute(item) && item.difficulty === activeDifficulty);
     }
@@ -139,7 +133,7 @@ export function DintorniExplorer() {
       }
       return a.driveMinutes - b.driveMinutes;
     });
-  }, [activeCategory, activeRange, allItems, query, activeDifficulty]);
+  }, [activeCategory, allItems, query, activeDifficulty]);
 
   const selectedItem = useMemo(() => {
     if (!selectedId) return filteredItems[0] ?? null;
@@ -153,10 +147,9 @@ export function DintorniExplorer() {
   const activeFilterLabel = useMemo(() => {
     const parts: string[] = [];
     if (activeCategoryLabel) parts.push(activeCategoryLabel);
-    if (activeRange !== null) parts.push(distanceRanges[activeRange].label);
     if (activeDifficulty !== null) parts.push(difficultyLabel(activeDifficulty));
     return parts.join(' • ');
-  }, [activeCategoryLabel, activeRange, activeDifficulty]);
+  }, [activeCategoryLabel, activeDifficulty]);
 
   const handleSelect = (id: string) => {
     setSelectedId(id);
@@ -166,8 +159,6 @@ export function DintorniExplorer() {
       mobileCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }, 100);
   };
-
-  const resetRange = () => setActiveRange(null);
 
   useEffect(() => {
     if (!mobileFiltersOpen) return;
@@ -200,16 +191,16 @@ export function DintorniExplorer() {
       <div className="mb-6 rounded-[1.5rem] border border-line/70 bg-card p-5 shadow-soft">
         <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-muted">Per iniziare</p>
         <div className="grid gap-3 sm:grid-cols-3">
-          <button type="button" onClick={() => { setActiveCategory('all'); setSelectedId(null); setActiveRange(null); setQuery(''); handleSelect('abbadia-giro-corto'); }} className="rounded-[1.25rem] border border-line bg-canvas p-4 text-left transition hover:border-clay">
-            <p className="text-xs uppercase tracking-[0.18em] text-clay">Mezza giornata lenta</p>
+          <button type="button" onClick={() => { setActiveCategory('all'); setSelectedId(null); setQuery(''); handleSelect('abbadia-giro-corto'); }} className="rounded-[1.25rem] border border-line bg-canvas p-4 text-left transition hover:border-clay">
+            <p className="text-xs uppercase tracking-[0.18em] text-clay">Mezza giornata nella natura</p>
             <p className="mt-2 text-sm font-medium text-ink">Giro a piedi all&apos;Abbadia di Fiastra</p>
           </button>
-          <button type="button" onClick={() => { setActiveCategory('ristoranti'); setSelectedId(null); setActiveRange(null); setQuery(''); handleSelect('bar-seri'); }} className="rounded-[1.25rem] border border-line bg-canvas p-4 text-left transition hover:border-clay">
-            <p className="text-xs uppercase tracking-[0.18em] text-clay">Gli impasti della nonna</p>
+          <button type="button" onClick={() => { setActiveCategory('ristoranti'); setSelectedId(null); setQuery(''); handleSelect('bar-seri'); }} className="rounded-[1.25rem] border border-line bg-canvas p-4 text-left transition hover:border-clay">
+            <p className="text-xs uppercase tracking-[0.18em] text-clay">Gli impasti della signora Maria</p>
             <p className="mt-2 text-sm font-medium text-ink">Bar Seri a Passo Colmurano</p>
           </button>
-          <button type="button" onClick={() => { setActiveCategory('attivita-outdoor'); setSelectedId(null); setActiveRange(null); setQuery(''); handleSelect('lago-fiastra'); }} className="rounded-[1.25rem] border border-line bg-canvas p-4 text-left transition hover:border-clay">
-            <p className="text-xs uppercase tracking-[0.18em] text-clay">Salita e relax</p>
+          <button type="button" onClick={() => { setActiveCategory('attivita-outdoor'); setSelectedId(null); setQuery(''); handleSelect('lago-fiastra'); }} className="rounded-[1.25rem] border border-line bg-canvas p-4 text-left transition hover:border-clay">
+            <p className="text-xs uppercase tracking-[0.18em] text-clay">Relax in montagna, con possibili hikes</p>
             <p className="mt-2 text-sm font-medium text-ink">Lago di Fiastra e Lame Rosse</p>
           </button>
         </div>
@@ -227,7 +218,6 @@ export function DintorniExplorer() {
                 onClick={() => {
                   setActiveCategory(category.key);
                   setSelectedId(null);
-                  setActiveRange(null);
                   setActiveDifficulty(null);
                 }}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition ${
@@ -253,29 +243,6 @@ export function DintorniExplorer() {
             className="w-full rounded-full border border-line bg-canvas px-4 py-3 text-sm outline-none transition placeholder:text-muted focus:border-clay"
           />
         </label>
-      </div>
-
-      <div className="mb-6 hidden flex-wrap items-center gap-2 md:flex">
-        <span className="mr-1 text-xs text-muted">Distanza:</span>
-        {distanceRanges.map((range, i) => (
-          <button
-            key={range.label}
-            type="button"
-            onClick={() => setActiveRange(activeRange === i ? null : i)}
-            className={`rounded-full px-3 py-1.5 text-xs font-medium transition ${
-              activeRange === i
-                ? 'bg-clay text-white'
-                : 'border border-line/70 text-muted hover:border-clay hover:text-ink'
-            }`}
-          >
-            {range.label}
-          </button>
-        ))}
-        {activeRange !== null && (
-          <button type="button" onClick={resetRange} className="text-xs text-muted transition hover:text-ink">
-            &times; Tutti
-          </button>
-        )}
       </div>
 
       {activeCategory === 'itinerari' && (
@@ -369,7 +336,6 @@ export function DintorniExplorer() {
                         onClick={() => {
                           setActiveCategory(category.key);
                           setSelectedId(null);
-                          setActiveRange(null);
                           setActiveDifficulty(null);
                           setMobileFiltersOpen(false);
                         }}
@@ -383,41 +349,6 @@ export function DintorniExplorer() {
                       </button>
                     );
                   })}
-                </div>
-              </div>
-
-              <div>
-                <p className="mb-2 text-xs font-medium uppercase tracking-[0.22em] text-muted">Distanza</p>
-                <div className="flex flex-wrap gap-2">
-                  {distanceRanges.map((range, i) => (
-                    <button
-                      key={range.label}
-                      type="button"
-                      onClick={() => {
-                        setActiveRange(activeRange === i ? null : i);
-                        setMobileFiltersOpen(false);
-                      }}
-                      className={`rounded-full px-3 py-1.5 text-xs font-medium transition ${
-                        activeRange === i
-                          ? 'bg-clay text-white'
-                          : 'border border-line/70 text-muted hover:border-clay hover:text-ink'
-                      }`}
-                    >
-                      {range.label}
-                    </button>
-                  ))}
-                  {activeRange !== null && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setActiveRange(null);
-                        setMobileFiltersOpen(false);
-                      }}
-                      className="text-xs text-muted transition hover:text-ink"
-                    >
-                      &times; Tutti
-                    </button>
-                  )}
                 </div>
               </div>
 
@@ -460,7 +391,6 @@ export function DintorniExplorer() {
                   type="button"
                   onClick={() => {
                     setActiveCategory('all');
-                    setActiveRange(null);
                     setActiveDifficulty(null);
                     setSelectedId(null);
                     setMobileFiltersOpen(false);
@@ -526,7 +456,7 @@ export function DintorniExplorer() {
                           {item.title}
                         </p>
                         <p className="mt-0.5 text-xs text-muted">
-                          {isRoute(item) ? item.startTown : item.town} &middot; {item.driveMinutes} min
+                          {isRoute(item) ? item.startTown : item.town} &middot; a {item.driveMinutes} min
                         </p>
                       </div>
                       {selected && <span className="h-2 w-2 shrink-0 rounded-full bg-olive" />}
@@ -680,11 +610,11 @@ export function DintorniExplorer() {
                 <p className="mt-0.5 text-xs text-muted">
                   {isRoute(item) ? (
                     <>
-                      {item.startTown} &middot; {item.driveMinutes} min
+                      {item.startTown} &middot; a {item.driveMinutes} min
                     </>
                   ) : (
                     <>
-                      {item.town} &middot; {item.driveMinutes} min
+                      {item.town} &middot; a {item.driveMinutes} min
                     </>
                   )}
                 </p>
@@ -716,14 +646,12 @@ export function DintorniExplorer() {
             <p className="mt-5 text-sm leading-7 text-muted md:text-base md:leading-8">{selectedItem.summary}</p>
 
             {isRoute(selectedItem) ? (
-              <div className="mt-6 space-y-5">
-                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  <DetailStat label="Attività" value="trekking" />
-                  <DetailStat label="Difficoltà" value={selectedItem.difficulty} />
+              <div className="mt-6 space-y-4">
+                <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+                  <DetailStat label="Difficoltà" value={difficultyLabel(selectedItem.difficulty)} />
                   <DetailStat label="Distanza" value={`${selectedItem.distanceKm} km`} />
                   <DetailStat label="Dislivello" value={`${selectedItem.elevationM} m`} />
                   <DetailStat label="Durata" value={selectedItem.duration} />
-                  <DetailStat label="Highlights" value={selectedItem.highlights.join(', ') || '—'} />
                 </div>
 
                 <div className="flex flex-wrap gap-3">
@@ -838,9 +766,9 @@ function GpxLink({ route }: { route: RouteItem }) {
 
 function DetailStat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-[1.25rem] bg-canvas p-4">
+    <div className="rounded-[1.1rem] bg-canvas px-3 py-3">
       <p className="text-xs uppercase tracking-[0.18em] text-muted">{label}</p>
-      <p className="mt-2 text-sm font-medium text-ink">{value}</p>
+      <p className="mt-1.5 text-sm font-medium text-ink">{value}</p>
     </div>
   );
 }

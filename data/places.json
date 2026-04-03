@@ -12,8 +12,8 @@
     "town": "Colmurano",
     "lat": 43.176202,
     "lng": 13.375928,
-    "summary": "Dolci fatti in casa, crostate, focacce, pizze. Per una colazione vera o un pranzo veloce o da portar via.",
-    "whyGo": "È il bar della nostra famiglia. Ci andiamo noi per primi, e lo consigliamo perché sappiamo cosa c'è dentro: ingredienti semplici, tutto preparato con cura e dedizione. Colazione con crostate e dolci della nonna, pranzo al sacco o al tavolo con focacce e pizze. A 5 minuti dal casolare.",
+    "summary": "Dolci fatti in casa, crostate, focacce, pizze e piatti del giorno. Per una colazione vera o un pranzo veloce o da portar via.",
+    "whyGo": "È il bar della nostra famiglia. Ci andiamo noi per primi, e lo consigliamo perché sappiamo cosa c'è dentro: ingredienti semplici, tutto preparato con cura da mani esperte. Colazione con crostate e dolci della signora Maria; mercoledì a pranzo pizza, giovedì gnocchi, tutti i giorni piatti freddi e insalatone. A 5 minuti dal casolare.",
     "googleMapsUrl": "https://maps.app.goo.gl/fUGDXpfGDYsYf1mXA",
     "driveMinutes": 5,
     "featured": true
@@ -57,14 +57,14 @@
   },
   {
     "id": "ristorante-da-rosa",
-    "title": "Ristorante Da Rosa – Abbadia di Fiastra",
+    "title": "Ristorante Da Rosa",
     "category": "ristoranti",
     "tags": [
       "ristorante",
       "tradizione",
       "abbadia-di-fiastra"
     ],
-    "town": "Urbisaglia",
+    "town": "Abbadia di Fiastra",
     "lat": 43.222086,
     "lng": 13.404802,
     "summary": "Ristorante storico dentro il contesto dell'Abbadia di Fiastra, con cucina marchigiana e ambiente molto riconoscibile.",
@@ -87,7 +87,7 @@
     "town": "Macerata",
     "lat": 43.26684,
     "lng": 13.462396,
-    "summary": "Confetture, sciroppi e conserve fatti a mano con varietà antiche marchigiane: visciole, brugnolette, pera angelica, fichi della signora.",
+    "summary": "Confetture, sciroppi e conserve fatti a mano con varietà antiche marchigiane: visciole, brugnolette, pera angelica, fichi.",
     "whyGo": "Silvano e Giuliana lavorano dal 1996 con ingredienti del territorio e metodi artigianali. Da loro trovate cose che non esistono al supermercato: sapa, sciroppo di visciole macerato al sole, confetture di frutti dimenticati. Aperto dal lunedì al venerdì.",
     "googleMapsUrl": "https://maps.app.goo.gl/2xiH1ZbNRkzbKWbc8",
     "website": "https://www.agricolasigi.it",
@@ -188,7 +188,7 @@
     "lng": 13.7293,
     "summary": "La spiaggia più accessibile dal casolare: lungomare ampio, stabilimenti, centro vivace e buon pesce.",
     "whyGo": "E il mare piu vicino e comodo. Per pranzo o cena c'e molta scelta sul lungomare: una buona opzione e il Ristorante Chalet Galileo (non economico, ma valido), altrimenti altri indirizzi in zona con ottimo spaghetto alle vongole.",
-    "driveMinutes": 45,
+    "driveMinutes": 30,
     "featured": false
   },
   {

@@ -39,6 +39,17 @@ const difficultyLabels: Record<RouteItem['difficulty'], string> = {
   impegnativa: 'Impegnativa',
 };
 
+function legendDifficultyOrder(difficulty: RouteItem['difficulty']) {
+  switch (difficulty) {
+    case 'facile':
+      return 0;
+    case 'media':
+      return 1;
+    case 'impegnativa':
+      return 2;
+  }
+}
+
 // ── icons ───────────────────────────────────────────────────────────
 
 function makePlaceIcon(color: string, size: number, border: string, shadow: string) {
@@ -233,7 +244,7 @@ function RouteLayer({
       <Polyline
         positions={item.polyline}
         pathOptions={{
-          color: highlighted ? '#1e1d1b' : color,
+          color: highlighted && item.routeType !== 'bici' ? '#1e1d1b' : color,
           weight: highlighted ? 5 : 3,
           opacity: highlighted ? 0.95 : 0.75,
         }}
@@ -321,7 +332,7 @@ function MapLegend({ items }: { items: ExplorerItem[] }) {
         html += '<div class="map-legend-sep"></div>';
       }
 
-      for (const d of difficulties) {
+      for (const d of [...difficulties].sort((a, b) => legendDifficultyOrder(a) - legendDifficultyOrder(b))) {
         html += `<div class="map-legend-item"><span class="map-legend-line" style="background:${difficultyColors[d]}"></span>${difficultyLabels[d]}</div>`;
       }
 

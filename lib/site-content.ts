@@ -13,15 +13,16 @@ export const homeHeroImageCaption =
 export const homeLaCasa = {
   title: 'Una casa semplice ma curata',
   body:
-    'Vista sulle colline, terrazza e giardino, interni essenziali ma curati. Spazio per stare bene e partire quando volete.',
+    'Vista sulle colline, terrazza e giardino, interni essenziali ma curati. Uno spazio accogliente dove prendersi tempo, con calma.',
+  note: 'Camere prenotabili singolarmente.',
 };
 
 export const homeDintorniIntro =
-  'Una buona base per esplorare un territorio meno conosciuto di altri, con tanto da offrire: borghi, natura, mare e montagne, tavole.';
+  'Una buona base per esplorare un territorio meno conosciuto di altri, con tanto da offrire: borghi, natura, mare e montagne, mete gastronomiche.';
 
 export const homeComeArrivare = {
   eyebrow: 'Come arrivare',
-  title: 'In campagna, con l’auto sotto mano',
+  title: 'In campagna, meglio con mezzo proprio 🚗🚐🚲',
   intro:
     'Il casolare è in aperta campagna: per arrivare e per spostamenti quotidiani l’auto è di solito la scelta più comoda.',
   cards: [
@@ -81,14 +82,15 @@ export const homeFeatures = [
 
 export const featuredNearby = [
   {
+    title: 'Bar Seri',
+    description:
+      'Il nostro bar-pasticceria e tavola calda di famiglia a 5 minuti dal casolare: crostate, dolci, focacce e pizze della signora Maria, piatti freddi e insalatone.',
+    href: '/dintorni?cat=ristoranti',
+  },
+  {
     title: 'Luoghi',
     description: 'Borghi, panorami, abbazie.',
     href: '/dintorni?cat=borghi-luoghi',
-  },
-  {
-    title: 'Mangiare',
-    description: 'Trattorie, cucina marchigiana, prodotti del territorio.',
-    href: '/dintorni?cat=ristoranti',
   },
   {
     title: 'Outdoor',

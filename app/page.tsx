@@ -110,6 +110,9 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
+            {homeLaCasa.note && (
+              <p className="text-base italic text-muted">{homeLaCasa.note}</p>
+            )}
           </div>
 
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
@@ -139,12 +142,19 @@ export default function HomePage() {
           </div>
           <p className="max-w-3xl text-base leading-7 text-muted">{homeDintorniIntro}</p>
           <div className="grid gap-4 md:grid-cols-3">
-            {featuredNearby.map((item) => (
+            {featuredNearby.map((item, index) => (
               <Link
                 key={item.title}
                 href={item.href}
-                className="group rounded-[1.5rem] border border-line/70 bg-card p-6 shadow-soft transition hover:border-clay"
+                className={`group rounded-[1.5rem] border bg-card p-6 shadow-soft transition hover:border-clay ${
+                  index === 0 ? 'border-clay/80 bg-card' : 'border-line/70'
+                }`}
               >
+                {index === 0 && (
+                  <p className="mb-2 inline-flex items-center rounded-full border border-clay/60 bg-clay/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-clay">
+                    Bar convenzionato
+                  </p>
+                )}
                 <h3 className="font-serif text-2xl text-ink">{item.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-muted">{item.description}</p>
                 <p className="mt-4 text-sm font-medium text-clay transition group-hover:text-ink">
@@ -178,7 +188,25 @@ export default function HomePage() {
                   </span>
                   {card.title}
                 </p>
-                <p className="mt-3 text-sm leading-7 text-muted">{card.body}</p>
+                <p className="mt-3 text-sm leading-7 text-muted">
+                  {card.title === 'In aereo' ? (
+                    <>
+                      L’aeroporto più comodo è{' '}
+                      <span className="font-semibold">Ancona Falconara (AOI)</span>. In auto, il casolare è a circa 1
+                      ora di distanza. Se arrivate in aereo, consigliamo quindi di noleggiare un’auto.
+                    </>
+                  ) : card.title === 'In treno' ? (
+                    <>
+                      <span className="font-semibold">Ancona</span> e{' '}
+                      <span className="font-semibold">Civitanova Marche</span> sono le stazioni più comode: molti
+                      collegamenti, anche in alta velocità. Macerata e Urbisaglia-Sforzacosta sono più vicine al
+                      casolare ma meno servite. Da qualsiasi stazione serve comunque proseguire in auto fino alla
+                      casa.
+                    </>
+                  ) : (
+                    card.body
+                  )}
+                </p>
               </div>
             ))}
           </div>
