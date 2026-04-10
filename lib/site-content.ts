@@ -8,7 +8,7 @@ export const homeHero = {
 };
 
 export const homeHeroImageCaption =
-  'dalla terrazza: colline, luce ampia, silenzio.';
+  'Dai balconi: colline tra mare e monti.';
 
 export const homeLaCasa = {
   title: 'Una casa semplice ma curata',

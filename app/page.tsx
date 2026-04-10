@@ -73,8 +73,8 @@ export default function HomePage() {
             <figure className="space-y-2">
               <div className="relative min-h-[280px] overflow-hidden rounded-[1.5rem] border border-line/70">
                 <Image
-                  src="/images/photos/main_photo.jpg"
-                  alt="Il casolare e la campagna marchigiana intorno"
+                  src="/images/photos/monti.jpeg"
+                  alt="Monti e paesaggio marchigiano"
                   fill
                   className="object-cover"
                   priority
@@ -84,8 +84,8 @@ export default function HomePage() {
             </figure>
             <div className="relative min-h-[160px] overflow-hidden rounded-[1.5rem] border border-line/70">
               <Image
-                src="/images/photos/sala_comune.jpeg"
-                alt="Sala comune con tavolo, divano e vista sulle colline"
+                src="/images/photos/mare.jpeg"
+                alt="Mare e costa nelle vicinanze"
                 fill
                 className="object-cover"
               />
