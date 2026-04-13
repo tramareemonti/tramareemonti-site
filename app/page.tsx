@@ -3,6 +3,8 @@ import Link from 'next/link';
 import {
   homeHero,
   homeHeroImageCaption,
+  homeGalleryImages,
+  homeGalleryPlaceholderNote,
   homeLaCasa,
   homeDintorniIntro,
   homeComeArrivare,
@@ -129,7 +131,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-12 md:px-10 md:py-16">
+      <section
+        id="gallery"
+        aria-label="Fotografie della casa"
+        className="mx-auto max-w-7xl px-6 pb-6 pt-0 md:px-10 md:pb-7"
+      >
+        <div className="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-6 pb-1 [scrollbar-color:theme(colors.line)_transparent] [scrollbar-width:thin] md:-mx-10 md:px-10">
+          {homeGalleryImages.map((item, index) => (
+            <div
+              key={`${item.src}-${index}`}
+              className="relative aspect-[4/3] w-[min(78vw,17.5rem)] shrink-0 snap-center snap-always overflow-hidden rounded-[1.25rem] border border-line/70 first:snap-start last:snap-end sm:w-[min(42vw,17.5rem)] md:w-[17.5rem]"
+            >
+              <Image
+                src={item.src}
+                alt={item.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 78vw, (max-width: 768px) 42vw, 280px"
+              />
+            </div>
+          ))}
+        </div>
+        {homeGalleryPlaceholderNote ? (
+          <p className="mt-3 max-w-2xl text-xs leading-relaxed text-muted">{homeGalleryPlaceholderNote}</p>
+        ) : null}
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 pb-12 pt-6 md:px-10 md:pb-16 md:pt-8">
         <div className="space-y-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>

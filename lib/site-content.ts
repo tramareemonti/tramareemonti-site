@@ -10,6 +10,19 @@ export const homeHero = {
 export const homeHeroImageCaption =
   'Dai balconi: colline tra mare e monti.';
 
+export const homeGalleryImages = [
+  { src: '/images/photos/monti.jpeg', alt: 'Monti e paesaggio marchigiano' },
+  { src: '/images/photos/mare.jpeg', alt: 'Mare e costa nelle vicinanze' },
+  { src: '/images/photos/monti.jpeg', alt: 'Monti e paesaggio marchigiano' },
+  { src: '/images/photos/mare.jpeg', alt: 'Mare e costa nelle vicinanze' },
+  { src: '/images/photos/monti.jpeg', alt: 'Monti e paesaggio marchigiano' },
+  { src: '/images/photos/mare.jpeg', alt: 'Mare e costa nelle vicinanze' },
+] as const;
+
+/** Lasciare vuota quando avrai solo foto definitive della casa. */
+export const homeGalleryPlaceholderNote =
+  'Foto della casa in arrivo: qui per ora immagini del territorio intorno al casolare.';
+
 export const homeLaCasa = {
   title: 'Una casa semplice ma curata',
   body:
