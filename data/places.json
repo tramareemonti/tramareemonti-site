@@ -114,6 +114,26 @@
     "featured": false
   },
   {
+    "id": "birrificio-il-mastio",
+    "title": "Birrificio Il Mastio",
+    "category": "produttori",
+    "tags": [
+      "birra artigianale",
+      "bio",
+      "azienda agricola",
+      "Colmurano"
+    ],
+    "town": "Colmurano",
+    "lat": 43.175963,
+    "lng": 13.376751,
+    "summary": "Birrificio agricolo a Colmurano: birre non filtrate e non pastorizzate, con orzo da agricoltura biologica coltivato nei terreni vicini al Mastio.",
+    "whyGo": "Il nome richiama la torre della Rocca di Urbisaglia; qui la birra nasce da una filiera corta sul territorio. A circa 5 minuti in auto dal casolare — ideale per una cassa da portare a casa o una sosta in birrificio (controllate orari e visite sul loro sito).",
+    "googleMapsUrl": "https://maps.app.goo.gl/o2sHkFUKBp1qnDd1A",
+    "website": "https://www.birrificioilmastio.com",
+    "driveMinutes": 5,
+    "featured": false
+  },
+  {
     "id": "distretto-calzature",
     "title": "Distretto delle calzature – outlet Tod's & co.",
     "category": "produttori",
