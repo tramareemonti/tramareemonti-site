@@ -59,8 +59,19 @@ const jsonLd = {
   description: siteConfig.description,
   url: siteConfig.url,
   email: siteConfig.email,
+  telephone: siteConfig.whatsapp.tel,
   image: [`${siteConfig.url}${ogImage.url}`],
   logo: `${siteConfig.url}/images/logo.png`,
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      contactType: 'reservations',
+      telephone: siteConfig.whatsapp.tel,
+      email: siteConfig.email,
+      availableLanguage: ['it', 'en'],
+      url: `https://wa.me/${siteConfig.whatsapp.number}`,
+    },
+  ],
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Urbisaglia',

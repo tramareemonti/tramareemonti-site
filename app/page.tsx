@@ -14,7 +14,8 @@ import {
   featuredNearby,
 } from '@/lib/site-content';
 import { HomeGallery } from '@/components/home-gallery';
-import { siteConfig } from '@/lib/site-config';
+import { MailIcon, WhatsAppIcon } from '@/components/icons';
+import { mailtoHref, siteConfig, whatsappHref } from '@/lib/site-config';
 
 export default function HomePage() {
   return (
@@ -34,12 +35,27 @@ export default function HomePage() {
                 scrivici!  :)
               </p>
             </div>
-            <a
-              href={`mailto:${siteConfig.email}?subject=Richiesta%20apertura%20ospiti%20-%20${encodeURIComponent(siteConfig.name)}`}
-              className="inline-flex shrink-0 items-center justify-center rounded-full border border-amber-400/70 bg-white/80 px-4 py-2.5 text-sm font-medium text-amber-900 transition hover:border-amber-600 hover:text-amber-700"
-            >
-              {siteConfig.email}
-            </a>
+            <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
+              <a
+                href={whatsappHref(
+                  `Ciao! Mi interessa il Casolare tra Mare e Monti: vorrei essere tra i primi a sapere quando apre agli ospiti.`,
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Scrivici su WhatsApp"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-amber-400/70 bg-white/80 px-4 py-2.5 text-sm font-medium text-amber-900 transition hover:border-amber-600 hover:text-amber-700"
+              >
+                <WhatsAppIcon size={16} />
+                WhatsApp
+              </a>
+              <a
+                href={mailtoHref(`Richiesta apertura ospiti - ${siteConfig.name}`)}
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-amber-400/70 bg-white/80 px-4 py-2.5 text-sm font-medium text-amber-900 transition hover:border-amber-600 hover:text-amber-700"
+              >
+                <MailIcon size={16} />
+                Email
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -57,18 +73,30 @@ export default function HomePage() {
               <p className="text-sm leading-6 text-mutedWarm/90">{homeHero.distancesLine}</p>
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a
-                href={`mailto:${siteConfig.email}?subject=Richiesta%20informazioni%20-%20${encodeURIComponent(siteConfig.name)}`}
-                className="inline-flex items-center justify-center rounded-full bg-olive px-6 py-3 text-sm font-medium text-white transition hover:bg-ink"
-              >
-                Chiedi informazioni
-              </a>
+            <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <a
+                  href={whatsappHref()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-olive px-6 py-3 text-sm font-medium text-white transition hover:bg-ink"
+                >
+                  <WhatsAppIcon size={18} />
+                  Scrivici su WhatsApp
+                </a>
+                <a
+                  href={mailtoHref()}
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-line px-6 py-3 text-sm font-medium text-ink transition hover:border-clay hover:text-clay"
+                >
+                  <MailIcon size={18} />
+                  Email
+                </a>
+              </div>
               <Link
                 href="/dintorni"
-                className="inline-flex items-center justify-center rounded-full border border-line px-6 py-3 text-sm font-medium text-ink transition hover:border-clay hover:text-clay"
+                className="inline-flex items-center gap-1 text-sm font-medium text-clay transition hover:text-ink"
               >
-                Scopri i dintorni
+                Scopri i dintorni &rarr;
               </Link>
             </div>
           </div>
@@ -249,34 +277,41 @@ export default function HomePage() {
       </section>
 
       <section id="contatti" className="mx-auto max-w-7xl px-6 pb-20 pt-12 md:px-10">
-        <div className="grid gap-6 rounded-[2rem] border border-line/70 bg-card p-6 shadow-soft md:grid-cols-[0.92fr_1.08fr] md:p-8">
-          <div>
-            <p className="text-sm uppercase tracking-[0.25em] text-muted">Contatti</p>
-            <h2 className="mt-3 font-serif text-3xl md:text-4xl">Scrivici</h2>
-            <p className="mt-4 max-w-lg leading-8 text-muted">
-              Date, disponibilit&agrave; o domande sulla casa: scrivici.
-            </p>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            <a
-              href={`mailto:${siteConfig.email}?subject=Richiesta%20informazioni%20-%20${encodeURIComponent(siteConfig.name)}`}
-              className="rounded-[1.5rem] border border-line/70 bg-canvas p-5 transition hover:border-clay"
-            >
-              <p className="text-sm uppercase tracking-[0.22em] text-muted">Email</p>
-              <p className="mt-3 text-lg font-medium text-ink">{siteConfig.email}</p>
-              <p className="mt-2 text-sm text-clay">Chiedi informazioni &rarr;</p>
-            </a>
-            <div className="rounded-[1.5rem] border border-line/70 bg-canvas p-5">
-              <p className="text-sm uppercase tracking-[0.22em] text-muted">Dove siamo</p>
-              <p className="mt-3 text-lg font-medium text-ink">{siteConfig.address}</p>
-              <p className="mt-2 text-sm leading-6 text-muted">
-                L’indirizzo preciso lo condividiamo con gli ospiti in fase di prenotazione.
+        <div className="rounded-[2rem] border border-line/70 bg-card p-6 shadow-soft md:p-8">
+          <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
+            <div className="max-w-xl">
+              <p className="text-sm uppercase tracking-[0.25em] text-muted">Contatti</p>
+              <h2 className="mt-3 font-serif text-3xl md:text-4xl">Scrivici</h2>
+              <p className="mt-4 leading-8 text-muted">
+                Date, disponibilit&agrave; o domande sulla casa: il modo pi&ugrave; rapido &egrave; WhatsApp, oppure via email.
               </p>
-              <Link href="/dintorni" className="mt-3 inline-block text-sm font-medium text-clay transition hover:text-ink">
-                Mappa dei dintorni &rarr;
-              </Link>
+            </div>
+            <div className="flex flex-col gap-3 sm:flex-row md:flex-col md:items-end lg:flex-row">
+              <a
+                href={whatsappHref()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-olive px-6 py-3 text-sm font-medium text-white transition hover:bg-ink"
+              >
+                <WhatsAppIcon size={18} />
+                WhatsApp
+              </a>
+              <a
+                href={mailtoHref()}
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-line px-6 py-3 text-sm font-medium text-ink transition hover:border-clay hover:text-clay"
+              >
+                <MailIcon size={18} />
+                Email
+              </a>
             </div>
           </div>
+          <p className="mt-6 border-t border-line/60 pt-4 text-sm leading-6 text-muted">
+            <span className="font-medium text-ink">{siteConfig.address}</span>
+            <span> &middot; l&rsquo;indirizzo preciso lo condividiamo in fase di prenotazione. </span>
+            <Link href="/dintorni" className="font-medium text-clay transition hover:text-ink">
+              Vedi la mappa dei dintorni &rarr;
+            </Link>
+          </p>
         </div>
       </section>
     </div>

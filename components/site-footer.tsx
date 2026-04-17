@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { siteConfig } from '@/lib/site-config';
+import { mailtoHref, siteConfig, whatsappHref } from '@/lib/site-config';
+import { WhatsAppIcon } from '@/components/icons';
 
 export function SiteFooter() {
   return (
@@ -29,7 +30,16 @@ export function SiteFooter() {
               I Dintorni
             </Link>
             <a
-              href={`mailto:${siteConfig.email}`}
+              href={whatsappHref()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 font-medium text-muted transition hover:text-ink"
+            >
+              <WhatsAppIcon size={14} />
+              WhatsApp
+            </a>
+            <a
+              href={mailtoHref()}
               className="font-medium text-muted transition hover:text-ink"
             >
               {siteConfig.email}
