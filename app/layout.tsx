@@ -12,21 +12,76 @@ const displaySerif = Spectral({
   display: 'swap',
 });
 
+const ogImage = {
+  url: '/logo-primary.png',
+  width: 523,
+  height: 524,
+  alt: `Logo ${siteConfig.name}`,
+};
+
 export const metadata: Metadata = {
-  title: siteConfig.name,
-  description:
-    'Casa in campagna nelle Marche e guida curata dei dintorni tra colline, borghi, produttori e attività outdoor.',
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: `${siteConfig.name} — casa in campagna nelle Marche`,
+    template: `%s · ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: '/images/logo.png',
     shortcut: '/images/logo.png',
     apple: '/images/logo.png',
   },
   openGraph: {
-    images: ['/images/logo.png'],
+    type: 'website',
+    locale: 'it_IT',
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: `${siteConfig.name} — casa in campagna nelle Marche`,
+    description: siteConfig.description,
+    images: [ogImage],
   },
   twitter: {
-    images: ['/images/logo.png'],
+    card: 'summary_large_image',
+    title: `${siteConfig.name} — casa in campagna nelle Marche`,
+    description: siteConfig.description,
+    images: [ogImage.url],
   },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LodgingBusiness',
+  '@id': `${siteConfig.url}/#lodging`,
+  name: siteConfig.name,
+  description: siteConfig.description,
+  url: siteConfig.url,
+  email: siteConfig.email,
+  image: [`${siteConfig.url}${ogImage.url}`],
+  logo: `${siteConfig.url}/images/logo.png`,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Urbisaglia',
+    addressRegion: 'MC',
+    addressCountry: 'IT',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: siteConfig.casolareMap.lat,
+    longitude: siteConfig.casolareMap.lng,
+  },
+  numberOfRooms: 3,
+  petsAllowed: false,
+  amenityFeature: [
+    { '@type': 'LocationFeatureSpecification', name: 'Wi-Fi gratuito', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Parcheggio gratuito', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Giardino', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Terrazza', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Cucina attrezzata', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Lavatrice', value: true },
+  ],
 };
 
 export default function RootLayout({
@@ -37,6 +92,10 @@ export default function RootLayout({
   return (
     <html lang="it" className={displaySerif.variable}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <div className="min-h-screen">
           <SiteHeader />
           <main>{children}</main>

@@ -5,6 +5,7 @@ import {
   homeHeroImageCaption,
   homeGalleryImages,
   homeGalleryPlaceholderNote,
+  homePerche,
   homeLaCasa,
   homeDintorniIntro,
   homeComeArrivare,
@@ -12,6 +13,7 @@ import {
   homeFeatures,
   featuredNearby,
 } from '@/lib/site-content';
+import { HomeGallery } from '@/components/home-gallery';
 import { siteConfig } from '@/lib/site-config';
 
 export default function HomePage() {
@@ -96,6 +98,29 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section aria-label={homePerche.eyebrow} className="mx-auto max-w-7xl px-6 py-12 md:px-10 md:py-16">
+        <div className="space-y-8">
+          <div className="max-w-3xl space-y-3">
+            <p className="text-sm uppercase tracking-[0.25em] text-muted">{homePerche.eyebrow}</p>
+            <h2 className="font-serif text-3xl leading-tight md:text-4xl">{homePerche.title}</h2>
+          </div>
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {homePerche.points.map((point) => (
+              <li
+                key={point.title}
+                className="flex h-full flex-col rounded-[1.5rem] border border-line/70 bg-card p-5 shadow-soft"
+              >
+                <span className="text-2xl leading-none" aria-hidden="true">
+                  {point.emoji}
+                </span>
+                <h3 className="mt-3 font-serif text-xl text-ink">{point.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted">{point.body}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-7xl px-6 py-12 md:px-10 md:py-16">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="space-y-6">
@@ -136,25 +161,7 @@ export default function HomePage() {
         aria-label="Fotografie della casa"
         className="mx-auto max-w-7xl px-6 pb-6 pt-0 md:px-10 md:pb-7"
       >
-        <div className="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-6 pb-1 [scrollbar-color:theme(colors.line)_transparent] [scrollbar-width:thin] md:-mx-10 md:px-10">
-          {homeGalleryImages.map((item, index) => (
-            <div
-              key={`${item.src}-${index}`}
-              className="relative aspect-[4/3] w-[min(78vw,17.5rem)] shrink-0 snap-center snap-always overflow-hidden rounded-[1.25rem] border border-line/70 first:snap-start last:snap-end sm:w-[min(42vw,17.5rem)] md:w-[17.5rem]"
-            >
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 78vw, (max-width: 768px) 42vw, 280px"
-              />
-            </div>
-          ))}
-        </div>
-        {homeGalleryPlaceholderNote ? (
-          <p className="mt-3 max-w-2xl text-xs leading-relaxed text-muted">{homeGalleryPlaceholderNote}</p>
-        ) : null}
+        <HomeGallery images={homeGalleryImages} note={homeGalleryPlaceholderNote} />
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-12 pt-6 md:px-10 md:pb-16 md:pt-8">
@@ -180,7 +187,7 @@ export default function HomePage() {
               >
                 {index === 0 && (
                   <p className="mb-2 inline-flex items-center rounded-full border border-clay/60 bg-clay/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-clay">
-                    Bar convenzionato
+                    Il nostro bar di famiglia
                   </p>
                 )}
                 <h3 className="font-serif text-2xl text-ink">{item.title}</h3>

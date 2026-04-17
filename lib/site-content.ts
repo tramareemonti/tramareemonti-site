@@ -23,6 +23,37 @@ export const homeGalleryImages = [
 export const homeGalleryPlaceholderNote =
   'Foto della casa in arrivo: qui per ora immagini del territorio intorno al casolare.';
 
+export const homePerche = {
+  eyebrow: 'Perché scegliere il casolare',
+  title: 'Una base semplice per vivere le Marche con calma',
+  points: [
+    {
+      emoji: '🌾',
+      title: 'Silenzio vero',
+      body:
+        'In aperta campagna, lontano dai rumori della città: si sentono il vento, i grilli e le campane dei borghi vicini.',
+    },
+    {
+      emoji: '🏖️',
+      title: 'Mare in mezz’ora',
+      body:
+        'La costa adriatica (Civitanova, Porto Recanati, Porto Sant’Elpidio) è a 30 minuti: perfetto anche per una mezza giornata.',
+    },
+    {
+      emoji: '⛰️',
+      title: 'Porta dei Sibillini',
+      body:
+        'In 45 minuti sei ai Piani di Castelluccio, alle Lame Rosse, al Monte Vettore: il casolare è un ottimo campo base per escursioni.',
+    },
+    {
+      emoji: '☕',
+      title: 'Colazione al Bar Seri',
+      body:
+        'Il nostro bar-pasticceria di famiglia è a 5 minuti: crostate, focacce e i dolci della signora Maria. Gli ospiti hanno un trattamento speciale.',
+    },
+  ],
+} as const;
+
 export const homeLaCasa = {
   title: 'Una casa semplice ma curata',
   body:

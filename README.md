@@ -29,7 +29,7 @@ Poi apri `http://localhost:3000`.
 ## Struttura principale
 
 - `app/page.tsx` → homepage Il Casolare
-- `app/i-dintorni/page.tsx` → pagina guida con mappa
+- `app/dintorni/page.tsx` → pagina guida con mappa
 - `components/dintorni-explorer.tsx` → filtri, lista, dettaglio
 - `components/territory-map.tsx` → mappa Leaflet
 - `data/places.json` → punti mappa
