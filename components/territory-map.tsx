@@ -6,8 +6,10 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 import { useEffect, useMemo } from 'react';
 import L, { DivIcon } from 'leaflet';
 import type { ExplorerItem, Place, RouteItem } from '@/lib/types';
-import { isRoute, categoryLabels } from '@/lib/data';
-import { siteConfig } from '@/lib/site-config';
+import { isRoute, getCategoryLabel } from '@/lib/data';
+import { getSiteAddress, siteConfig } from '@/lib/site-config';
+import type { Locale } from '@/lib/i18n/config';
+import { t } from '@/lib/i18n/ui';
 
 export interface TerritoryMapProps {
   items: ExplorerItem[];
@@ -15,6 +17,7 @@ export interface TerritoryMapProps {
   hoveredId: string | null;
   onSelect: (id: string) => void;
   onHover: (id: string | null) => void;
+  locale?: Locale;
 }
 
 // ── palette ─────────────────────────────────────────────────────────
@@ -33,12 +36,6 @@ const difficultyColors: Record<RouteItem['difficulty'], string> = {
   impegnativa: '#a63d40',
 };
 
-const difficultyLabels: Record<RouteItem['difficulty'], string> = {
-  facile: 'Facile',
-  media: 'Media',
-  impegnativa: 'Impegnativa',
-};
-
 function legendDifficultyOrder(difficulty: RouteItem['difficulty']) {
   switch (difficulty) {
     case 'facile':
@@ -47,6 +44,17 @@ function legendDifficultyOrder(difficulty: RouteItem['difficulty']) {
       return 1;
     case 'impegnativa':
       return 2;
+  }
+}
+
+function difficultyLabelForLocale(difficulty: RouteItem['difficulty'], locale: Locale) {
+  switch (difficulty) {
+    case 'facile':
+      return t('difficultyFacile', locale);
+    case 'media':
+      return t('difficultyMedia', locale);
+    case 'impegnativa':
+      return t('difficultyImpegnativa', locale);
   }
 }
 
@@ -98,6 +106,7 @@ export default function TerritoryMap({
   hoveredId,
   onSelect,
   onHover,
+  locale = 'it',
 }: TerritoryMapProps) {
   const places = useMemo(() => items.filter((i): i is Place => !isRoute(i)), [items]);
   const routes = useMemo(() => items.filter((i): i is RouteItem => isRoute(i)), [items]);
@@ -127,10 +136,8 @@ export default function TerritoryMap({
         <Popup>
           <div className="text-sm text-ink">
             <p className="font-medium">{siteConfig.name}</p>
-            <p className="mt-1 text-muted">{siteConfig.address}</p>
-            <p className="mt-2 text-xs leading-snug text-muted">
-              Punto sulla mappa indicativo, non l’ingresso esatto.
-            </p>
+            <p className="mt-1 text-muted">{getSiteAddress(locale)}</p>
+            <p className="mt-2 text-xs leading-snug text-muted">{t('mapCasolareNote', locale)}</p>
           </div>
         </Popup>
       </Marker>
@@ -164,7 +171,7 @@ export default function TerritoryMap({
         ))}
       </MarkerClusterGroup>
 
-      <MapLegend items={items} />
+      <MapLegend items={items} locale={locale} />
     </MapContainer>
   );
 }
@@ -300,7 +307,7 @@ function useFitBoundsOnSelect(selected: boolean, polyline: [number, number][]) {
 
 // ── legend ──────────────────────────────────────────────────────────
 
-function MapLegend({ items }: { items: ExplorerItem[] }) {
+function MapLegend({ items, locale }: { items: ExplorerItem[]; locale: Locale }) {
   const map = useMap();
 
   const { placeCategories, difficulties } = useMemo(() => {
@@ -325,7 +332,7 @@ function MapLegend({ items }: { items: ExplorerItem[] }) {
       }
 
       for (const cat of placeCategories) {
-        html += `<div class="map-legend-item"><span class="map-legend-dot" style="background:${placeColors[cat]}"></span>${categoryLabels[cat]}</div>`;
+        html += `<div class="map-legend-item"><span class="map-legend-dot" style="background:${placeColors[cat]}"></span>${getCategoryLabel(cat, locale)}</div>`;
       }
 
       if (placeCategories.size > 0 && difficulties.size > 0) {
@@ -333,7 +340,7 @@ function MapLegend({ items }: { items: ExplorerItem[] }) {
       }
 
       for (const d of [...difficulties].sort((a, b) => legendDifficultyOrder(a) - legendDifficultyOrder(b))) {
-        html += `<div class="map-legend-item"><span class="map-legend-line" style="background:${difficultyColors[d]}"></span>${difficultyLabels[d]}</div>`;
+        html += `<div class="map-legend-item"><span class="map-legend-line" style="background:${difficultyColors[d]}"></span>${difficultyLabelForLocale(d, locale)}</div>`;
       }
 
       div.innerHTML = html;
@@ -345,7 +352,7 @@ function MapLegend({ items }: { items: ExplorerItem[] }) {
     return () => {
       legend.remove();
     };
-  }, [map, placeCategories, difficulties]);
+  }, [map, placeCategories, difficulties, locale]);
 
   return null;
 }

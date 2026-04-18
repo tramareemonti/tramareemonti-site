@@ -3,7 +3,8 @@ import { Spectral } from 'next/font/google';
 import './globals.css';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
-import { siteConfig } from '@/lib/site-config';
+import { HtmlLangSync } from '@/components/html-lang-sync';
+import { getSiteDescription, siteConfig } from '@/lib/site-config';
 
 const displaySerif = Spectral({
   subsets: ['latin'],
@@ -19,15 +20,22 @@ const ogImage = {
   alt: `Logo ${siteConfig.name}`,
 };
 
+const itDescription = getSiteDescription('it');
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — casa in campagna nelle Marche`,
+    default: `${siteConfig.name} — ${siteConfig.titleTail.it}`,
     template: `%s · ${siteConfig.name}`,
   },
-  description: siteConfig.description,
+  description: itDescription,
   alternates: {
     canonical: '/',
+    languages: {
+      it: '/',
+      en: '/en',
+      'x-default': '/',
+    },
   },
   icons: {
     icon: '/images/logo.png',
@@ -37,16 +45,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'it_IT',
+    alternateLocale: ['en_US'],
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} — casa in campagna nelle Marche`,
-    description: siteConfig.description,
+    title: `${siteConfig.name} — ${siteConfig.titleTail.it}`,
+    description: itDescription,
     images: [ogImage],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${siteConfig.name} — casa in campagna nelle Marche`,
-    description: siteConfig.description,
+    title: `${siteConfig.name} — ${siteConfig.titleTail.it}`,
+    description: itDescription,
     images: [ogImage.url],
   },
 };
@@ -56,12 +65,13 @@ const jsonLd = {
   '@type': 'LodgingBusiness',
   '@id': `${siteConfig.url}/#lodging`,
   name: siteConfig.name,
-  description: siteConfig.description,
+  description: itDescription,
   url: siteConfig.url,
   email: siteConfig.email,
   telephone: siteConfig.whatsapp.tel,
   image: [`${siteConfig.url}${ogImage.url}`],
   logo: `${siteConfig.url}/images/logo.png`,
+  inLanguage: ['it', 'en'],
   contactPoint: [
     {
       '@type': 'ContactPoint',
@@ -107,6 +117,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <HtmlLangSync />
         <div className="min-h-screen">
           <SiteHeader />
           <main>{children}</main>

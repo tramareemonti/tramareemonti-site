@@ -4,24 +4,36 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { allPlaces, allRoutes, categories, categoryLabels, isRoute } from '@/lib/data';
+import {
+  allPlaces,
+  allRoutes,
+  getCategories,
+  getCategoryLabel,
+  isRoute,
+} from '@/lib/data';
 import type { Category, ExplorerItem, RouteItem } from '@/lib/types';
 import { siteConfig } from '@/lib/site-config';
+import type { Locale } from '@/lib/i18n/config';
+import { makeT, t } from '@/lib/i18n/ui';
+import { localizeItem, localizeTag } from '@/lib/i18n/localize';
 
 const TerritoryMap = dynamic(() => import('@/components/territory-map'), {
   ssr: false,
-  loading: () => (
-    <div className="flex min-h-[420px] items-center justify-center rounded-[1.5rem] border border-line/70 bg-card text-sm text-muted md:min-h-[600px]">
-      Caricamento mappa...
-    </div>
-  ),
+  loading: function MapLoading() {
+    // Keep this component isolated from hooks to stay Dynamic-friendly.
+    return (
+      <div className="flex min-h-[420px] items-center justify-center rounded-[1.5rem] border border-line/70 bg-card text-sm text-muted md:min-h-[600px]">
+        Caricamento mappa... / Loading map…
+      </div>
+    );
+  },
 });
 
 const seasonStyles: Record<string, string> = {
-  'estate': 'border-amber-300/60 bg-amber-50 text-amber-700',
-  'inverno': 'border-sky-300/60 bg-sky-50 text-sky-700',
-  'primavera': 'border-emerald-300/60 bg-emerald-50 text-emerald-700',
-  'autunno': 'border-orange-300/60 bg-orange-50 text-orange-700',
+  estate: 'border-amber-300/60 bg-amber-50 text-amber-700',
+  inverno: 'border-sky-300/60 bg-sky-50 text-sky-700',
+  primavera: 'border-emerald-300/60 bg-emerald-50 text-emerald-700',
+  autunno: 'border-orange-300/60 bg-orange-50 text-orange-700',
 };
 
 const difficultyStyles: Record<RouteItem['difficulty'], string> = {
@@ -30,16 +42,18 @@ const difficultyStyles: Record<RouteItem['difficulty'], string> = {
   impegnativa: 'border-rose-300/70 bg-rose-50 text-rose-700',
 };
 
+/** Map Italian tag strings to tag-bubble classes. Fallbacks cover translated tags. */
 function tagClassName(tag: string) {
-  return seasonStyles[tag] ?? 'border-line bg-canvas text-muted';
+  const lower = tag.toLowerCase();
+  return seasonStyles[lower] ?? 'border-line bg-canvas text-muted';
 }
 
-function itemLabel(item: ExplorerItem) {
+function itemLabel(item: ExplorerItem, locale: Locale) {
   if (isRoute(item)) {
-    if (item.routeType === 'bici') return 'Bici';
-    return categoryLabels[item.category];
+    if (item.routeType === 'bici') return t('subBici', locale);
+    return getCategoryLabel(item.category, locale);
   }
-  return item.sublabel ?? categoryLabels[item.category];
+  return item.sublabel ?? getCategoryLabel(item.category, locale);
 }
 
 function difficultyOrder(difficulty: RouteItem['difficulty']) {
@@ -53,14 +67,14 @@ function difficultyOrder(difficulty: RouteItem['difficulty']) {
   }
 }
 
-function difficultyLabel(difficulty: RouteItem['difficulty']) {
+function difficultyLabel(difficulty: RouteItem['difficulty'], locale: Locale) {
   switch (difficulty) {
     case 'facile':
-      return 'Facile';
+      return t('difficultyFacile', locale);
     case 'media':
-      return 'Media';
+      return t('difficultyMedia', locale);
     case 'impegnativa':
-      return 'Impegnativa';
+      return t('difficultyImpegnativa', locale);
   }
 }
 
@@ -75,9 +89,14 @@ function openInGoogleMapsHref(item: ExplorerItem) {
   return mapsUrlFromCoords(item.lat, item.lng);
 }
 
-export function DintorniExplorer() {
+export type DintorniExplorerProps = {
+  locale?: Locale;
+};
+
+export function DintorniExplorer({ locale = 'it' }: DintorniExplorerProps) {
+  const tr = makeT(locale);
   const searchParams = useSearchParams();
-  const initialCategory = searchParams.get('cat') as Category | null;
+  const initialCategory = (searchParams?.get('cat') ?? null) as Category | null;
   const [activeCategory, setActiveCategory] = useState<Category | 'all'>(initialCategory ?? 'all');
   const [query, setQuery] = useState('');
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -88,7 +107,16 @@ export function DintorniExplorer() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const mobileCardRef = useRef<HTMLDivElement>(null);
 
-  const allItems = useMemo(() => [...allPlaces, ...allRoutes], []);
+  /**
+   * Localise every entry up-front. Cheap to do once; every downstream render
+   * (list, map, detail) can then just read `item.summary` without knowing about locale.
+   */
+  const allItems = useMemo(
+    () => [...allPlaces, ...allRoutes].map((item) => localizeItem(item, locale)),
+    [locale],
+  );
+
+  const categories = useMemo(() => getCategories(locale), [locale]);
 
   const filteredItems = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -142,14 +170,14 @@ export function DintorniExplorer() {
 
   const activeCategoryLabel = useMemo(() => {
     return categories.find((c) => c.key === activeCategory)?.label ?? '';
-  }, [activeCategory]);
+  }, [activeCategory, categories]);
 
   const activeFilterLabel = useMemo(() => {
     const parts: string[] = [];
     if (activeCategoryLabel) parts.push(activeCategoryLabel);
-    if (activeDifficulty !== null) parts.push(difficultyLabel(activeDifficulty));
+    if (activeDifficulty !== null) parts.push(difficultyLabel(activeDifficulty, locale));
     return parts.join(' • ');
-  }, [activeCategoryLabel, activeDifficulty]);
+  }, [activeCategoryLabel, activeDifficulty, locale]);
 
   const handleSelect = (id: string) => {
     setSelectedId(id);
@@ -169,10 +197,13 @@ export function DintorniExplorer() {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [mobileFiltersOpen]);
 
+  const resultsWord =
+    filteredItems.length === 1 ? tr('dintorniResultsSingular') : tr('dintorniResultsPlural');
+
   return (
     <section className="mx-auto max-w-7xl px-6 pb-16 pt-8 md:px-10 md:pb-20 md:pt-12">
       <div className="mb-8 max-w-3xl space-y-4">
-        <p className="text-sm uppercase tracking-[0.25em] text-muted">I Dintorni</p>
+        <p className="text-sm uppercase tracking-[0.25em] text-muted">{tr('dintorniEyebrowUp')}</p>
         <div className="flex items-center gap-4 md:gap-5">
           <Image
             src={siteConfig.logo}
@@ -181,27 +212,54 @@ export function DintorniExplorer() {
             height={160}
             className="h-auto w-[70px] shrink-0 md:w-[100px]"
           />
-          <h1 className="font-serif text-4xl leading-tight md:text-5xl">I nostri posti del cuore</h1>
+          <h1 className="font-serif text-4xl leading-tight md:text-5xl">{tr('dintorniTitle')}</h1>
         </div>
-        <p className="leading-8 text-muted md:text-lg">
-          Qualche idea per esplorare le Marche.
-        </p>
+        <p className="leading-8 text-muted md:text-lg">{tr('dintorniIntro')}</p>
       </div>
 
       <div className="mb-6 rounded-[1.5rem] border border-line/70 bg-card p-5 shadow-soft">
-        <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-muted">Per iniziare</p>
+        <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-muted">
+          {tr('dintorniQuickStartTitle')}
+        </p>
         <div className="grid gap-3 sm:grid-cols-3">
-          <button type="button" onClick={() => { setActiveCategory('all'); setSelectedId(null); setQuery(''); handleSelect('abbadia-giro-corto'); }} className="rounded-[1.25rem] border border-line bg-canvas p-4 text-left transition hover:border-clay">
-            <p className="text-xs uppercase tracking-[0.18em] text-clay">Mezza giornata nella natura</p>
-            <p className="mt-2 text-sm font-medium text-ink">Giro a piedi all&apos;Abbadia di Fiastra</p>
+          <button
+            type="button"
+            onClick={() => {
+              setActiveCategory('all');
+              setSelectedId(null);
+              setQuery('');
+              handleSelect('abbadia-giro-corto');
+            }}
+            className="rounded-[1.25rem] border border-line bg-canvas p-4 text-left transition hover:border-clay"
+          >
+            <p className="text-xs uppercase tracking-[0.18em] text-clay">{tr('dintorniQS1Eyebrow')}</p>
+            <p className="mt-2 text-sm font-medium text-ink">{tr('dintorniQS1Body')}</p>
           </button>
-          <button type="button" onClick={() => { setActiveCategory('ristoranti'); setSelectedId(null); setQuery(''); handleSelect('bar-seri'); }} className="rounded-[1.25rem] border border-line bg-canvas p-4 text-left transition hover:border-clay">
-            <p className="text-xs uppercase tracking-[0.18em] text-clay">Gli impasti della signora Maria</p>
-            <p className="mt-2 text-sm font-medium text-ink">Bar Seri a Passo Colmurano</p>
+          <button
+            type="button"
+            onClick={() => {
+              setActiveCategory('ristoranti');
+              setSelectedId(null);
+              setQuery('');
+              handleSelect('bar-seri');
+            }}
+            className="rounded-[1.25rem] border border-line bg-canvas p-4 text-left transition hover:border-clay"
+          >
+            <p className="text-xs uppercase tracking-[0.18em] text-clay">{tr('dintorniQS2Eyebrow')}</p>
+            <p className="mt-2 text-sm font-medium text-ink">{tr('dintorniQS2Body')}</p>
           </button>
-          <button type="button" onClick={() => { setActiveCategory('attivita-outdoor'); setSelectedId(null); setQuery(''); handleSelect('lago-fiastra'); }} className="rounded-[1.25rem] border border-line bg-canvas p-4 text-left transition hover:border-clay">
-            <p className="text-xs uppercase tracking-[0.18em] text-clay">Relax in montagna, con possibili hikes</p>
-            <p className="mt-2 text-sm font-medium text-ink">Lago di Fiastra e Lame Rosse</p>
+          <button
+            type="button"
+            onClick={() => {
+              setActiveCategory('attivita-outdoor');
+              setSelectedId(null);
+              setQuery('');
+              handleSelect('lago-fiastra');
+            }}
+            className="rounded-[1.25rem] border border-line bg-canvas p-4 text-left transition hover:border-clay"
+          >
+            <p className="text-xs uppercase tracking-[0.18em] text-clay">{tr('dintorniQS3Eyebrow')}</p>
+            <p className="mt-2 text-sm font-medium text-ink">{tr('dintorniQS3Body')}</p>
           </button>
         </div>
       </div>
@@ -232,14 +290,14 @@ export function DintorniExplorer() {
           })}
         </div>
         <label className="block min-w-[220px] flex-1 md:max-w-xs">
-          <span className="sr-only">Cerca nella guida</span>
+          <span className="sr-only">{tr('dintorniSearchLabel')}</span>
           <input
             value={query}
             onChange={(event) => {
               setQuery(event.target.value);
               setSelectedId(null);
             }}
-            placeholder="Cerca per nome, luogo, tag, stagione..."
+            placeholder={tr('dintorniSearchPlaceholder')}
             className="w-full rounded-full border border-line bg-canvas px-4 py-3 text-sm outline-none transition placeholder:text-muted focus:border-clay"
           />
         </label>
@@ -247,7 +305,7 @@ export function DintorniExplorer() {
 
       {activeCategory === 'itinerari' && (
         <div className="hidden mb-6 flex-wrap items-center gap-2 md:flex">
-          <span className="mr-1 text-xs text-muted">Difficoltà:</span>
+          <span className="mr-1 text-xs text-muted">{tr('dintorniFilterDifficultyShort')}</span>
           {(['facile', 'media', 'impegnativa'] as const).map((difficulty) => (
             <button
               key={difficulty}
@@ -259,7 +317,7 @@ export function DintorniExplorer() {
                   : 'border-line/70 text-muted hover:border-clay hover:text-ink'
               }`}
             >
-              {difficultyLabel(difficulty)}
+              {difficultyLabel(difficulty, locale)}
             </button>
           ))}
           {activeDifficulty !== null && (
@@ -268,7 +326,7 @@ export function DintorniExplorer() {
               onClick={() => setActiveDifficulty(null)}
               className="text-xs text-muted transition hover:text-ink"
             >
-              &times; Tutte
+              &times; {tr('dintorniFilterAll')}
             </button>
           )}
         </div>
@@ -283,17 +341,17 @@ export function DintorniExplorer() {
             aria-expanded={mobileFiltersOpen}
             className="shrink-0 rounded-full border border-line bg-canvas px-4 py-2 text-sm font-medium text-muted transition hover:border-clay hover:text-ink"
           >
-            Filtri
+            {tr('dintorniFilters')}
           </button>
           <label className="block min-w-0 flex-1">
-            <span className="sr-only">Cerca nella guida</span>
+            <span className="sr-only">{tr('dintorniSearchLabel')}</span>
             <input
               value={query}
               onChange={(event) => {
                 setQuery(event.target.value);
                 setSelectedId(null);
               }}
-              placeholder="Cerca per nome, luogo, tag..."
+              placeholder={tr('dintorniSearchPlaceholderShort')}
               className="w-full rounded-full border border-line bg-canvas px-4 py-3 text-sm outline-none transition placeholder:text-muted focus:border-clay"
             />
           </label>
@@ -304,7 +362,7 @@ export function DintorniExplorer() {
         <div className="fixed inset-0 z-50 flex items-end md:hidden" role="dialog" aria-modal="true">
           <button
             type="button"
-            aria-label="Chiudi filtri"
+            aria-label={tr('dintorniFiltersCloseAria')}
             onClick={() => setMobileFiltersOpen(false)}
             className="absolute inset-0 bg-black/40"
           />
@@ -313,19 +371,21 @@ export function DintorniExplorer() {
             <div className="mx-auto mb-4 h-1 w-12 rounded-full bg-line/60" />
 
             <div className="mb-4 flex items-center justify-between">
-              <p className="text-sm uppercase tracking-[0.22em] text-muted">Filtri</p>
+              <p className="text-sm uppercase tracking-[0.22em] text-muted">{tr('dintorniFilters')}</p>
               <button
                 type="button"
                 onClick={() => setMobileFiltersOpen(false)}
                 className="text-sm font-medium text-clay transition hover:text-ink"
               >
-                Chiudi
+                {tr('dintorniFiltersClose')}
               </button>
             </div>
 
             <div className="space-y-5">
               <div>
-                <p className="mb-2 text-xs font-medium uppercase tracking-[0.22em] text-muted">Categoria</p>
+                <p className="mb-2 text-xs font-medium uppercase tracking-[0.22em] text-muted">
+                  {tr('dintorniFilterCategory')}
+                </p>
                 <div className="grid grid-cols-2 gap-2">
                   {categories.map((category) => {
                     const active = activeCategory === category.key;
@@ -354,7 +414,9 @@ export function DintorniExplorer() {
 
               {activeCategory === 'itinerari' && (
                 <div>
-                  <p className="mb-2 text-xs font-medium uppercase tracking-[0.22em] text-muted">Difficoltà</p>
+                  <p className="mb-2 text-xs font-medium uppercase tracking-[0.22em] text-muted">
+                    {tr('dintorniFilterDifficulty')}
+                  </p>
                   <div className="flex flex-wrap gap-2">
                     {(['facile', 'media', 'impegnativa'] as const).map((difficulty) => (
                       <button
@@ -370,7 +432,7 @@ export function DintorniExplorer() {
                             : 'border-line/70 text-muted hover:border-clay hover:text-ink'
                         }`}
                       >
-                        {difficultyLabel(difficulty)}
+                        {difficultyLabel(difficulty, locale)}
                       </button>
                     ))}
                     {activeDifficulty !== null && (
@@ -379,7 +441,7 @@ export function DintorniExplorer() {
                         onClick={() => setActiveDifficulty(null)}
                         className="text-xs text-muted transition hover:text-ink"
                       >
-                        &times; Tutte
+                        &times; {tr('dintorniFilterAll')}
                       </button>
                     )}
                   </div>
@@ -397,7 +459,7 @@ export function DintorniExplorer() {
                   }}
                   className="w-full rounded-[1.25rem] border border-line bg-canvas px-4 py-3 text-sm font-medium text-ink transition hover:border-clay"
                 >
-                  Azzera filtri
+                  {tr('dintorniFilterReset')}
                 </button>
               </div>
             </div>
@@ -414,16 +476,14 @@ export function DintorniExplorer() {
               type="button"
               onClick={() => setMobileFiltersOpen(true)}
               className="min-w-0 flex-1 text-left"
-              aria-label="Apri filtri"
+              aria-label={tr('dintorniFiltersOpenAria')}
             >
               <div className="flex items-baseline gap-2">
-                <p
-                  className="truncate rounded-full border border-olive/30 bg-olive/15 px-3 py-1 text-sm font-medium text-olive"
-                >
-                  {activeFilterLabel || 'Preferiti'}
+                <p className="truncate rounded-full border border-olive/30 bg-olive/15 px-3 py-1 text-sm font-medium text-olive">
+                  {activeFilterLabel || tr('dintorniFavouritesPill')}
                 </p>
                 <p className="shrink-0 text-xs font-medium text-muted">
-                  {filteredItems.length} {filteredItems.length === 1 ? 'risultato' : 'risultati'}
+                  {filteredItems.length} {resultsWord}
                 </p>
               </div>
             </button>
@@ -434,7 +494,7 @@ export function DintorniExplorer() {
               className="shrink-0 rounded-full border border-line/70 bg-canvas px-3 py-1.5 text-xs font-medium text-clay transition hover:border-clay hover:text-ink"
               aria-expanded={mobileListOpen}
             >
-              {mobileListOpen ? 'Chiudi' : 'Sfoglia'}
+              {mobileListOpen ? tr('dintorniBrowseClose') : tr('dintorniBrowse')}
             </button>
           </div>
           {mobileListOpen && (
@@ -456,14 +516,17 @@ export function DintorniExplorer() {
                           {item.title}
                         </p>
                         <p className="mt-0.5 text-xs text-muted">
-                          {isRoute(item) ? item.startTown : item.town} &middot; a {item.driveMinutes} min
+                          {isRoute(item) ? item.startTown : item.town} &middot; {tr('dintorniDriveMinShort')}{' '}
+                          {item.driveMinutes} {tr('dintorniMin')}
                         </p>
                       </div>
                       {selected && <span className="h-2 w-2 shrink-0 rounded-full bg-olive" />}
                     </button>
                   );
                 })}
-                {filteredItems.length === 0 && <p className="px-3 py-4 text-sm text-muted">Nessun risultato.</p>}
+                {filteredItems.length === 0 && (
+                  <p className="px-3 py-4 text-sm text-muted">{tr('dintorniNoResults')}</p>
+                )}
               </div>
             </div>
           )}
@@ -477,19 +540,20 @@ export function DintorniExplorer() {
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0 flex-1">
                 <p className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-muted">
-                  <span>{itemLabel(selectedItem)}</span>
+                  <span>{itemLabel(selectedItem, locale)}</span>
                   {isRoute(selectedItem) && (
                     <span
                       className={`rounded-full border px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.08em] ${difficultyStyles[selectedItem.difficulty]}`}
                     >
-                      {difficultyLabel(selectedItem.difficulty)}
+                      {difficultyLabel(selectedItem.difficulty, locale)}
                     </span>
                   )}
                 </p>
                 <h2 className="mt-1 font-serif text-2xl leading-tight text-ink">{selectedItem.title}</h2>
                 <p className="mt-1 text-sm text-muted">
-                  {isRoute(selectedItem) ? selectedItem.startTown : selectedItem.town} &middot; a{' '}
-                  {selectedItem.driveMinutes} min dal casolare
+                  {isRoute(selectedItem) ? selectedItem.startTown : selectedItem.town} &middot;{' '}
+                  {tr('dintorniDriveMinShort')} {selectedItem.driveMinutes} {tr('dintorniMin')}{' '}
+                  {tr('dintorniFromCasolare')}
                 </p>
               </div>
               <a
@@ -498,7 +562,7 @@ export function DintorniExplorer() {
                 rel="noreferrer"
                 className="shrink-0 rounded-full border border-line bg-canvas px-3 py-2 text-xs font-medium text-clay transition hover:border-clay"
               >
-                Maps &rarr;
+                {tr('detailOpenGoogleMapsShort')}
               </a>
             </div>
 
@@ -508,18 +572,21 @@ export function DintorniExplorer() {
 
             {mobileDetailExpanded && (
               <div className="mt-4 space-y-4">
-              <p className="text-sm leading-7 text-muted">{selectedItem.summary}</p>
+                <p className="text-sm leading-7 text-muted">{selectedItem.summary}</p>
 
                 {isRoute(selectedItem) ? (
                   <>
                     <div className="grid grid-cols-2 gap-2">
-                      <DetailStat label="Difficoltà" value={difficultyLabel(selectedItem.difficulty)} />
-                      <DetailStat label="Distanza" value={`${selectedItem.distanceKm} km`} />
-                      <DetailStat label="Dislivello" value={`${selectedItem.elevationM} m`} />
-                      <DetailStat label="Durata" value={selectedItem.duration} />
+                      <DetailStat
+                        label={tr('detailStatDifficulty')}
+                        value={difficultyLabel(selectedItem.difficulty, locale)}
+                      />
+                      <DetailStat label={tr('detailStatDistance')} value={`${selectedItem.distanceKm} km`} />
+                      <DetailStat label={tr('detailStatElevation')} value={`${selectedItem.elevationM} m`} />
+                      <DetailStat label={tr('detailStatDuration')} value={selectedItem.duration} />
                     </div>
                     <div className="flex flex-wrap gap-3">
-                      <GpxLink route={selectedItem} />
+                      <GpxLink route={selectedItem} locale={locale} />
                       {selectedItem.mapyUrl && (
                         <a
                           href={selectedItem.mapyUrl}
@@ -527,7 +594,7 @@ export function DintorniExplorer() {
                           rel="noreferrer"
                           className="text-sm font-medium text-clay transition hover:text-ink"
                         >
-                          Traccia su Mapy.com &rarr;
+                          {tr('detailMapyUrl')}
                         </a>
                       )}
                     </div>
@@ -535,7 +602,7 @@ export function DintorniExplorer() {
                 ) : (
                   <>
                     <div className="rounded-[1.25rem] bg-canvas p-4">
-                      <p className="text-xs uppercase tracking-[0.18em] text-muted">Perché andarci</p>
+                      <p className="text-xs uppercase tracking-[0.18em] text-muted">{tr('detailWhyGo')}</p>
                       <p className="mt-2 text-sm leading-7 text-ink">{selectedItem.whyGo}</p>
                     </div>
                     {selectedItem.website && (
@@ -545,7 +612,7 @@ export function DintorniExplorer() {
                         rel="noreferrer"
                         className="inline-flex text-sm font-medium text-clay transition hover:text-ink"
                       >
-                        Sito / link &rarr;
+                        {tr('detailWebsite')}
                       </a>
                     )}
                   </>
@@ -557,7 +624,7 @@ export function DintorniExplorer() {
                       key={tag}
                       className={`rounded-full border px-3 py-1 text-xs uppercase tracking-[0.18em] ${tagClassName(tag)}`}
                     >
-                      {tag}
+                      {localizeTag(tag, locale)}
                     </span>
                   ))}
                 </div>
@@ -569,7 +636,7 @@ export function DintorniExplorer() {
               onClick={() => setMobileDetailExpanded((v) => !v)}
               className="mt-3 text-sm font-medium text-clay transition hover:text-ink"
             >
-              {mobileDetailExpanded ? 'Meno dettagli' : 'Leggi tutto \u2192'}
+              {mobileDetailExpanded ? tr('detailLess') : tr('detailMore')}
             </button>
           </div>
         )}
@@ -597,12 +664,12 @@ export function DintorniExplorer() {
                 }`}
               >
                 <p className="flex items-center gap-2 text-xs uppercase tracking-[0.22em] text-muted">
-                  <span>{itemLabel(item)}</span>
+                  <span>{itemLabel(item, locale)}</span>
                   {isRoute(item) ? (
                     <span
                       className={`rounded-full border px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.08em] ${difficultyStyles[item.difficulty]}`}
                     >
-                      {difficultyLabel(item.difficulty)}
+                      {difficultyLabel(item.difficulty, locale)}
                     </span>
                   ) : null}
                 </p>
@@ -610,11 +677,13 @@ export function DintorniExplorer() {
                 <p className="mt-0.5 text-xs text-muted">
                   {isRoute(item) ? (
                     <>
-                      {item.startTown} &middot; a {item.driveMinutes} min
+                      {item.startTown} &middot; {tr('dintorniDriveMinShort')} {item.driveMinutes}{' '}
+                      {tr('dintorniMin')}
                     </>
                   ) : (
                     <>
-                      {item.town} &middot; a {item.driveMinutes} min
+                      {item.town} &middot; {tr('dintorniDriveMinShort')} {item.driveMinutes}{' '}
+                      {tr('dintorniMin')}
                     </>
                   )}
                 </p>
@@ -622,25 +691,31 @@ export function DintorniExplorer() {
             );
           })}
           {filteredItems.length === 0 && (
-            <p className="p-4 text-sm text-muted">Nessun risultato.</p>
+            <p className="p-4 text-sm text-muted">{tr('dintorniNoResults')}</p>
           )}
         </div>
       </div>
 
       <div className="order-2 grid gap-6 md:order-2 xl:grid-cols-[0.9fr_1.1fr]">
         <div className="rounded-[1.5rem] border border-line/70 bg-card p-2 shadow-soft md:p-3">
-          <TerritoryMap items={filteredItems} selectedId={selectedItem?.id ?? null} hoveredId={hoveredId} onSelect={handleSelect} onHover={setHoveredId} />
+          <TerritoryMap
+            items={filteredItems}
+            selectedId={selectedItem?.id ?? null}
+            hoveredId={hoveredId}
+            onSelect={handleSelect}
+            onHover={setHoveredId}
+            locale={locale}
+          />
         </div>
 
         {selectedItem ? (
           <aside className="hidden rounded-[1.5rem] border border-line/70 bg-card p-6 shadow-soft md:block xl:p-8">
-            <p className="text-sm uppercase tracking-[0.22em] text-muted">
-              {itemLabel(selectedItem)}
-            </p>
+            <p className="text-sm uppercase tracking-[0.22em] text-muted">{itemLabel(selectedItem, locale)}</p>
             <h2 className="mt-3 font-serif text-3xl leading-tight text-ink md:text-4xl">{selectedItem.title}</h2>
             <p className="mt-2 text-sm text-muted">
-              {isRoute(selectedItem) ? selectedItem.startTown : selectedItem.town} &middot; a{' '}
-              {selectedItem.driveMinutes} min dal casolare
+              {isRoute(selectedItem) ? selectedItem.startTown : selectedItem.town} &middot;{' '}
+              {tr('dintorniDriveMinShort')} {selectedItem.driveMinutes} {tr('dintorniMin')}{' '}
+              {tr('dintorniFromCasolare')}
             </p>
 
             <p className="mt-5 text-sm leading-7 text-muted md:text-base md:leading-8">{selectedItem.summary}</p>
@@ -648,21 +723,24 @@ export function DintorniExplorer() {
             {isRoute(selectedItem) ? (
               <div className="mt-6 space-y-4">
                 <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-                  <DetailStat label="Difficoltà" value={difficultyLabel(selectedItem.difficulty)} />
-                  <DetailStat label="Distanza" value={`${selectedItem.distanceKm} km`} />
-                  <DetailStat label="Dislivello" value={`${selectedItem.elevationM} m`} />
-                  <DetailStat label="Durata" value={selectedItem.duration} />
+                  <DetailStat
+                    label={tr('detailStatDifficulty')}
+                    value={difficultyLabel(selectedItem.difficulty, locale)}
+                  />
+                  <DetailStat label={tr('detailStatDistance')} value={`${selectedItem.distanceKm} km`} />
+                  <DetailStat label={tr('detailStatElevation')} value={`${selectedItem.elevationM} m`} />
+                  <DetailStat label={tr('detailStatDuration')} value={selectedItem.duration} />
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                  <GpxLink route={selectedItem} />
+                  <GpxLink route={selectedItem} locale={locale} />
                   <a
                     href={openInGoogleMapsHref(selectedItem)}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex text-sm font-medium text-clay transition hover:text-ink"
                   >
-                    Google Maps &rarr;
+                    {tr('detailOpenGoogleMaps')}
                   </a>
                   {selectedItem.mapyUrl ? (
                     <a
@@ -671,7 +749,7 @@ export function DintorniExplorer() {
                       rel="noreferrer"
                       className="inline-flex text-sm font-medium text-clay transition hover:text-ink"
                     >
-                      Traccia su Mapy.com &rarr;
+                      {tr('detailMapyUrl')}
                     </a>
                   ) : null}
                 </div>
@@ -679,7 +757,7 @@ export function DintorniExplorer() {
             ) : (
               <div className="mt-6 space-y-4">
                 <div className="rounded-[1.25rem] bg-canvas p-5">
-                  <p className="text-sm uppercase tracking-[0.18em] text-muted">Perché andarci</p>
+                  <p className="text-sm uppercase tracking-[0.18em] text-muted">{tr('detailWhyGo')}</p>
                   <p className="mt-2 leading-7 text-ink md:leading-8">{selectedItem.whyGo}</p>
                 </div>
                 <div className="flex flex-wrap gap-3">
@@ -689,7 +767,7 @@ export function DintorniExplorer() {
                     rel="noreferrer"
                     className="inline-flex text-sm font-medium text-clay transition hover:text-ink"
                   >
-                    Apri in Google Maps &rarr;
+                    {tr('detailOpenGoogleMapsLong')}
                   </a>
                   {selectedItem.website ? (
                     <a
@@ -698,7 +776,7 @@ export function DintorniExplorer() {
                       rel="noreferrer"
                       className="inline-flex text-sm font-medium text-clay transition hover:text-ink"
                     >
-                      Sito / link &rarr;
+                      {tr('detailWebsite')}
                     </a>
                   ) : null}
                 </div>
@@ -711,7 +789,7 @@ export function DintorniExplorer() {
                   key={tag}
                   className={`rounded-full border px-3 py-1 text-xs uppercase tracking-[0.18em] ${tagClassName(tag)}`}
                 >
-                  {tag}
+                  {localizeTag(tag, locale)}
                 </span>
               ))}
             </div>
@@ -723,20 +801,17 @@ export function DintorniExplorer() {
       {activeCategory === 'itinerari' && (
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           <div className="rounded-[1.5rem] border border-line/70 bg-card p-6 shadow-soft">
-            <p className="text-sm uppercase tracking-[0.22em] text-muted">Prima di partire</p>
-            <p className="mt-3 leading-7 text-muted">
-              Le tracce dettagliate dei percorsi sono visualizzabili su <span className="font-medium">Mapy.com</span> e scaricabili in formato GPX dalla scheda del percorso.
-              Prima di ogni uscita in montagna, verificate che i sentieri siano aperti: neve, ghiaccio e frane possono rendere impraticabili anche percorsi semplici.
-            </p>
+            <p className="text-sm uppercase tracking-[0.22em] text-muted">{tr('itinerariBeforeTitle')}</p>
+            <p className="mt-3 leading-7 text-muted">{tr('itinerariBeforeBody')}</p>
           </div>
           <div className="rounded-[1.5rem] border border-line/70 bg-card p-6 shadow-soft">
-            <p className="text-sm uppercase tracking-[0.22em] text-muted">Parco Nazionale dei Monti Sibillini</p>
-            <p className="mt-3 leading-7 text-muted">
-              Per sentieri, chiusure e condizioni nei Sibillini, contattate il Parco.
+            <p className="text-sm uppercase tracking-[0.22em] text-muted">
+              {tr('itinerariSibilliniTitle')}
             </p>
+            <p className="mt-3 leading-7 text-muted">{tr('itinerariSibilliniBody')}</p>
             <div className="mt-4 space-y-1 text-sm text-muted">
-              <p>Piazza del Forno 1, 62039 Visso (MC)</p>
-              <p>Tel. 0737 961563 &middot; Info 0737 961014</p>
+              <p>{tr('itinerariSibilliniAddr')}</p>
+              <p>{tr('itinerariSibilliniPhones')}</p>
               <p>
                 <a href="mailto:parco@sibillini.net" className="font-medium text-clay transition hover:text-ink">
                   parco@sibillini.net
@@ -750,7 +825,7 @@ export function DintorniExplorer() {
   );
 }
 
-function GpxLink({ route }: { route: RouteItem }) {
+function GpxLink({ route, locale }: { route: RouteItem; locale: Locale }) {
   if (!route.gpxFile) return null;
 
   return (
@@ -759,7 +834,7 @@ function GpxLink({ route }: { route: RouteItem }) {
       download
       className="inline-flex text-sm font-medium text-clay transition hover:text-ink"
     >
-      Scarica GPX &rarr;
+      {t('detailGpx', locale)}
     </a>
   );
 }

@@ -16,7 +16,14 @@
     "whyGo": "È il bar della nostra famiglia. Ci andiamo noi per primi, e lo consigliamo perché sappiamo cosa c'è dentro: ingredienti semplici, tutto preparato con cura da mani esperte. Colazione con crostate e dolci della signora Maria; mercoledì a pranzo pizza, giovedì gnocchi, tutti i giorni piatti freddi e insalatone. A 5 minuti dal casolare.",
     "googleMapsUrl": "https://maps.app.goo.gl/fUGDXpfGDYsYf1mXA",
     "driveMinutes": 5,
-    "featured": true
+    "featured": true,
+    "i18n": {
+      "en": {
+        "tags": ["bar", "breakfast", "lunch", "homemade"],
+        "summary": "Homemade cakes, crostate (Italian jam tarts), focacce, pizza and daily specials. A proper breakfast spot, or a quick — even takeaway — lunch.",
+        "whyGo": "It's our family's bar. We go ourselves, and we recommend it because we know exactly what's in it: simple ingredients, everything prepared with care by skilled hands. Breakfast with signora Maria's crostate and cakes; pizza at lunch on Wednesdays, gnocchi on Thursdays, cold plates and generous salads every day. 5 minutes from the casolare."
+      }
+    }
   },
   {
     "id": "lago-fiastra",
@@ -35,7 +42,14 @@
     "whyGo": "Ha senso quando vuoi una giornata più 'montana' ma semplice, con acqua, prati e un cambio netto di paesaggio rispetto al casolare.",
     "googleMapsUrl": "https://maps.app.goo.gl/7sGgBDjVSNdsVMJ96",
     "driveMinutes": 40,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "tags": ["lake", "swimming", "family", "summer"],
+        "summary": "A swimmable mountain reservoir with small pebble beaches, pedalo rental and a setting that feels totally different from the hills around the casolare.",
+        "whyGo": "Perfect when you want a more 'alpine' day without any planning: water, meadows and a sharp change of scenery from the countryside around the house."
+      }
+    }
   },
   {
     "id": "spiaggia-due-sorelle",
@@ -53,7 +67,14 @@
     "summary": "Spiaggia simbolo del Conero, raggiungibile solo via mare, con acqua molto chiara e contesto più selvaggio.",
     "whyGo": "Funziona per una giornata di mare diversa dal solito: serve organizzarsi con il traghetto, ma il colpo d'occhio ripaga.",
     "driveMinutes": 70,
-    "featured": true
+    "featured": true,
+    "i18n": {
+      "en": {
+        "tags": ["beach", "ferry", "Conero", "summer"],
+        "summary": "The iconic Conero beach, reachable only by boat, with very clear water and a wilder feel than the rest of the coast.",
+        "whyGo": "A memorable beach day: you'll need to plan the ferry, but the first view more than pays off."
+      }
+    }
   },
   {
     "id": "ristorante-da-rosa",
@@ -72,7 +93,14 @@
     "googleMapsUrl": "https://maps.app.goo.gl/JHvGaNDsaPuqLv5m7",
     "website": "https://www.ristorante-darosa.com/",
     "driveMinutes": 10,
-    "featured": true
+    "featured": true,
+    "i18n": {
+      "en": {
+        "tags": ["restaurant", "tradition", "Abbadia di Fiastra"],
+        "summary": "A historic restaurant set right in the Abbadia di Fiastra grounds, serving Marche cuisine in a classic, very recognisable setting.",
+        "whyGo": "The go-to address when you want to pair a walk around the Abbey with lunch or dinner without moving the car."
+      }
+    }
   },
   {
     "id": "agricola-sigi",
@@ -92,7 +120,14 @@
     "googleMapsUrl": "https://maps.app.goo.gl/2xiH1ZbNRkzbKWbc8",
     "website": "https://www.agricolasigi.it",
     "driveMinutes": 18,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "tags": ["preserves", "jams", "syrups", "local products"],
+        "summary": "Hand-made jams, syrups and preserves using old local varieties: visciole (wild sour cherries), brugnolette, pera angelica (Angelica pear), figs.",
+        "whyGo": "Silvano and Giuliana have worked here since 1996 with local ingredients and artisan methods. You'll find things that simply don't exist in supermarkets: sapa (grape-must syrup), sun-macerated visciole syrup, jams from half-forgotten fruit. Open Monday to Friday."
+      }
+    }
   },
   {
     "id": "agricola-pacioni",
@@ -111,7 +146,14 @@
     "googleMapsUrl": "https://maps.app.goo.gl/sQ6iLFCknosindXcA",
     "website": "https://aziendaagricolapacioni.it",
     "driveMinutes": 10,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "tags": ["cured meats", "meat", "short supply chain"],
+        "summary": "Artisan cured meats from a fully closed supply chain: they raise, butcher and process everything in-house. Guanciale, lonzino, prosciutto crudo, salami.",
+        "whyGo": "The Pacioni family has worked here since 1965, now in its third generation. Home-grown cereals, no industrial feed, traditional curing. Worth the trip to take home real salumi."
+      }
+    }
   },
   {
     "id": "birrificio-il-mastio",
@@ -131,7 +173,14 @@
     "googleMapsUrl": "https://maps.app.goo.gl/o2sHkFUKBp1qnDd1A",
     "website": "https://www.birrificioilmastio.com",
     "driveMinutes": 5,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "tags": ["craft beer", "organic", "farm brewery", "Colmurano"],
+        "summary": "A farm brewery in Colmurano: unfiltered, unpasteurised beers made with organic barley grown on land close to the Mastio.",
+        "whyGo": "The name nods to the tower (il mastio) of the Rocca di Urbisaglia; here beer is born of a genuine short local supply chain. About 5 minutes by car from the casolare — ideal for picking up a case or a quick brewery stop (check hours and tours on their site)."
+      }
+    }
   },
   {
     "id": "distretto-calzature",
@@ -148,7 +197,15 @@
     "summary": "Zona degli outlet delle grandi marche marchigiane, con punti vendita Tod's, Hogan, Fabi, Santoni e altri brand.",
     "whyGo": "È la gita 'pratica' per chi vuole portare a casa qualcosa di concreto dal distretto calzaturiero fermano‑maceratese.",
     "driveMinutes": 55,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "title": "Shoe district – Tod's & co. outlets",
+        "tags": ["outlet", "footwear", "shopping"],
+        "summary": "The outlet area of the big Marche shoemakers, with Tod's, Hogan, Fabi, Santoni and other brands.",
+        "whyGo": "The 'practical' day out if you want to bring home something concrete from the Fermo–Macerata shoemaking district."
+      }
+    }
   },
   {
     "id": "frontignano",
@@ -171,7 +228,15 @@
     "googleMapsUrl": "https://maps.app.goo.gl/X7SuRUftvUBH635MA",
     "website": "https://www.frontignano360.it/",
     "driveMinutes": 70,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "sublabel": "Skiing · Bike park",
+        "tags": ["skiing", "winter", "Sibillini", "family", "summer", "mountain bike"],
+        "summary": "A ski area in the Sibillini National Park, between 1,325 and 1,900 m: 14 km of pistes, snowpark and beginners' area. In summer the bike park opens: enduro and downhill trails served by chairlift, MTB rentals (including e-bike and DH) and on-site services.",
+        "whyGo": "Winter: tree-lined pistes, small crowds and a national-park setting — check the website and socials for snow and openings. Summer: a dedicated mountain-bike area with chairlift-served trails and bike rentals; hours, passes and trail map on frontignano360.it."
+      }
+    }
   },
   {
     "id": "sassotetto",
@@ -192,7 +257,15 @@
     "googleMapsUrl": "https://maps.app.goo.gl/vW8SjkvHrjqMaADq5",
     "website": "https://www.scimarche.it/sarnano-comprensorio-sassotetto-santa-maria-maddalena/",
     "driveMinutes": 45,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "sublabel": "Skiing",
+        "tags": ["skiing", "winter", "Sarnano", "intermediate"],
+        "summary": "A ski area above Sarnano with around 11 km of pistes, mostly red. Linked with the Santa Maria Maddalena zone.",
+        "whyGo": "Slightly tougher than Frontignano, a good alternative when the snow is good. Check Instagram and the website for seasonal openings."
+      }
+    }
   },
   {
     "id": "civitanova-marche",
@@ -209,7 +282,14 @@
     "summary": "La spiaggia più accessibile dal casolare: lungomare ampio, stabilimenti, centro vivace e buon pesce.",
     "whyGo": "E il mare piu vicino e comodo. Per pranzo o cena c'e molta scelta sul lungomare: una buona opzione e il Ristorante Chalet Galileo (non economico, ma valido), altrimenti altri indirizzi in zona con ottimo spaghetto alle vongole.",
     "driveMinutes": 30,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "tags": ["beach", "seafront", "summer"],
+        "summary": "The most accessible beach from the casolare: a wide seafront, beach clubs, a lively town centre and good seafood.",
+        "whyGo": "The closest, easiest option for the sea. Plenty of choice for lunch or dinner along the seafront: Ristorante Chalet Galileo is a solid option (not cheap but worth it), plus other nearby spots with great spaghetti alle vongole."
+      }
+    }
   },
   {
     "id": "sirolo",
@@ -227,7 +307,14 @@
     "summary": "Borgo sul Conero con spiagge spettacolari sotto la falesia. Acqua cristallina, poco spazio, molta bellezza.",
     "whyGo": "Il mare piu bello della costa marchigiana. San Michele Arcangelo e Urbani sono le spiagge piu accessibili; le altre si raggiungono a piedi o in barca. Perfetta da combinare con Numana nella stessa giornata.",
     "driveMinutes": 70,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "tags": ["beach", "Conero", "village", "summer"],
+        "summary": "A hilltop village on the Conero headland with dramatic beaches below the cliff. Crystal-clear water, limited space, lots of beauty.",
+        "whyGo": "The most beautiful stretch of the Marche coast. San Michele Arcangelo and Urbani are the most accessible beaches; the others are reached on foot or by boat. Easy to pair with Numana on the same day."
+      }
+    }
   },
   {
     "id": "numana",
@@ -245,7 +332,14 @@
     "summary": "Numana alta e Numana bassa: borgo arroccato e spiaggia di sassi con vista sul Conero. Meno affollata di Sirolo.",
     "whyGo": "Alternativa a Sirolo con piu parcheggio e meno caos. A Numana funziona bene anche un pranzo al volo da Ricci Pescato & Fritto: scegli il pesce fresco e te lo friggono al momento.",
     "driveMinutes": 70,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "tags": ["beach", "Conero", "family", "summer"],
+        "summary": "Numana alta (upper town) and Numana bassa (lower town): a perched village above a pebble beach with views of the Conero. Less crowded than Sirolo.",
+        "whyGo": "An easier alternative to Sirolo, with more parking and less chaos. For a quick lunch, Ricci Pescato & Fritto works well: pick the fresh fish and they fry it on the spot."
+      }
+    }
   },
   {
     "id": "sferisterio-macerata",
@@ -267,7 +361,15 @@
     "googleMapsUrl": "https://maps.app.goo.gl/XvzjtoKggfb98Hbk6",
     "website": "https://www.sferisterio.it/",
     "driveMinutes": 30,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "sublabel": "Culture",
+        "tags": ["theatre", "opera", "concerts", "summer", "Macerata"],
+        "summary": "A monumental open-air arena in the centre of Macerata, one of the most iconic cultural venues in Le Marche.",
+        "whyGo": "Worth seeing even without a show, but at its best in the evening. During the summer season, check the events calendar — especially the Macerata Opera Festival."
+      }
+    }
   },
   {
     "id": "recanati-leopardi-colloredo",
@@ -288,7 +390,15 @@
     "whyGo": "Funziona bene per una giornata culturale: Casa Leopardi, Colle dell'Infinito e Villa Colloredo Mels sono vicini e facili da combinare nello stesso itinerario.",
     "googleMapsUrl": "https://maps.app.goo.gl/sv6P7adaPCixzNRq9",
     "driveMinutes": 45,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "sublabel": "Culture",
+        "tags": ["Recanati", "Leopardi", "museum", "village", "art"],
+        "summary": "Home town of the poet Giacomo Leopardi, with a tidy historic centre and several cultural sites packed into a small area.",
+        "whyGo": "Great for a culture day: Casa Leopardi (the Leopardi family home), the Colle dell'Infinito (the hill of his most famous poem 'L'infinito') and Villa Colloredo Mels are close together and easy to combine."
+      }
+    }
   },
   {
     "id": "urbs-salvia-urbisaglia",
@@ -310,7 +420,16 @@
     "googleMapsUrl": "https://maps.app.goo.gl/t9YU7kN2EZqoqXw96",
     "website": "https://www.urbisaglia.com/parco-archeologico/",
     "driveMinutes": 5,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "title": "Urbs Salvia Archaeological Park",
+        "sublabel": "Archaeology",
+        "tags": ["Urbisaglia", "Roman", "amphitheatre", "theatre", "history"],
+        "summary": "The largest archaeological park in Le Marche, with an amphitheatre, a Roman theatre and substantial monumental remains.",
+        "whyGo": "A strong stop if you want to alternate nature and history: the remains are extensive and easy to read, great with kids or for a half-day of culture."
+      }
+    }
   },
   {
     "id": "misidia-ripe-san-ginesio",
@@ -329,7 +448,14 @@
     "whyGo": "Perfetto se volete una cena piu curata del solito, con qualche idea originale sulla cucina locale. Prima o dopo cena vale la pena una breve passeggiata nel borgo di Ripe San Ginesio.",
     "googleMapsUrl": "https://maps.app.goo.gl/jJpqD4wxKTmxu4wZA",
     "driveMinutes": 10,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "tags": ["gourmet", "local cuisine", "village", "dinner"],
+        "summary": "A restaurant set in a small hilltop village, with gourmet-leaning cooking that reinterprets local ingredients and dishes in a contemporary key.",
+        "whyGo": "Perfect for a more refined dinner with original takes on local cuisine. Before or after, it's worth a short walk through the village of Ripe San Ginesio."
+      }
+    }
   },
   {
     "id": "locanda-le-logge",
@@ -348,7 +474,14 @@
     "whyGo": "Indirizzo pratico e vicino al casolare, ideale per una serata tranquilla nel centro di Urbisaglia con due passi prima o dopo cena.",
     "googleMapsUrl": "https://maps.app.goo.gl/1qf5qo9SmB1upEVi9",
     "driveMinutes": 5,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "tags": ["restaurant", "historic centre", "Urbisaglia", "dinner"],
+        "summary": "On the main street of Urbisaglia: a convenient choice when you want to stay local without giving up a proper village dinner.",
+        "whyGo": "A practical address close to the casolare, ideal for a quiet evening in central Urbisaglia with a short stroll before or after dinner."
+      }
+    }
   },
   {
     "id": "la-baita",
@@ -367,7 +500,14 @@
     "whyGo": "Ottima scelta nelle giornate in cui si mangia fuori: atmosfera rilassata, ombra e cucina diretta, da griglia.",
     "googleMapsUrl": "https://maps.app.goo.gl/GuPwqvH52gkwMn1e7",
     "driveMinutes": 8,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "tags": ["grill", "outdoor", "summer", "family"],
+        "summary": "A simple, well-loved place for grilled meats and outdoor tables, in a cool setting under the trees.",
+        "whyGo": "A great choice on days when you want to eat outside: relaxed atmosphere, shade and straightforward grill cooking."
+      }
+    }
   },
   {
     "id": "ristorante-la-torre",
@@ -386,7 +526,14 @@
     "whyGo": "Da considerare quando volete uscire dalla direttrice piu turistica e provare un indirizzo locale in un borgo dell'entroterra.",
     "googleMapsUrl": "https://maps.app.goo.gl/XJMtWodVbFGgWKAo9",
     "driveMinutes": 15,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "tags": ["restaurant", "tradition", "Sant'Angelo in Pontano", "hills"],
+        "summary": "A restaurant in Sant'Angelo in Pontano — a good pick for a hilltop dinner with local cooking.",
+        "whyGo": "Worth considering when you want to get off the main tourist routes and try a local address in an inland village."
+      }
+    }
   },
   {
     "id": "grotte-di-frasassi",
@@ -406,7 +553,16 @@
     "whyGo": "Piano B eccellente nei giorni di pioggia: visita organizzata, ambienti enormi e temperatura interna costante in ogni stagione.",
     "googleMapsUrl": "https://maps.app.goo.gl/wNAJjjpYmokkkmyW8",
     "driveMinutes": 75,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "title": "Frasassi Caves",
+        "sublabel": "Rainy-day pick",
+        "tags": ["caves", "rainy day", "family", "geology"],
+        "summary": "One of Italy's most spectacular karst cave systems — perfect when the weather doesn't cooperate but you still want a memorable visit.",
+        "whyGo": "An excellent plan B on rainy days: guided visits, huge chambers and a steady temperature year-round."
+      }
+    }
   },
   {
     "id": "urbisaglia-rocca",
@@ -425,6 +581,15 @@
     "summary": "Passeggiata breve nel centro storico di Urbisaglia con salita alla Rocca Medievale e punti panoramici sulla campagna.",
     "whyGo": "Ideale per un'uscita facile vicino casa. Conviene verificare giorni e orari di apertura della Rocca prima di partire.",
     "driveMinutes": 5,
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "title": "Walk in Urbisaglia village and the Medieval Rocca",
+        "sublabel": "Village",
+        "tags": ["Urbisaglia", "village", "fortress", "history"],
+        "summary": "A short walk through the historic centre of Urbisaglia, with a climb up to the Rocca Medievale (medieval fortress) and viewpoints over the countryside.",
+        "whyGo": "Ideal for an easy outing close to home. It's worth checking the Rocca's opening days and hours before heading out."
+      }
+    }
   }
 ]

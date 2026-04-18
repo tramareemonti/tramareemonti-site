@@ -4,11 +4,11 @@ import { DintorniExplorer } from '@/components/dintorni-explorer';
 import { siteConfig } from '@/lib/site-config';
 
 export const metadata: Metadata = {
-  title: `Dintorni · ${siteConfig.name}`,
+  title: `Around · ${siteConfig.name}`,
   description:
-    'I nostri posti del cuore intorno al casolare: locali, produttori, borghi, sentieri e mare — una guida curata delle Marche.',
+    'Favourite places, producers, trails and sea ideas around the casolare: a hand-picked guide to Le Marche.',
   alternates: {
-    canonical: '/dintorni',
+    canonical: '/en/dintorni',
     languages: {
       it: '/dintorni',
       en: '/en/dintorni',
@@ -17,10 +17,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function DintorniPage() {
+export default function DintorniPageEn() {
   return (
     <Suspense>
-      <DintorniExplorer locale="it" />
+      <DintorniExplorer locale="en" />
     </Suspense>
   );
 }

@@ -228,7 +228,16 @@
     ],
     "gpxFile": "/tracce/maesta-abbadia.gpx",
     "mapyUrl": "https://mapy.com/s/radujatamu",
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "title": "From the Maestà di Urbisaglia to the Abbadia di Fiastra",
+        "tags": ["Maestà di Urbisaglia", "Abbadia di Fiastra", "walk", "easy", "river", "spring", "summer", "autumn"],
+        "duration": "2h",
+        "summary": "A flat walk that from the Maestà di Urbisaglia follows the river Fiastra through fields and hills, looping around the Abbadia di Fiastra estate and past the Abbey.",
+        "highlights": ["Maestà di Urbisaglia", "river Fiastra", "Abbadia di Fiastra"]
+      }
+    }
   },
   {
     "id": "casolare-abbadia-corto",
@@ -679,7 +688,17 @@
     ],
     "gpxFile": "/tracce/casa-abbadia.gpx",
     "mapyUrl": "https://mapy.com/s/kotudelezu",
-    "featured": true
+    "featured": true,
+    "i18n": {
+      "en": {
+        "title": "From the casolare to the Abbadia di Fiastra",
+        "tags": ["bike", "gravel", "family", "casolare", "Urbisaglia", "Abbadia di Fiastra", "hills"],
+        "startTown": "Casolare",
+        "duration": "1h 30m",
+        "summary": "A gravel-bike loop from the casolare to the Abbadia di Fiastra, passing through the village of Urbisaglia and then along the river, fields and hills up to the Abbey. Doable with families who have some legs: there are a few climbs on the way back.",
+        "highlights": ["casolare", "village of Urbisaglia", "river Fiastra", "Abbadia di Fiastra"]
+      }
+    }
   },
   {
     "id": "abbadia-giro-corto",
@@ -792,7 +811,16 @@
       ]
     ],
     "gpxFile": "/tracce/giro_corto_piedi_abbadia.gpx",
-    "featured": true
+    "featured": true,
+    "i18n": {
+      "en": {
+        "title": "Short walking loop around the Abbadia di Fiastra",
+        "tags": ["Abbadia di Fiastra", "walk", "easy"],
+        "duration": "1h",
+        "summary": "A Sunday-afternoon walk on foot, suitable for pretty much everyone: starts from the Abbadia car park and loops through fields, embankments and the edge of the woods.",
+        "highlights": ["Abbadia di Fiastra", "flat countryside", "simple ring trail"]
+      }
+    }
   },
   {
     "id": "vettore-forca-di-presta",
@@ -1275,7 +1303,16 @@
       ]
     ],
     "gpxFile": "/tracce/vettore_da_forca_di_presta.gpx",
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "title": "Summit of Monte Vettore",
+        "tags": ["summit", "Sibillini", "panorama", "summer", "autumn"],
+        "duration": "4h - 5h",
+        "summary": "The classic climb to Monte Vettore from the Forca di Presta pass: a direct route with open views over Castelluccio and the Sibillini ridge.",
+        "highlights": ["Monte Vettore", "Rifugio Zilioli (mountain hut)", "Piani di Castelluccio plateau"]
+      }
+    }
   },
   {
     "id": "vettore-foce-laghi-pilato",
@@ -1846,7 +1883,16 @@
     ],
     "gpxFile": "/tracce/laghi_pilato.gpx",
     "mapyUrl": "https://mapy.com/s/jutenomemo",
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "title": "Laghi di Pilato",
+        "tags": ["Laghi di Pilato", "Sibillini", "long", "summer"],
+        "duration": "6h",
+        "summary": "Climb to the Laghi di Pilato from Foce: a wild glacial valley. Swimming is forbidden in the lakes — the chirocefalo del Marchesoni (Marchesoni's fairy shrimp) is an endemic protected species.",
+        "highlights": ["Laghi di Pilato", "glacial valley", "Marchesoni's fairy shrimp"]
+      }
+    }
   },
   {
     "id": "monte-sibilla-rifugio",
@@ -2762,7 +2808,16 @@
     ],
     "gpxFile": "/tracce/monte_sibilla.gpx",
     "mapyUrl": "https://mapy.com/s/kasufusemu",
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "title": "Monte Sibilla",
+        "tags": ["Sibilla", "ridge", "panorama", "summer", "autumn"],
+        "duration": "full day",
+        "summary": "A long, panoramic loop from the Rifugio Sibilla to the summit, along a wide ridge with views over Vettore, Priora and the entire Sibillini skyline.",
+        "highlights": ["Monte Sibilla", "panoramic ridge", "view over the Sibillini"]
+      }
+    }
   },
   {
     "id": "monte-priora-bolognola-fargno",
@@ -3129,7 +3184,17 @@
     ],
     "gpxFile": "/tracce/monte_priora.gpx",
     "mapyUrl": "https://mapy.com/s/gonakuhune",
-    "featured": true
+    "featured": true,
+    "i18n": {
+      "en": {
+        "title": "Monte Priora",
+        "tags": ["Priora", "Fargno", "loop", "summer"],
+        "startTown": "Rifugio del Fargno (Bolognola)",
+        "duration": "5h",
+        "summary": "A climb to Priora from the car park at the Rifugio del Fargno, with a fine ridge and classic Apennine terrain. We recommend calling the rifugio to make sure the road from Bolognola is open.",
+        "highlights": ["Rifugio del Fargno", "Monte Priora", "Sibillini ridges"]
+      }
+    }
   },
   {
     "id": "eremo-san-leonardo",
@@ -3606,7 +3671,16 @@
     ],
     "gpxFile": "/tracce/san_leonardo.gpx",
     "mapyUrl": "https://mapy.com/s/mahojovafu",
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "title": "Eremo di San Leonardo (San Leonardo hermitage)",
+        "tags": ["hermitage", "Sibillini", "moderate", "spring", "summer", "autumn"],
+        "duration": "4h",
+        "summary": "A calm walk to an isolated hermitage in the Sibillini. Forest trail with modest elevation gain, suitable for anyone who wants a day in nature without tough climbs.",
+        "highlights": ["Eremo di San Leonardo", "woods", "Monti Sibillini"]
+      }
+    }
   },
   {
     "id": "passo-del-lupo-sirolo",
@@ -3817,7 +3891,16 @@
     ],
     "gpxFile": "/tracce/passo_del_lupo.gpx",
     "mapyUrl": "https://mapy.com/s/lupecanune",
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "title": "Passo del Lupo",
+        "tags": ["Conero", "sea", "panorama", "easy"],
+        "duration": "1h 30m",
+        "summary": "A short loop on the Conero with spectacular sea views. Ideal for pairing a panoramic walk with a beach day in Sirolo.",
+        "highlights": ["Passo del Lupo", "sea view", "Monte Conero"]
+      }
+    }
   },
   {
     "id": "lame-rosse-trekking",
@@ -4134,7 +4217,17 @@
     ],
     "gpxFile": "/tracce/lame_rosse.gpx",
     "mapyUrl": "https://mapy.com/s/fenefuzonu",
-    "featured": true
+    "featured": true,
+    "i18n": {
+      "en": {
+        "title": "Lame Rosse",
+        "tags": ["Lago di Fiastra", "family", "easy", "spring", "summer", "autumn"],
+        "startTown": "Lago di Fiastra",
+        "duration": "2h 30m",
+        "summary": "A trail accessible to most people: starts at the lake, climbs through woods and leads to a striking final view of the Lame Rosse rock formations.",
+        "highlights": ["Lago di Fiastra", "Lame Rosse", "forest and dirt track"]
+      }
+    }
   },
   {
     "id": "piani-ragnolo-anello",
@@ -4379,6 +4472,15 @@
     ],
     "gpxFile": "/tracce/ragnolo.gpx",
     "mapyUrl": "https://mapy.com/s/gotuhahehe",
-    "featured": false
+    "featured": false,
+    "i18n": {
+      "en": {
+        "title": "Piani di Ragnolo (panoramic loop)",
+        "tags": ["Ragnolo", "Sibillini", "panorama", "moderate", "summer", "autumn"],
+        "duration": "3h",
+        "summary": "A panoramic loop over the Piani di Ragnolo: an easy-flowing trail across plateau and ridges with wide open views of the Sibillini.",
+        "highlights": ["Piani di Ragnolo", "views over the Sibillini", "panoramic loop"]
+      }
+    }
   }
 ]

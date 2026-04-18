@@ -8,12 +8,24 @@ type GalleryImage = {
   alt: string;
 };
 
+export type HomeGalleryLabels = {
+  /** Prefix used for the per-thumbnail "open this photo" aria-label. Composed as `${openPrefix}: ${alt}`. */
+  openPrefix: string;
+  close: string;
+  prev: string;
+  next: string;
+  /** Prefix for the lightbox dialog label. Composed as `${dialogPrefix} ${i} ${counterOf} ${n}: ${alt}`. */
+  dialogPrefix: string;
+  counterOf: string;
+};
+
 type HomeGalleryProps = {
   images: readonly GalleryImage[];
   note?: string;
+  labels: HomeGalleryLabels;
 };
 
-export function HomeGallery({ images, note }: HomeGalleryProps) {
+export function HomeGallery({ images, note, labels }: HomeGalleryProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const triggerRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -86,7 +98,7 @@ export function HomeGallery({ images, note }: HomeGalleryProps) {
             }}
             type="button"
             onClick={() => setOpenIndex(index)}
-            aria-label={`Apri foto: ${item.alt}`}
+            aria-label={`${labels.openPrefix}: ${item.alt}`}
             className="group relative aspect-[4/3] w-[min(78vw,17.5rem)] shrink-0 cursor-zoom-in snap-center snap-always overflow-hidden rounded-[1.25rem] border border-line/70 transition first:snap-start last:snap-end hover:border-clay focus:outline-none focus-visible:ring-2 focus-visible:ring-clay focus-visible:ring-offset-2 focus-visible:ring-offset-canvas sm:w-[min(42vw,17.5rem)] md:w-[17.5rem]"
             role="listitem"
           >
@@ -107,7 +119,7 @@ export function HomeGallery({ images, note }: HomeGalleryProps) {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={`Foto ${openIndex! + 1} di ${images.length}: ${current.alt}`}
+          aria-label={`${labels.dialogPrefix} ${openIndex! + 1} ${labels.counterOf} ${images.length}: ${current.alt}`}
           className="fixed inset-0 z-50 flex items-center justify-center bg-ink/85 px-4 py-8 backdrop-blur-sm"
           onClick={close}
         >
@@ -118,7 +130,7 @@ export function HomeGallery({ images, note }: HomeGalleryProps) {
               event.stopPropagation();
               close();
             }}
-            aria-label="Chiudi"
+            aria-label={labels.close}
             className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white transition hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white sm:right-6 sm:top-6"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
@@ -134,7 +146,7 @@ export function HomeGallery({ images, note }: HomeGalleryProps) {
                   event.stopPropagation();
                   goTo(-1);
                 }}
-                aria-label="Foto precedente"
+                aria-label={labels.prev}
                 className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white transition hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white sm:left-6"
               >
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
@@ -147,7 +159,7 @@ export function HomeGallery({ images, note }: HomeGalleryProps) {
                   event.stopPropagation();
                   goTo(1);
                 }}
-                aria-label="Foto successiva"
+                aria-label={labels.next}
                 className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white transition hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white sm:right-6"
               >
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
@@ -174,7 +186,7 @@ export function HomeGallery({ images, note }: HomeGalleryProps) {
             <figcaption className="text-center text-xs text-white/80 sm:text-sm">
               {current.alt}
               <span className="ml-2 text-white/50">
-                {openIndex! + 1} / {images.length}
+                {openIndex! + 1} {labels.counterOf} {images.length}
               </span>
             </figcaption>
           </figure>

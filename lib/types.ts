@@ -8,6 +8,29 @@ export type Category =
 
 export type RouteType = 'trekking' | 'bici';
 
+/**
+ * Optional per-entry English translations.
+ * Only the fields that are actually meant to be localised appear here.
+ * Anything missing falls back to the Italian original.
+ */
+export interface PlaceI18n {
+  title?: string;
+  sublabel?: string;
+  summary?: string;
+  whyGo?: string;
+  tags?: string[];
+  town?: string;
+}
+
+export interface RouteI18n {
+  title?: string;
+  summary?: string;
+  highlights?: string[];
+  tags?: string[];
+  startTown?: string;
+  duration?: string;
+}
+
 export interface Place {
   id: string;
   title: string;
@@ -24,6 +47,8 @@ export interface Place {
   driveMinutes: number;
   featured?: boolean;
   sublabel?: string;
+  /** Optional English translation block. Missing fields fall back to Italian. */
+  i18n?: { en?: PlaceI18n };
 }
 
 export interface RouteItem {
@@ -47,6 +72,8 @@ export interface RouteItem {
   mapyUrl?: string;
   googleMapsUrl?: string;
   featured?: boolean;
+  /** Optional English translation block. Missing fields fall back to Italian. */
+  i18n?: { en?: RouteI18n };
 }
 
 export type ExplorerItem = Place | RouteItem;
