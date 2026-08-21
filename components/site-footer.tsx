@@ -9,7 +9,7 @@ import {
   siteConfig,
   whatsappHref,
 } from '@/lib/site-config';
-import { WhatsAppIcon } from '@/components/icons';
+import { AirbnbIcon, WhatsAppIcon } from '@/components/icons';
 import { getLocaleFromPathname, localePath } from '@/lib/i18n/paths';
 import { makeT } from '@/lib/i18n/ui';
 
@@ -49,6 +49,15 @@ export function SiteFooter() {
             >
               {tr('footerDintorniLabel')}
             </Link>
+            <a
+              href={siteConfig.airbnbUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 font-medium text-muted transition hover:text-ink"
+            >
+              <AirbnbIcon size={14} />
+              {tr('ctaAirbnb')}
+            </a>
             <a
               href={whatsappHref(undefined, locale)}
               target="_blank"

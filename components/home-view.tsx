@@ -4,7 +4,6 @@ import {
   getHomeHero,
   getHomeHeroImageCaption,
   getHomeGalleryImages,
-  getHomeGalleryPlaceholderNote,
   getHomePerche,
   getHomeLaCasa,
   getHomeDintorniIntro,
@@ -14,7 +13,7 @@ import {
   getFeaturedNearby,
 } from '@/lib/site-content';
 import { HomeGallery } from '@/components/home-gallery';
-import { MailIcon, WhatsAppIcon } from '@/components/icons';
+import { AirbnbIcon, MailIcon, WhatsAppIcon } from '@/components/icons';
 import {
   getSiteAddress,
   mailtoHref,
@@ -38,7 +37,6 @@ export function HomeView({ locale }: HomeViewProps) {
   const featuredNearby = getFeaturedNearby(locale);
 
   const galleryImages = getHomeGalleryImages(locale);
-  const galleryNote = getHomeGalleryPlaceholderNote(locale);
   const galleryLabels = {
     openPrefix: tr('galleryOpen'),
     close: tr('galleryClose'),
@@ -68,7 +66,7 @@ export function HomeView({ locale }: HomeViewProps) {
             <div className="min-w-0">
               <p className="inline-flex items-center gap-2 rounded-full border border-amber-400/60 bg-amber-200/40 px-3 py-1 text-[11px] uppercase tracking-[0.16em] text-amber-800">
                 <span className="text-xl leading-none sm:text-2xl" aria-hidden="true">
-                  👷‍♂️👷‍♀️
+                  🏡
                 </span>
                 {tr('wipBadge')}
               </p>
@@ -78,6 +76,16 @@ export function HomeView({ locale }: HomeViewProps) {
             </div>
             <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
               <a
+                href={siteConfig.airbnbUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={tr('wipAirbnbAria')}
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-amber-400/70 bg-white/80 px-4 py-2.5 text-sm font-medium text-amber-900 transition hover:border-amber-600 hover:text-amber-700"
+              >
+                <AirbnbIcon size={16} />
+                {tr('ctaAirbnb')}
+              </a>
+              <a
                 href={whatsappHref(tr('wipWhatsAppMessage'), locale)}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -86,13 +94,6 @@ export function HomeView({ locale }: HomeViewProps) {
               >
                 <WhatsAppIcon size={16} />
                 {tr('ctaWhatsApp')}
-              </a>
-              <a
-                href={mailtoHref(tr('wipMailSubject'), locale)}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-amber-400/70 bg-white/80 px-4 py-2.5 text-sm font-medium text-amber-900 transition hover:border-amber-600 hover:text-amber-700"
-              >
-                <MailIcon size={16} />
-                {tr('ctaEmail')}
               </a>
             </div>
           </div>
@@ -115,20 +116,22 @@ export function HomeView({ locale }: HomeViewProps) {
             <div className="flex flex-col gap-3">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <a
-                  href={whatsappHref(undefined, locale)}
+                  href={siteConfig.airbnbUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-olive px-6 py-3 text-sm font-medium text-white transition hover:bg-ink"
                 >
-                  <WhatsAppIcon size={18} />
-                  {tr('ctaWriteOnWhatsApp')}
+                  <AirbnbIcon size={18} />
+                  {tr('ctaAirbnb')}
                 </a>
                 <a
-                  href={mailtoHref(undefined, locale)}
+                  href={whatsappHref(undefined, locale)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-line px-6 py-3 text-sm font-medium text-ink transition hover:border-clay hover:text-clay"
                 >
-                  <MailIcon size={18} />
-                  {tr('ctaEmail')}
+                  <WhatsAppIcon size={18} />
+                  {tr('ctaWriteOnWhatsApp')}
                 </a>
               </div>
               <Link
@@ -145,7 +148,7 @@ export function HomeView({ locale }: HomeViewProps) {
               <div className="relative min-h-[280px] overflow-hidden rounded-[1.5rem] border border-line/70">
                 <Image
                   src="/images/photos/monti.jpeg"
-                  alt={galleryImages[0]?.alt ?? ''}
+                  alt={galleryImages[1]?.alt ?? ''}
                   fill
                   className="object-cover"
                   priority
@@ -157,8 +160,8 @@ export function HomeView({ locale }: HomeViewProps) {
             </figure>
             <div className="relative min-h-[160px] overflow-hidden rounded-[1.5rem] border border-line/70">
               <Image
-                src="/images/photos/mare.jpeg"
-                alt={galleryImages[1]?.alt ?? ''}
+                src="/images/photos/terrazzo1.png"
+                alt={galleryImages[4]?.alt ?? ''}
                 fill
                 className="object-cover"
               />
@@ -230,7 +233,7 @@ export function HomeView({ locale }: HomeViewProps) {
         aria-label={tr('galleryDialogLabel')}
         className="mx-auto max-w-7xl px-6 pb-6 pt-0 md:px-10 md:pb-7"
       >
-        <HomeGallery images={galleryImages} note={galleryNote} labels={galleryLabels} />
+        <HomeGallery images={galleryImages} labels={galleryLabels} />
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-12 pt-6 md:px-10 md:pb-16 md:pt-8">
@@ -309,10 +312,19 @@ export function HomeView({ locale }: HomeViewProps) {
             </div>
             <div className="flex flex-col gap-3 sm:flex-row md:flex-col md:items-end lg:flex-row">
               <a
-                href={whatsappHref(undefined, locale)}
+                href={siteConfig.airbnbUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-olive px-6 py-3 text-sm font-medium text-white transition hover:bg-ink"
+              >
+                <AirbnbIcon size={18} />
+                {tr('ctaAirbnb')}
+              </a>
+              <a
+                href={whatsappHref(undefined, locale)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-line px-6 py-3 text-sm font-medium text-ink transition hover:border-clay hover:text-clay"
               >
                 <WhatsAppIcon size={18} />
                 {tr('ctaWhatsApp')}

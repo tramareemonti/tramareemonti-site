@@ -67,6 +67,7 @@ const jsonLd = {
   name: siteConfig.name,
   description: itDescription,
   url: siteConfig.url,
+  sameAs: [siteConfig.airbnbUrl],
   email: siteConfig.email,
   telephone: siteConfig.whatsapp.tel,
   image: [`${siteConfig.url}${ogImage.url}`],

@@ -18,6 +18,21 @@ export function WhatsAppIcon({ className, size = 18 }: IconProps) {
   );
 }
 
+export function AirbnbIcon({ className, size = 18 }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M12 1.5C8.2 1.5 5.7 3.9 5.7 7.5c0 2 .8 3.9 2 6.1 1.1 1.9 2.5 3.7 4.1 6.1.1.2.3.3.4.3s.3-.1.4-.3c1.6-2.4 3-4.2 4.1-6.1 1.2-2.2 2-4.1 2-6.1 0-3.6-2.5-6-6.3-6Zm0 8.6a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2Z" />
+    </svg>
+  );
+}
+
 export function MailIcon({ className, size = 18 }: IconProps) {
   return (
     <svg

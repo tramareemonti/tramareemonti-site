@@ -17,6 +17,8 @@ export const siteConfig = {
     number: '33649958039',
     tel: '+33649958039',
   },
+  /** Annuncio Airbnb (URL pulito, senza date/parametri di tracking). */
+  airbnbUrl: 'https://www.airbnb.it/rooms/1667370445293468329',
   /**
    * Per-locale site description (used in metadata, SEO, default subjects, ...).
    * Intentionally keeps Italian proper names in both locales.

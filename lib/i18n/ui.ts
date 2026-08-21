@@ -21,33 +21,31 @@ const dict = {
   ctaWhatsApp: { it: 'WhatsApp', en: 'WhatsApp' },
   ctaEmail: { it: 'Email', en: 'Email' },
   ctaWriteOnWhatsApp: { it: 'Scrivici su WhatsApp', en: 'Message us on WhatsApp' },
+  ctaAirbnb: { it: 'Prenota su Airbnb', en: 'Book on Airbnb' },
   ctaWriteUs: { it: 'Scrivici', en: 'Get in touch' },
   ctaExplore: { it: 'Esplora →', en: 'Explore →' },
   ctaDiscoverArea: { it: 'Scopri i dintorni →', en: 'Discover the area →' },
   ctaGoToMap: { it: 'Vai alla mappa →', en: 'Open the map →' },
   ctaSeeAreaMap: { it: 'Vedi la mappa dei dintorni →', en: 'See the area map →' },
 
-  // ─── Home: WIP banner ──────────────────────────────────────────────
-  wipBadge: { it: 'Work in progress', en: 'Work in progress' },
+  // ─── Home: opening banner ──────────────────────────────────────────
+  wipBadge: { it: 'Appena aperti', en: 'Just opened' },
   wipMessage: {
-    it: "Il casolare è in fase di ristrutturazione. Stiamo preparando l'apertura agli ospiti: se vuoi essere tra i primi, scrivici!  :)",
-    en: "Il casolare is being renovated. We're preparing to open it to guests — if you'd like to be among the first to know, drop us a line!  :)",
+    it: 'Il casolare è pronto per gli ospiti. Sii tra i primi a prenotare su Airbnb o via WhatsApp: rispondiamo volentieri.',
+    en: "The casolare is ready for guests. Be among the first to book on Airbnb — or message us on WhatsApp.",
   },
   wipWhatsAppAria: { it: 'Scrivici su WhatsApp', en: 'Message us on WhatsApp' },
+  wipAirbnbAria: { it: 'Prenota su Airbnb', en: 'Book on Airbnb' },
   wipWhatsAppMessage: {
-    it: 'Ciao! Mi interessa il Casolare tra Mare e Monti: vorrei essere tra i primi a sapere quando apre agli ospiti.',
-    en: "Hi! I'm interested in Il Casolare tra Mare e Monti and would love to be among the first to know when it opens to guests.",
-  },
-  wipMailSubject: {
-    it: 'Richiesta apertura ospiti - Il Casolare tra Mare e Monti',
-    en: 'Guest opening waitlist - Il Casolare tra Mare e Monti',
+    it: 'Ciao! Vorrei prenotare il Casolare tra Mare e Monti: potete dirmi disponibilità e dettagli?',
+    en: "Hi! I'd like to book Il Casolare tra Mare e Monti — could you share availability and details?",
   },
 
   // ─── Home: contact section ─────────────────────────────────────────
   contactEyebrow: { it: 'Contatti', en: 'Contact' },
   contactBody: {
-    it: 'Date, disponibilità o domande sulla casa: il modo più rapido è WhatsApp, oppure via email.',
-    en: 'Dates, availability or questions about the house: WhatsApp is fastest, or email us.',
+    it: 'Prenota su Airbnb per date e disponibilità. Per domande sulla casa, WhatsApp è il modo più rapido — oppure scrivici via email.',
+    en: 'Book on Airbnb for dates and availability. For questions about the house, WhatsApp is fastest — or email us.',
   },
   contactAddressNote: {
     it: "· l'indirizzo preciso lo condividiamo in fase di prenotazione.",

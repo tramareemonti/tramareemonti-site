@@ -46,31 +46,36 @@ export const getHomeHeroImageCaption = (locale: Locale) => homeHeroImageCaption[
  */
 const homeGalleryImages: L<readonly { src: string; alt: string }[]> = {
   it: [
-    { src: '/images/photos/monti.jpeg', alt: 'Monti e paesaggio marchigiano' },
-    { src: '/images/photos/mare.jpeg', alt: 'Mare e costa nelle vicinanze' },
-    { src: '/images/photos/monti.jpeg', alt: 'Monti e paesaggio marchigiano' },
-    { src: '/images/photos/mare.jpeg', alt: 'Mare e costa nelle vicinanze' },
-    { src: '/images/photos/monti.jpeg', alt: 'Monti e paesaggio marchigiano' },
-    { src: '/images/photos/mare.jpeg', alt: 'Mare e costa nelle vicinanze' },
+    { src: '/images/photos/monti.jpeg', alt: 'Vista sulle montagne dal terrazzo' },
+    { src: '/images/photos/mare.jpeg', alt: 'Vista del mare in lontananza dal terrazzo' },
+    { src: '/images/photos/terrazzo2.png', alt: 'Vista sulle colline dal terrazzo, con petunie gialle' },
+    { src: '/images/photos/terrazzo3.png', alt: 'Panorama dal terrazzo all’ora d’oro, colline marchigiane' },
+    { src: '/images/photos/terrazzo4.png', alt: 'Tramonto sui Monti Sibillini visto dal casolare' },
+    { src: '/images/photos/terrazzo1.png', alt: 'Colline e ulivi visti dal terrazzo' },
+    { src: '/images/photos/soggiorno1.png', alt: 'Soggiorno e zona pranzo con tavolo in legno' },
+    { src: '/images/photos/cucina1.png', alt: 'Cucina attrezzata vista dall’arco verso il soggiorno' },
+    { src: '/images/photos/cucina2.png', alt: 'Dalla cucina, porte aperte sul terrazzo e le colline' },
+    { src: '/images/photos/camera1_1.png', alt: 'Camera da letto con balcone sulla campagna' },
+    { src: '/images/photos/camera2_1.png', alt: 'Camera da letto con vista panoramica dalle porte-finestre' },
+    { src: '/images/photos/camera3_1.png', alt: 'Terza camera, luminosa, con accesso al terrazzo' },
   ],
   en: [
-    { src: '/images/photos/monti.jpeg', alt: 'Mountains and Marche landscape' },
-    { src: '/images/photos/mare.jpeg', alt: 'Adriatic sea and nearby coast' },
-    { src: '/images/photos/monti.jpeg', alt: 'Mountains and Marche landscape' },
-    { src: '/images/photos/mare.jpeg', alt: 'Adriatic sea and nearby coast' },
-    { src: '/images/photos/monti.jpeg', alt: 'Mountains and Marche landscape' },
-    { src: '/images/photos/mare.jpeg', alt: 'Adriatic sea and nearby coast' },
+    { src: '/images/photos/monti.jpeg', alt: 'Snowy mountains view from the terrace' },
+    { src: '/images/photos/mare.jpeg', alt: 'Sea view in the distance' },    
+    { src: '/images/photos/terrazzo2.png', alt: 'Hill views from the terrace, with yellow petunias' },
+    { src: '/images/photos/terrazzo3.png', alt: 'Golden-hour panorama from the terrace over the Marche hills' },
+    { src: '/images/photos/terrazzo4.png', alt: 'Sunset over the Sibillini mountains from the casolare' },
+    { src: '/images/photos/terrazzo1.png', alt: 'Hills and olive trees seen from the terrace' },
+    { src: '/images/photos/soggiorno1.png', alt: 'Living and dining area with a wooden table' },
+    { src: '/images/photos/cucina1.png', alt: 'Fully equipped kitchen, seen through the arch from the living room' },
+    { src: '/images/photos/cucina2.png', alt: 'From the kitchen, open doors onto the terrace and hills' },
+    { src: '/images/photos/camera1_1.png', alt: 'Bedroom with a balcony over the countryside' },
+    { src: '/images/photos/camera2_1.png', alt: 'Bedroom with panoramic views through the French doors' },
+    { src: '/images/photos/camera3_1.png', alt: 'Third bedroom, bright, with terrace access' },
   ],
 };
 
 export const getHomeGalleryImages = (locale: Locale) => homeGalleryImages[locale];
-
-const homeGalleryPlaceholderNote: L<string> = {
-  it: 'Foto della casa in arrivo: qui per ora immagini del territorio intorno al casolare.',
-  en: "Photos of the house are coming soon — for now, a few shots of the area around the casolare.",
-};
-
-export const getHomeGalleryPlaceholderNote = (locale: Locale) => homeGalleryPlaceholderNote[locale];
 
 // ─── "Perché scegliere il casolare" ──────────────────────────────────
 const homePerche: L<{
