@@ -14,8 +14,8 @@ export const siteConfig = {
    * `tel` è il formato E.164, usato solo nel JSON-LD (non visibile).
    */
   whatsapp: {
-    number: '33649958039',
-    tel: '+33649958039',
+    number: '393493243732',
+    tel: '+393493243732',
   },
   /** Annuncio Airbnb (URL pulito, senza date/parametri di tracking). */
   airbnbUrl: 'https://www.airbnb.it/rooms/1667370445293468329',
